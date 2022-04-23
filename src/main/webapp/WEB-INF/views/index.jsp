@@ -8,8 +8,8 @@
     <%@ include file="/resources/Shared/head.jsp"%> 
 </head>
 <body>
-
-	<%@ include file="/resources/Shared/menu.jsp"%> 
+da vo nay
+	<%@ include file="/resources/Shared/menu"%> 
     <%@ include file="/resources/Shared/footer.jsp"%> 
 </body>
 </html>
