@@ -8,8 +8,6 @@
     <%@ include file="/resources/Shared/head.jsp"%> 
 </head>
 <body>
-a hi hi
-
 	<%@ include file="/resources/Shared/menu.jsp"%> 
     <%@ include file="/resources/Shared/footer.jsp"%> 
 </body>
