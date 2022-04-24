@@ -81,9 +81,10 @@ public class orderController {
 		this.insertReceipt(receipt);
 		ReceiptDetails receiptDetails=new ReceiptDetails();
 		for(OrderDetails B : listOrder){
-			receiptDetails = this.createReceiptDetails(B,receipt);
+			receiptDetails =this.createReceiptDetails(B, receipt);
 			this.insertReceiptDetails(receiptDetails);
 		}
+	
 		
 		for(OrderDetails C : listOrder) {
 			this.deleteOrderDetails(C);
@@ -92,8 +93,6 @@ public class orderController {
 		this.deleteTheOrder(list.get(0));
 		return "Order/index";
 	}
-	
-	
 	
 	@RequestMapping("orderCancel-{Id}")
 	public String orderCancel(ModelMap model, @PathVariable("Id") String Id) {
@@ -106,6 +105,42 @@ public class orderController {
 		this.updateTheOrder(list.get(0));
 		return "Order/index";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void insertReceipt(Receipt receipt)
 	{
@@ -170,9 +205,11 @@ public class orderController {
 	public ReceiptDetails createReceiptDetails(OrderDetails orderDetails,Receipt receipt) {
 
 		ReceiptDetails receiptDetails = new ReceiptDetails();
+		
 		receiptDetails.setProduct(orderDetails.getProduct());;
 		receiptDetails.setQuantity(orderDetails.getQuantity());
 		receiptDetails.setReceiptId(receipt.getReceiptId());
+		receiptDetails.setReceiptDetailsId(this.createReceiptDetailsId());
 		return receiptDetails;
 		
 	}
@@ -214,5 +251,28 @@ public class orderController {
 			session.close();
 		}
 	}
+	public Integer getLastReceiptDetailsId()
+	{
+		Session session = factory.openSession();
+		String hql = "select max( CAST(receiptDetailsId AS int)) from ReceiptDetails";
+		Query query = session.createQuery(hql);
+		List<Integer> list = query.list();
+		Integer id=list.get(0);
+		return id;
+	}
+	public String createReceiptDetailsId()
+	{
+		Integer id=getLastReceiptDetailsId();
+		if(id==null)
+		{
+			id=1;
+		}
+		else
+		{
+			id+=1;
+		}
+		return id.toString();
+	}
+	
 	
 }

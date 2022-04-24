@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Danh Sách Nhân Viên</title>
 <style type="text/css">
 .btn-submit {
 	color: #fff;
@@ -28,61 +27,34 @@
 <body>
 	<%@ include file="/resources/Shared/menu.jsp"%>
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
-		<div class="card">
-			<div class="card-body">
-				<h3>Danh Sách Nhân Viên</h3>
-				<a href="insertStaff.htm" style="text-decoration: none;"
-					class="btn-submit">Thêm Nhân Viên</a>
-			</div>
-			<div class="col-xl-4"></div>
-
-			<div class="col-xl-4 search ">
-				<form method="post" action="SearchPhoneStaff.htm">
-					<div class="input-group">
-						<input type="text" class="form-control search-input"
-							placeholder="Search " name="phone">
-						<button type="submit" class="btn btn-light search-button">
-							<i class="fas fa-search text-danger"></i>
-						</button>
-						<a href="User.htm" class="btn btn-danger">ALL</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 		<div class="card rounded">
 			<div class="card-body">
+
 				<div class="table-responsive">
 					<table class="table table-striped bg-light text-center">
 						<thead>
 							<tr class="text-muted">
-								<th>ID</th>
-								<th>Name</th>
-								<th>Phone</th>
-								<th>Gender</th>
-								<th>Status</th>
-								<th>address</th>
-								<th>birthday</th>
-								<th>action</th>
+
+								<th>Mã Sản Phẩm</th>
+								<th>Tên Sản Phẩm</th>
+								<th>Số Lượng</th>
+								<th>Đơn Giá</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="u" items="${Staff}">
+							<c:forEach  items="${detailsPurchaseOrder}" var="u">
 								<tr>
-									<td>${u.staffId}</td>
-									<td>${u.fullname}</td>
-									<td>${u.phone}</td>
-									<td>${u.gender}</td>
-									<td>${u.status}</td>
-									<td>${u.address}</td>
-									<td>${u.birthday}</td>
-									<td><a href="update-${u.staffId}.htm"><i
-											class="fas fa-edit fa-lg text-success mr-2"></i></a></td>
+									<td>${u.getProduct().getProductId()}</td>
+									<td>${u.getProduct().getName()}</td>
+									<td>${u.quantity}</td>
+									<td>${u.getProduct().getPrice()}</td>
+									
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+					<a href="Customer.htm" style="text-decoration: none;"
+						class="btn-submit">Quay Lại</a>
 				</div>
 				<!-- pagination -->
 				<nav>

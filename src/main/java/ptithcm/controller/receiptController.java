@@ -1,7 +1,6 @@
 package ptithcm.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ public class receiptController {
 		String hql = "from Receipt";
 		Query query = session.createQuery(hql);
 		List<Receipt> list = query.list();
-		mm.addAttribute("Receipt", list);	
+		mm.addAttribute("Receipt", list);
 		return "Receipt/index";
 	}
 	@RequestMapping(value="ReceiptSearchDate", method=RequestMethod.POST)

@@ -9,9 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
-
+<title>Chỉnh Sửa Thông Tin</title>
 <style>
 .container {
 	list-style: none;
@@ -76,7 +74,7 @@
 			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 				<div class="card">
 					<div class="card-body">
-						<h3>Update Profile</h3>
+						<h3>Chỉnh Sửa Thông Tin</h3>
 
 					</div>
 				</div>
@@ -88,10 +86,10 @@
 						<div>
 							${message}
 							<form:form action="updateCurrent-{staffId}.htm" modelAttribute="profile">
-								<div class="input-group board-create__item">
+								<div style="display: none" class="input-group board-create__item">
 									<label class="desc-input">Mã Nhân Viên:</label>
 									<form:input placeholder="Nhập mã nhan viên" class="input-item"
-										type="text" path="staffId" />
+										type="text" path="staffId" value="${staffId}"/>
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Họ Tên Nhân Viên</label>
@@ -107,16 +105,6 @@
 									<label class="desc-input">Giới Tính</label>
 									<form:input placeholder="Nhập giới tính" class="input-item "
 										path="gender" />
-								</div>
-								<div class="input-group board-create__item">
-									<label class="desc-input">Trạng Thái</label>
-									<form:input placeholder="Nhập trạng thái" class="input-item "
-										path="status" />
-								</div>
-								<div class="input-group board-create__item">
-									<label class="desc-input">Tên Tài Khoản</label>
-									<form:input placeholder="Nhập tên tài khoản"
-										class="input-item " path="username" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Địa Chỉ</label>

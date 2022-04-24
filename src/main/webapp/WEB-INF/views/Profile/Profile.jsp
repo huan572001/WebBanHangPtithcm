@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Thông Tin Cá Nhân</title>
 <%@ include file="/resources/Shared/head.jsp"%>
 <style>
 .btn-submit {
@@ -33,7 +34,9 @@
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 					<div class="card">
 						<div class="card-body">
-							<h3>Profile</h3>
+							<h3>Thông Tin Cá Nhân</h3>
+							${messageAD}
+
 						</div>
 					</div>
 				</div>
@@ -60,13 +63,13 @@
 
 											</tr>
 										</tbody>
-<!-- 										<tbody> -->
-<!-- 											<tr> -->
-<!-- 												<td>Email</td> -->
-<%-- 												<td>${u.email}</td> --%>
+										<tbody>
+											<tr>
+												<td>Email</td>
+												<td>@gamil.com</td>
 
-<!-- 											</tr> -->
-<!-- 										</tbody> -->
+											</tr>
+										</tbody>
 										<tr>
 											<td>AddRess</td>
 											<td>${u.address}</td>
@@ -94,7 +97,7 @@
 										<%-- 									</c:forEach> --%>
 									</table>
 									<a style="text-decoration: none;" class="btn-submit"
-										href="updateCurrent.htm">Sửa Thông Tin</a>
+										href="updateCurrent-${u.staffId}.htm">Sửa Thông Tin</a>
 									<a style="text-decoration: none;" class="btn-submit"
 										href="changePassword.htm">doi mat khau</a>
 								</c:forEach>

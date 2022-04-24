@@ -86,11 +86,7 @@
 					${message}
 					${message1 }
 						<form:form action="insertStaff.htm" modelAttribute="staff">
-							<div class="input-group board-create__item">
-								<label class="desc-input">Mã Nhân Viên:</label>
-								<form:input placeholder="Nhập mã nhan viên" class="input-item"
-									type="text" path="staffId" />
-							</div>
+						
 							<div class="input-group board-create__item">
 								<label class="desc-input">Họ Tên Nhân Viên</label>
 								<form:input placeholder="Nhập mã nhân viên" class="input-item "

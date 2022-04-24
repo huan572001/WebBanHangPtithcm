@@ -11,7 +11,7 @@
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 		<div class="card rounded">
 			<div class="card-body">
-				<div class="col-xl-4 search ">
+					<div class="col-xl-4 search ">
 					<form method="post" action="SearchPhoneCustomer.htm">
 						<div class="input-group">
 							<input type="text" class="form-control search-input"
@@ -32,6 +32,7 @@
 								<th>Phone</th>
 								<th>Tên Tài Khoản</th>
 								<th>Email</th>
+								<th>Đơn Mua</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,6 +43,9 @@
 									<td>${u.phone}</td>
 									<td>${u.account.username}</td>
 									<td>${u.email}</td>
+									<td>
+										<a href="purchaseOrder-${u.customerId}.htm">Chi Tiết</a>
+									</td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -26,7 +26,6 @@ th, td {
 th {
 	background-color: gray;
 }
-
 .btn-submit {
 	color: #fff;
 	background-color: #000;
@@ -55,13 +54,11 @@ th {
 					<div class="card">
 						<div class="card-body">
 							<h3>Danh Sách Sản Phẩm</h3>
-							<div class="row">
-								<div class="col-xl-4">
-									<a href="insertProduct.htm" style="text-decoration: none;"
-										class="btn btn-danger">Thêm Sản Phẩm</a> <a href="Product.htm"
-										style="text-decoration: none;" class="btn btn-danger">Tải Lại</a>
-								</div>
-								<div class="col-xl-4"></div>
+						
+							<a href="insertProduct.htm"  style="text-decoration:none;" class="btn-submit">Thêm Sản Phẩm</a>
+							<a href="Product.htm" style="text-decoration:none;" class="btn-submit">Tải Lại</a>
+						</div>
+						<div class="col-xl-4"></div>
 
 								<div class="col-xl-4 search ">
 									<form method="post" action="SearchNameProduct.htm">
@@ -75,12 +72,9 @@ th {
 										</div>
 									</form>
 								</div>
-							</div>
-
-						</div>
 						${message }
 					</div>
-
+					
 				</div>
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 					<div class="card rounded">
@@ -106,17 +100,15 @@ th {
 										<td>${u.quantity}</td>
 										<td>${u.status}</td>
 										<td>${u.image}</td>
-										<td><a href="${u.productId}.htm"><i
-												class="fas fa-edit fa-lg text-success mr-2"></i></a> <a
-											href="delete-${u.productId}.htm"
-											onclick="return confirm('Are you sure you want to delete this item?');">
-												<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										</a></td>
+										<td>
+										<a href="${u.productId}.htm"><i class="fas fa-edit fa-lg text-success mr-2"></i></a>
+										<a href="delete-${u.productId}.htm" onclick="return confirm('Are you sure you want to delete this item?');"> <i class="fas fa-trash-alt fa-lg text-danger"></i></a>
+										</td>
 
 									</tr>
 								</c:forEach>
 							</table>
-
+							
 
 
 						</div>

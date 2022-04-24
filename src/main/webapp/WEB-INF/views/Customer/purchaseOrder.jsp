@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Danh Sách Nhân Viên</title>
 <style type="text/css">
 .btn-submit {
 	color: #fff;
@@ -23,66 +22,53 @@
 	color: #000;
 }
 </style>
+<title>Hóa Đơn</title>
 <%@ include file="/resources/Shared/head.jsp"%>
 </head>
 <body>
 	<%@ include file="/resources/Shared/menu.jsp"%>
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
-		<div class="card">
-			<div class="card-body">
-				<h3>Danh Sách Nhân Viên</h3>
-				<a href="insertStaff.htm" style="text-decoration: none;"
-					class="btn-submit">Thêm Nhân Viên</a>
-			</div>
-			<div class="col-xl-4"></div>
-
-			<div class="col-xl-4 search ">
-				<form method="post" action="SearchPhoneStaff.htm">
-					<div class="input-group">
-						<input type="text" class="form-control search-input"
-							placeholder="Search " name="phone">
-						<button type="submit" class="btn btn-light search-button">
-							<i class="fas fa-search text-danger"></i>
-						</button>
-						<a href="User.htm" class="btn btn-danger">ALL</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 		<div class="card rounded">
 			<div class="card-body">
+				<div class="col-xl-4 search ">
+					<form>
+						<div class="input-group">
+							<input type="text" class="form-control search-input"
+								placeholder="Search...">
+							<button type="button" class="btn btn-light search-button">
+								<i class="fas fa-search text-danger"></i>
+							</button>
+						</div>
+					</form>
+				</div>
 				<div class="table-responsive">
 					<table class="table table-striped bg-light text-center">
 						<thead>
 							<tr class="text-muted">
-								<th>ID</th>
-								<th>Name</th>
-								<th>Phone</th>
-								<th>Gender</th>
-								<th>Status</th>
-								<th>address</th>
-								<th>birthday</th>
-								<th>action</th>
+								<th>Mã Hóa Đơn</th>
+								<th>Mã Khách Hàng</th>
+								<th>Mã Nhân Viên</th>
+								<th>Ngày Lập</th>
+								<th>Tổng Tiền</th>
+								<th>Chi Tiết</th>
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="u" items="${Staff}">
+							<c:forEach var="u" items="${purchaseOrder}">
 								<tr>
+									<td>${u.receiptId}</td>
+									<td>${u.customerId}</td>
 									<td>${u.staffId}</td>
-									<td>${u.fullname}</td>
-									<td>${u.phone}</td>
-									<td>${u.gender}</td>
-									<td>${u.status}</td>
-									<td>${u.address}</td>
-									<td>${u.birthday}</td>
-									<td><a href="update-${u.staffId}.htm"><i
-											class="fas fa-edit fa-lg text-success mr-2"></i></a></td>
+									<td>${u.date}</td>
+									<td>${u.total}</td>
+									<td><a href="detailsPurchaseOrder-${u.receiptId}.htm">Xem Chi Tiết</a></td>
+							
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
+						<a href="Customer.htm" style="text-decoration: none;"
+						class="btn-submit">Quay Lại</a>
 				</div>
 				<!-- pagination -->
 				<nav>
@@ -105,7 +91,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 
 	<%@ include file="/resources/Shared/footer.jsp"%>
 </body>

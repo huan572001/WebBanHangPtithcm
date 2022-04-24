@@ -88,10 +88,10 @@
 						<div>
 							${message}
 							<form:form action="update-{staffId}.htm" modelAttribute="staff">
-								<div class="input-group board-create__item">
+								<div style="display: none" class="input-group board-create__item">
 									<label class="desc-input">Mã Nhân Viên:</label>
 									<form:input placeholder="Nhập mã nhan viên" class="input-item"
-										type="text" path="staffId" />
+										type="text" path="staffId" value="${staffId }"/>
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Họ Tên Nhân Viên</label>
@@ -112,11 +112,6 @@
 									<label class="desc-input">Trạng Thái</label>
 									<form:input placeholder="Nhập trạng thái" class="input-item "
 										path="status" />
-								</div>
-								<div class="input-group board-create__item">
-									<label class="desc-input">Tên Tài Khoản</label>
-									<form:input placeholder="Nhập tên tài khoản"
-										class="input-item " path="username" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Địa Chỉ</label>

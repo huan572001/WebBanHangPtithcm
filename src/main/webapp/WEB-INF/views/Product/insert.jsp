@@ -86,13 +86,7 @@
 						<div>
 							${message}
 							<form:form action="insertProduct.htm" modelAttribute="product">
-								<div class="input-group board-create__item">
-
-									<label class="desc-input">Mã Sản Phẩm:</label>
-									<form:input placeholder="Vui lòng nhập mã sản phẩm"
-										class="input-item " type="text" value="" path="productId" />
-								</div>
-
+								
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Tên sản phẩm:</label>
@@ -121,12 +115,6 @@
 										type="number" value="" path="quantity" />
 								</div>
 
-								<div class="input-group board-create__item">
-
-									<label class="desc-input">Trạng Thái:</label>
-									<form:input placeholder="Nhập trạng thái" class="input-item "
-										type="number" value="" path="status" />
-								</div>
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Hình Ảnh:</label>

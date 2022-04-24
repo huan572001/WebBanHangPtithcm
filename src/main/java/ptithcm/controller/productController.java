@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PathVariable;
 import ptithcm.entity.*;
 
 
@@ -24,8 +25,11 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import ptithcm.entity.Product;
 @Controller
 public class productController {
 	@Autowired
@@ -51,6 +55,22 @@ public class productController {
 	public String insertProduct(ModelMap model, @ModelAttribute("product") Product product) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
+		product.setProductId(this.createProductId());
+		if(product.getQuantity()<0) {
+			model.addAttribute("message","So luong phai lon hon 0");
+			return "Product/insert";
+		}
+		if(product.getCost()<0) {
+			model.addAttribute("message","Gia Goc phai lon hon 0");
+			return "Product/insert";
+		}
+		if(product.getPrice()<0) {
+			model.addAttribute("message","Gia Ban phai lon hon 0");
+			return "Product/insert";
+		}
+			
+		product.setStatus(true);
+	
 		try {
 			session.save(product);
 			t.commit();
@@ -85,13 +105,13 @@ public class productController {
 	}
 
 	@RequestMapping(value="{productId}.htm", method=RequestMethod.GET)
-	public String update(ModelMap model) {
+	public String update(ModelMap model,@PathVariable("productId") String productId) {
 		model.addAttribute("product", new Product());
 		return "Product/update";
 	}
 
 	@RequestMapping(value="{productId}.htm", method=RequestMethod.POST)
-	public String update(ModelMap model, @ModelAttribute("product") Product product) {
+	public String update(ModelMap model, @ModelAttribute("product") Product product,@PathVariable("productId") String productId) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
@@ -119,5 +139,27 @@ public class productController {
 		System.out.print(list.get(0).getName());
 		mm.addAttribute("products", list);
 		return "Product/index";
+	}
+	public Integer getLastProductId()
+	{
+		Session session = factory.openSession();
+		String hql = "select max( CAST(productId AS int)) from Product";
+		Query query = session.createQuery(hql);
+		List<Integer> list = query.list();
+		Integer id=list.get(0);
+		return id;
+	}
+	public String createProductId()
+	{
+		Integer id=getLastProductId();
+		if(id==null)
+		{
+			id=1;
+		}
+		else
+		{
+			id+=1;
+		}
+		return id.toString();
 	}
 }

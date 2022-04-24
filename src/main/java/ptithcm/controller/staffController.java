@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,6 +33,7 @@ public class staffController {
 		{
 			return"login";
 		}
+		System.out.print(loginController.account.getPosition());
 		Session session = factory.getCurrentSession();
 		String hql = "from Staff";
 		Query query = session.createQuery(hql);
@@ -40,12 +42,22 @@ public class staffController {
 		return "Staff/Staff";
 	}
 	
+	@RequestMapping(value="SearchPhoneStaff", method=RequestMethod.POST)
+	public String SearchPhoneStaff(ModelMap mm,HttpServletRequest request) {
+		String phone = request.getParameter("phone"); 
+		Session session = factory.openSession();
+		String hql = "from Staff a where a.phone='"+phone+"'";
+		Query query = session.createQuery(hql);
+		List<Receipt> list = query.list();
+		mm.addAttribute("Staff", list);
+		return "Staff/Staff";
+	}
 	@RequestMapping(value="insertStaff", method=RequestMethod.GET)
 	public String insertStaff(ModelMap model) {
 		if(loginController.account.getPosition().equals("KH"))
 			return "khachhang";
 		if(loginController.account.getPosition().equals("NV")) {
-			model.addAttribute("messageAD","Báº¡n KhÃ´ng Pháº£i Quáº£n LÃ­ KhÃ´ng Sá»­ Dá»¥ng Ä�Æ°á»£c Chá»©c NÄƒng NÃ y");
+			model.addAttribute("messageAD","Bạn Không Phải Quản Lí Không Sử Dụng Được Chức Năng Này");
 			return"redirect:profile.htm";
 		}
 			
@@ -56,6 +68,7 @@ public class staffController {
 	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
+		staff.setStaffId(this.createStaffId());
 		Account account = new Account();
 		account.setUsername(staff.getUsername());
 		account.setPassword(staff.getStaffId());
@@ -69,7 +82,7 @@ public class staffController {
 			
 			if(t1.getUsername().trim().equals(account.getUsername().trim()))
 			{
-				model.addAttribute("message1", "TÃ i Khoáº£n Ä‘Ã£ tá»“n táº¡i");
+				model.addAttribute("message1", "Tài Khoản đã tồn tại");
 				return "Staff/insert";
 			}
 			
@@ -94,39 +107,31 @@ public class staffController {
 		
 		
 	@RequestMapping(value="update-{staffId}.htm", method=RequestMethod.GET)
-	public String updateNV(ModelMap modelNV) {
+	public String updateNV(ModelMap modelNV,@PathVariable("staffId") String staffId) {
 		modelNV.addAttribute("staff", new Staff());
 		return "Staff/update";
+		
 	}
 
 	@RequestMapping(value="update-{staffId}.htm", method=RequestMethod.POST)
 	public String updateNV(ModelMap modelNV, @ModelAttribute("staff") Staff staff) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
+		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
 		try {
 			
 			session.update(staff);
 			t.commit();
-			modelNV.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng!");
+			modelNV.addAttribute("message", "Cập nhật thành công!");
 		}
 		catch (Exception e) {
 			t.rollback();
-			modelNV.addAttribute("message", "Cáº­p nháº­t tháº¥t báº¡i!");
+			modelNV.addAttribute("message", "Cập nhật thất bại!");
 		}
 		finally {
 			session.close();
 		}
 		return "Staff/update";
-	}
-	@RequestMapping(value="SearchPhoneStaff", method=RequestMethod.POST)
-	public String SearchPhoneStaff(ModelMap mm,HttpServletRequest request) {
-		String phone = request.getParameter("phone"); 
-		Session session = factory.openSession();
-		String hql = "from Staff a where a.phone='"+phone+"'";
-		Query query = session.createQuery(hql);
-		List<Receipt> list = query.list();
-		mm.addAttribute("Staff", list);
-		return "Staff/Staff";
 	}
 	public void insertAccount(Account account)
 	{
@@ -150,5 +155,35 @@ public class staffController {
 		Query query = session.createQuery(hql);
 		List<Account> list = query.list();
 		return list;
+	}
+	public Integer getLastStaffId()
+	{
+		Session session = factory.openSession();
+		String hql = "select max( CAST(staffId AS int)) from Staff";
+		Query query = session.createQuery(hql);
+		List<Integer> list = query.list();
+		Integer id=list.get(0);
+		return id;
+	}
+	public String createStaffId()
+	{
+		Integer id=getLastStaffId();
+		if(id==null)
+		{
+			id=1;
+		}
+		else
+		{
+			id+=1;
+		}
+		return id.toString();
+	}
+	public String getCurrentUsername(String Id) {
+		Session session = factory.openSession();
+		String hql = "from Staff A where A.staffId= '"+Id+"'";
+		Query query = session.createQuery(hql);
+		List<Staff> list = query.list();
+		String Username =list.get(0).getUsername();
+		return Username;
 	}
 }
