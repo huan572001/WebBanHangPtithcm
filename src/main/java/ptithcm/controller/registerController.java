@@ -58,7 +58,7 @@ public class registerController {
 			}
 			
 		}
-
+		customer.setCustomerId(this.createCustomerId());
 		try {
 			session.save(customer);
 			session.save(account);
@@ -74,5 +74,27 @@ public class registerController {
 			
 		}
 		return "register";
+	}
+	public Integer getLastCustomerId()
+	{
+		Session session = factory.openSession();
+		String hql = "select max( CAST(customerId AS int)) from Customer";
+		Query query = session.createQuery(hql);
+		List<Integer> list = query.list();
+		Integer id=list.get(0);
+		return id;
+	}
+	public String createCustomerId()
+	{
+		Integer id=getLastCustomerId();
+		if(id==null)
+		{
+			id=1;
+		}
+		else
+		{
+			id+=1;
+		}
+		return id.toString();
 	}
 }

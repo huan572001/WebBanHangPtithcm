@@ -95,9 +95,6 @@
 			<h3>${message}</h3>
 				
 			<h3>register now</h3>
-			<div>
-					<form:input type="text" name="" placeholder="enter your ID" id="" class="box" path="customerId" />
-				</div>
 				<h3>${message1}</h3>
 				<div>
 					<form:input type="text" name="" placeholder="enter your Username" id="" class="box" path="account.username" />

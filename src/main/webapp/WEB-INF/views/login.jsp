@@ -87,7 +87,7 @@
         </div>
         <input type="submit" value="login now" class="btn">
         <p>don't have an account?</p>
-        <a href="register.html" class="btn link">register now</a>
+        <a href="insertCustomer.htm" class="btn link">register now</a>
     </form>
 
 </section>
