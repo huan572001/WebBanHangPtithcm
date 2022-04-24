@@ -13,6 +13,7 @@
 =======
 	<h2>abc</h2>
 	<h3>bcv</h3>
+	<h4>ád</h4>
 >>>>>>> branch 'master' of https://github.com/huan572001/WebBanHangPtithcm.git
 	<%@ include file="/resources/Shared/menu.jsp"%> 
     <%@ include file="/resources/Shared/footer.jsp"%> 
