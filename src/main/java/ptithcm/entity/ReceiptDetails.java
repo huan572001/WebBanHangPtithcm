@@ -14,17 +14,17 @@ import javax.persistence.Table;
 @Entity
 @Table(name="ReceiptDetails")
 public class ReceiptDetails {
-	@Id @GeneratedValue
-	private Integer receiptDetailsId;
+	@Id
+	private String receiptDetailsId;
 	private String receiptId;
 	private Integer quantity;
 	@ManyToOne
 	@JoinColumn(name="productId")
 	private Product product;
-	public Integer getReceiptDetailsId() {
+	public String getReceiptDetailsId() {
 		return receiptDetailsId;
 	}
-	public void setReceiptDetailsId(Integer receiptDetailsId) {
+	public void setReceiptDetailsId(String receiptDetailsId) {
 		this.receiptDetailsId = receiptDetailsId;
 	}
 	public String getReceiptId() {
@@ -45,4 +45,5 @@ public class ReceiptDetails {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+	
 }

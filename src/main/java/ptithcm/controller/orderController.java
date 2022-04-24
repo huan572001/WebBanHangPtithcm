@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -16,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.*;
 
@@ -29,6 +31,16 @@ public class orderController {
 	public String order(ModelMap mm) {
 		Session session = factory.getCurrentSession();
 		String hql = "from TheOrder";
+		Query query = session.createQuery(hql);
+		List<TheOrder> list = query.list();
+		mm.addAttribute("Order", list);
+		return "Order/index";
+	}
+	@RequestMapping(value="SearchPhoneCustomerOrder", method=RequestMethod.POST)
+	public String SearchPhoneCustomer(ModelMap mm,HttpServletRequest request) {
+		String phone = request.getParameter("phone"); 
+		Session session = factory.openSession();
+		String hql = "from TheOrder A where A.customer.phone='"+phone+"'";
 		Query query = session.createQuery(hql);
 		List<TheOrder> list = query.list();
 		mm.addAttribute("Order", list);

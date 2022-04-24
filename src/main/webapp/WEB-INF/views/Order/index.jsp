@@ -12,14 +12,15 @@
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 		<div class="card rounded">
 			<div class="card-body">
-				<div class="col-xl-4 search ">
-					<form>
+					<div class="col-xl-4 search ">
+					<form method="post" action="SearchPhoneCustomerOrder.htm">
 						<div class="input-group">
 							<input type="text" class="form-control search-input"
-								placeholder="Search...">
-							<button type="button" class="btn btn-light search-button">
+								placeholder="Search " name="phone">
+							<button type="submit" class="btn btn-light search-button">
 								<i class="fas fa-search text-danger"></i>
 							</button>
+							<a href="Customer.htm" class="btn btn-danger">ALL</a>
 						</div>
 					</form>
 				</div>
