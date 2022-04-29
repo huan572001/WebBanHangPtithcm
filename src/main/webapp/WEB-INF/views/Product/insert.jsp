@@ -118,8 +118,8 @@
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Hình Ảnh:</label>
-									<form:input placeholder="Điền Ảnh" class="input-item "
-										type="text" value="" path="image" />
+									<input class="input-item "
+										type="file" name="photo" />
 								</div>
 								<button name="btnCreate" type="submit" class="btn-submit">Lưu Sản Phẩm</button>
 								<a style="text-decoration: none;" class="btn-submit"

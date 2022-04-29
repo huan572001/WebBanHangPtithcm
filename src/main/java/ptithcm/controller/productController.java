@@ -1,5 +1,6 @@
 package ptithcm.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 import ptithcm.entity.*;
 
@@ -52,10 +54,14 @@ public class productController {
 		return "Product/insert";
 	}
 	@RequestMapping(value="insertProduct", method=RequestMethod.POST)
-	public String insertProduct(ModelMap model, @ModelAttribute("product") Product product) {
+	public String insertProduct(ModelMap model, 
+			@ModelAttribute("product") Product product,
+			@RequestParam("photo") File photo) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		product.setProductId(this.createProductId());
+		product.setImage((photo.getAbsolutePath().substring(photo.getAbsolutePath().lastIndexOf(photo.separator)+1)));
+		System.out.print(photo.getAbsolutePath().substring(photo.getAbsolutePath().lastIndexOf(photo.separator)+1));
 		if(product.getQuantity()<0) {
 			model.addAttribute("message","So luong phai lon hon 0");
 			return "Product/insert";

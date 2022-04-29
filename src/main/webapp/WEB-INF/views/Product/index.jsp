@@ -99,7 +99,7 @@ th {
 										<td>${u.price}</td>
 										<td>${u.quantity}</td>
 										<td>${u.status}</td>
-										<td>${u.image}</td>
+										<td><img style="width:48px;height:48px;" alt="hinh ne"  src="resources/images/${u.image}"></td>
 										<td>
 										<a href="${u.productId}.htm"><i class="fas fa-edit fa-lg text-success mr-2"></i></a>
 										<a href="delete-${u.productId}.htm" onclick="return confirm('Are you sure you want to delete this item?');"> <i class="fas fa-trash-alt fa-lg text-danger"></i></a>
