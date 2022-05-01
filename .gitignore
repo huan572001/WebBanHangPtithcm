@@ -1,3 +1,4 @@
 /build/*
-.settings/*
+settings/*
 src/main/webapp/WEB-INF/configs/
+.settings/org.eclipse.core.resources.prefs
