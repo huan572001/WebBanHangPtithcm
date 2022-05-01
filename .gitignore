@@ -1,1 +1,5 @@
 /build/
+.settings/org.eclipse.core.resources.prefs
+src/main/webapp/WEB-INF/configs/spring-config-hibernate.xml
+src/main/webapp/WEB-INF/configs/spring-config-hibernate.xml
+src/main/webapp/WEB-INF/configs/spring-config-hibernate.xml
