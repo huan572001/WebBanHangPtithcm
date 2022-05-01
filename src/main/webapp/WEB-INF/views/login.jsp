@@ -86,7 +86,7 @@
             <label for="remember-me"> remember me </label>
         </div>
         <input type="submit" value="login now" class="btn">
-        <p>don't have an account?</p>
+        <p><a href="checkAccount.htm">Forgot password?</a></p>
         <a href="insertCustomer.htm" class="btn link">register now</a>
     </form>
 

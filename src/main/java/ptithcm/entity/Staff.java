@@ -21,6 +21,7 @@ public class Staff {
 	private Boolean status;
 	private String username;
 	private String address;
+	private String email;//them email vao SQL
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date birthday;
@@ -29,6 +30,13 @@ public class Staff {
 	}
 	public void setStaffId(String staffId) {
 		this.staffId = staffId;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getFullname() {
 		return fullname;
