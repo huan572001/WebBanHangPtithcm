@@ -28,12 +28,13 @@ public class orderController {
 
 	@Transactional
 	@RequestMapping("Order")
-	public String order(ModelMap mm) {
+	public String order(ModelMap model) {
 		Session session = factory.getCurrentSession();
 		String hql = "from TheOrder";
 		Query query = session.createQuery(hql);
 		List<TheOrder> list = query.list();
-		mm.addAttribute("Order", list);
+		model.addAttribute("Order", list);
+		model.addAttribute("ADMIN", loginController.checkMenu());
 		return "Order/index";
 	}
 	@RequestMapping(value="SearchPhoneCustomerOrder", method=RequestMethod.POST)

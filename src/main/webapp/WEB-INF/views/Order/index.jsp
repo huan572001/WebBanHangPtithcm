@@ -20,7 +20,7 @@
 							<button type="submit" class="btn btn-light search-button">
 								<i class="fas fa-search text-danger"></i>
 							</button>
-							<a href="Customer.htm" class="btn btn-danger">ALL</a>
+							<a href="Order.htm" class="btn btn-danger">ALL</a>
 						</div>
 					</form>
 				</div>

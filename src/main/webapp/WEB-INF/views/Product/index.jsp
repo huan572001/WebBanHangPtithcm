@@ -16,13 +16,11 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 }
-
 th, td {
 	line-height: 25px;
 	border: 1px solid black;
 	padding: 5px;
 }
-
 th {
 	background-color: gray;
 }
@@ -37,7 +35,6 @@ th {
 	appearance: none;
 	-webkit-appearance: none;
 }
-
 .btn-submit:hover {
 	background-color: #ccc;
 	color: #000;

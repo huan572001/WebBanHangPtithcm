@@ -85,11 +85,13 @@
 
 						<div>
 							${message}
-							<form:form action="updateCurrent-{staffId}.htm" modelAttribute="profile">
-								<div style="display: none" class="input-group board-create__item">
+							<form:form action="updateCurrent-{staffId}.htm"
+								modelAttribute="profile">
+								<div style="display: none"
+									class="input-group board-create__item">
 									<label class="desc-input">Mã Nhân Viên:</label>
 									<form:input placeholder="Nhập mã nhan viên" class="input-item"
-										type="text" path="staffId" value="${staffId}"/>
+										type="text" path="staffId" value="${staffId}" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Họ Tên Nhân Viên</label>
@@ -112,9 +114,10 @@
 										path="address" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Ngày Sinh</label>
-									<form:input placeholder="Nhập ngày sinh" class="input-item "
-										path="birthday" />
+									<label class="desc-input">Ngày Sinh</label> <input type="date"
+										name="birthday"/>
+									<%-- 									<form:input type="date" data-date="" data-date-format="MM/DD/YY" placeholder="Nhập ngày sinh" class="input-item " --%>
+									<%-- 										path="birthday" /> --%>
 								</div>
 								<div>
 									<button name="btnCreate" type="submit" class="btn-submit">Lưu

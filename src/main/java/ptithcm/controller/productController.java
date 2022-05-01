@@ -43,7 +43,8 @@ public class productController {
 		String hql = "from Product";
 		Query query = session.createQuery(hql);
 
-		List<Product> list = query.list();       
+		List<Product> list = query.list();      
+		model.addAttribute("ADMIN", loginController.checkMenu());
 		model.addAttribute("products", list);
 		return "Product/index";
 		
@@ -142,7 +143,6 @@ public class productController {
 		String hql = "from Product a where a.name='"+name+"'";
 		Query query = session.createQuery(hql);
 		List<Product> list = query.list();
-		System.out.print(list.get(0).getName());
 		mm.addAttribute("products", list);
 		return "Product/index";
 	}

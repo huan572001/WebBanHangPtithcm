@@ -30,12 +30,13 @@ public class receiptController {
 
 	@Transactional
 	@RequestMapping("Receipt")
-	public String receipt(ModelMap mm) {
+	public String receipt(ModelMap model) {
 		Session session = factory.getCurrentSession();
 		String hql = "from Receipt";
 		Query query = session.createQuery(hql);
 		List<Receipt> list = query.list();
-		mm.addAttribute("Receipt", list);
+		model.addAttribute("Receipt", list);
+		model.addAttribute("ADMIN", loginController.checkMenu());
 		return "Receipt/index";
 	}
 	@RequestMapping(value="ReceiptSearchDate", method=RequestMethod.POST)

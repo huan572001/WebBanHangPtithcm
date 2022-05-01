@@ -54,7 +54,7 @@ public class loginController {
 						List<Staff> liststaff = queryaccount.list();
 						staff=liststaff.get(0);
 						model.addAttribute("Staff", liststaff);
-						return "redirect:profile.htm";
+						return "redirect:profile.htm";//không được sửa
 					}
 					else if(Account.getPosition().equals("NV")) {
 						account = Account;
@@ -62,7 +62,7 @@ public class loginController {
 						Query queryaccount = session.createQuery(hqlaccount);
 						List<Staff> liststaff = queryaccount.list();
 						staff=liststaff.get(0);
-						return "redirect:profile.htm";
+						return "redirect:profile.htm";//không được sửa
 					}
 					else if(Account.getPosition().equals("KH")) {
 						
@@ -94,5 +94,10 @@ public class loginController {
 		loginController.account.setPassword(null);
 		loginController.account.setPosition(null);
 		return "redirect:login.htm";
+	}
+	public static String checkMenu() {
+		if(loginController.account.getPosition().equals("NV"))
+		return "style='display: none'";
+		return "";
 	}
 }

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-md navbar-light">
 	<button class="navbar-toggler ml-auto mb-2 bg-light" type="button"
 		data-toggle="collapse" data-target="#myNavbar"
@@ -24,7 +25,7 @@
 								class="fas fa-home test-light
                                 fa-lg mr-3"></i>Dashboard
 						</a></li>
-						<li class="nav-item"><a href="profile.htm"
+						<li  class="nav-item"><a href="profile.htm"
 							class="nav-link
                                     text-white p-3 mb-2 sidebar-link">
 								<i
@@ -33,12 +34,12 @@
 						</a></li>
 						<li class="nav-item"><a href="Product.htm"
 							class="nav-link
-                                     text-white p-3 mb-2 sidebar-link">
+                                     text-white p-3 mb-2 sidebar-link" >
 								<i
 								class="fab fa-product-hunt test-light
                                      fa-lg mr-3"></i>Product
 						</a></li>
-						<li class="nav-item"><a href="Order.htm"
+						<li class="nav-item" ><a href="Order.htm"
 							class="nav-link
                                      text-white p-3 mb-2 sidebar-link">
 								<i
@@ -46,7 +47,7 @@
                                     fa-lg mr-3"></i>
 								Order
 						</a></li>
-						<li class="nav-item"><a href="User.htm"
+						<li ${ADMIN} class="nav-item"><a href="User.htm"
 							class="nav-link
                                      text-white p-3 mb-2 sidebar-link">
 								<i
@@ -60,7 +61,7 @@
 								class="fas fa-receipt test-light
                                     fa-lg mr-3"></i>Receipt
 						</a></li>
-						<li class="nav-item"><a href="Customer.htm"
+						<li ${ADMIN} class="nav-item"><a href="Customer.htm"
 							class="nav-link
                                     text-white p-3 mb-2 sidebar-link">
 								<i
@@ -106,7 +107,8 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-success" data-dismiss="modal">
 					Stay Here</button>
-				<a class="btn btn-danger" href="${pageContext.request.contextPath}/logout.htm">Logout</a>
+				<a class="btn btn-danger"
+					href="${pageContext.request.contextPath}/logout.htm">Logout</a>
 			</div>
 		</div>
 	</div>
