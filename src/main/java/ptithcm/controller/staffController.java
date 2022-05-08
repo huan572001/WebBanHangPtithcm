@@ -1,5 +1,6 @@
 package ptithcm.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.*;
 
-
+import java.text.SimpleDateFormat;
 
 @Controller
 public class staffController {
@@ -64,13 +65,17 @@ public class staffController {
 		model.addAttribute("staff", new Staff());
 		return "Staff/insert";
 	}
-	@RequestMapping(value="insertStaff", method=RequestMethod.POST)
-	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff) {
+
+	@RequestMapping(value="insertStaff", method = RequestMethod.POST)
+	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff,HttpServletRequest requests) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setStaffId(this.createStaffId());
+		staff.setStatus(true);
+		staff.setUsername(staff.getEmail());
+		String birthday=requests.getParameter("birthday1");
 		Account account = new Account();
-		account.setUsername(staff.getUsername());
+		account.setUsername(staff.getEmail());
 		account.setPassword(staff.getStaffId());
 		account.setPosition("NV");
 		String hql = "FROM Account";
@@ -82,14 +87,15 @@ public class staffController {
 			
 			if(t1.getUsername().trim().equals(account.getUsername().trim()))
 			{
-				model.addAttribute("message1", "Tài Khoản đã tồn tại");
+				model.addAttribute("message1", "Email đã tồn tại");
 				return "Staff/insert";
 			}
 			
-		}
-		this.insertAccount(account);
-		
-		try {
+		}	
+		if (this.checkConstraintForm(staff, model)==true) return "Staff/insert";
+		try {		
+			staff.setBirthday(this.dateFormat(birthday));	
+			this.insertAccount(account);
 			session.save(staff);
 			t.commit();
 			model.addAttribute("message", "Create Successful Product");
@@ -105,7 +111,13 @@ public class staffController {
 		return "Staff/insert";
 	}
 		
-		
+	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
+		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getBirthday()==null||staff.getEmail()==null) {
+			model.addAttribute("messageError","Không duoc de trong!");
+			return true;
+		}
+		return false;
+	}
 	@RequestMapping(value="update-{staffId}.htm", method=RequestMethod.GET)
 	public String updateNV(ModelMap modelNV,@PathVariable("staffId") String staffId) {
 		modelNV.addAttribute("staff", new Staff());
@@ -185,5 +197,9 @@ public class staffController {
 		List<Staff> list = query.list();
 		String Username =list.get(0).getUsername();
 		return Username;
+	}
+	public Date dateFormat(String day)throws Exception {
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(day);
+		return date;
 	}
 }
