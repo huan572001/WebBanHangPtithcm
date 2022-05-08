@@ -110,17 +110,10 @@ public class staffController {
 		}
 		return "Staff/insert";
 	}
-		
-	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
-		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getBirthday()==null||staff.getEmail()==null) {
-			model.addAttribute("messageError","Không duoc de trong!");
-			return true;
-		}
-		return false;
-	}
 	@RequestMapping(value="update-{staffId}.htm", method=RequestMethod.GET)
 	public String updateNV(ModelMap modelNV,@PathVariable("staffId") String staffId) {
-		modelNV.addAttribute("staff", new Staff());
+		
+		modelNV.addAttribute("staff", this.getCurrentStaff(staffId));
 		return "Staff/update";
 		
 	}
@@ -130,8 +123,8 @@ public class staffController {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
+//		if (this.checkConstraintForm(staff, modelNV)==true) return "Staff/update";
 		try {
-			
 			session.update(staff);
 			t.commit();
 			modelNV.addAttribute("message", "Cập nhật thành công!");
@@ -168,6 +161,7 @@ public class staffController {
 		List<Account> list = query.list();
 		return list;
 	}
+	
 	public Integer getLastStaffId()
 	{
 		Session session = factory.openSession();
@@ -201,5 +195,22 @@ public class staffController {
 	public Date dateFormat(String day)throws Exception {
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(day);
 		return date;
+	}
+	public Staff getCurrentStaff(String staffId) {
+		Session session = factory.openSession();
+		String hql = "from Staff A where A.staffId= '"+staffId+"'";
+		Query query = session.createQuery(hql);
+		List<Staff> list = query.list();
+		if(list.isEmpty()) {
+			return null;
+		}
+		return list.get(0);
+	}
+	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
+		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getEmail()==null) {
+			model.addAttribute("messageError","Không duoc de trong!");
+			return true;
+		}
+		return false;
 	}
 }
