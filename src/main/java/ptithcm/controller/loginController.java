@@ -48,7 +48,7 @@ public class loginController {
 				if (Account.getPassword().equals(account.getPassword()) == false) {		
 					model.addAttribute("message", "sai mat khau");
 					return "login";
-				} 
+				}
 				else {
 					
 					if (Account.getPosition().equals("AD")) {
@@ -103,7 +103,6 @@ public class loginController {
 	public void  saveLogin(HttpServletRequest request,HttpServletResponse response, ModelMap model, HttpSession httpsession) throws IOException {
 		Customer customer = findByUsername( request.getParameter("username").toString());
 		httpsession.setAttribute("currentUser", customer);
-		httpsession.setAttribute("fullname", customer.getFullname());
 		if(request.getParameter("remember")!=null) {
 			 //4. save cookies
 			Cookie cookieUname = new Cookie("cookUname", request.getParameter("username"));
@@ -130,13 +129,5 @@ public class loginController {
 		return result;
 		
     }
-	public Staff findByUsernameStaff(String username) {
-		Session session = factory.getCurrentSession();
-		String hql = "from Staff A where A.username="+"'"+username+"'";
-		Query query = session.createQuery(hql);
-		Staff result = new Staff();
-		result= (Staff) query.list().get(0);
-		return result;
-		
-    }
+
 }

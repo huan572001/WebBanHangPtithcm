@@ -15,6 +15,16 @@ public class Product {
 	private Integer quantity;
 	private Boolean status;
 	private String image;
+	private String description;
+	
+	
+
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getProductId() {
 		return productId;
 	}

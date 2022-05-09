@@ -16,14 +16,17 @@ table {
 	border-collapse: collapse;
 	width: 100%;
 }
+
 th, td {
 	line-height: 25px;
 	border: 1px solid black;
 	padding: 5px;
 }
+
 th {
 	background-color: gray;
 }
+
 .btn-submit {
 	color: #fff;
 	background-color: #000;
@@ -35,6 +38,7 @@ th {
 	appearance: none;
 	-webkit-appearance: none;
 }
+
 .btn-submit:hover {
 	background-color: #ccc;
 	color: #000;
@@ -51,27 +55,28 @@ th {
 					<div class="card">
 						<div class="card-body">
 							<h3>Danh Sách Sản Phẩm</h3>
-						
-							<a href="insertProduct.htm"  style="text-decoration:none;" class="btn-submit">Thêm Sản Phẩm</a>
-							<a href="Product.htm" style="text-decoration:none;" class="btn-submit">Tải Lại</a>
+
+							<a href="insertProduct.htm" style="text-decoration: none;"
+								class="btn-submit">Thêm Sản Phẩm</a> <a href="Product.htm"
+								style="text-decoration: none;" class="btn-submit">Tải Lại</a>
 						</div>
 						<div class="col-xl-4"></div>
 
-								<div class="col-xl-4 search ">
-									<form method="post" action="SearchNameProduct.htm">
-										<div class="input-group">
-											<input type="text" class="form-control search-input"
-												placeholder="Search name product " name="name">
-											<button type="submit" class="btn btn-light search-button">
-												<i class="fas fa-search text-danger"></i>
-											</button>
-											<a href="Product.htm" class="btn btn-danger">ALL</a>
-										</div>
-									</form>
+						<div class="col-xl-4 search ">
+							<form method="post" action="SearchNameProduct.htm">
+								<div class="input-group">
+									<input type="text" class="form-control search-input"
+										placeholder="Search name product " name="name">
+									<button type="submit" class="btn btn-light search-button">
+										<i class="fas fa-search text-danger"></i>
+									</button>
+									<a href="Product.htm" class="btn btn-danger">ALL</a>
 								</div>
+							</form>
+						</div>
 						${message }
 					</div>
-					
+
 				</div>
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 					<div class="card rounded">
@@ -96,16 +101,19 @@ th {
 										<td>${u.price}</td>
 										<td>${u.quantity}</td>
 										<td>${u.status}</td>
-										<td><img style="width:48px;height:48px;" alt="hinh ne"  src="resources/images/${u.image}"></td>
-										<td>
-										<a href="${u.productId}.htm"><i class="fas fa-edit fa-lg text-success mr-2"></i></a>
-										<a href="delete-${u.productId}.htm" onclick="return confirm('Are you sure you want to delete this item?');"> <i class="fas fa-trash-alt fa-lg text-danger"></i></a>
-										</td>
+										<td><img style="width: 48px; height: 48px;" alt="hinh ne"
+											src="files/${u.image}">
+										<td><a href="${u.productId}.htm"><i
+												class="fas fa-edit fa-lg text-success mr-2"></i></a> <a
+											href="delete-${u.productId}.htm"
+											onclick="return confirm('Are you sure you want to delete this item?');">
+												<i class="fas fa-trash-alt fa-lg text-danger"></i>
+										</a></td>
 
 									</tr>
 								</c:forEach>
 							</table>
-							
+
 
 
 						</div>

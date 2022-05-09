@@ -42,15 +42,6 @@ public class profileController {
 		model.addAttribute("ADMIN", loginController.checkMenu());
 		return "Profile/Profile";
 	}
-	@RequestMapping("userProfile")	
-	public String Userprofile(ModelMap model,HttpSession session) {
-		Customer customer = (Customer) session.getAttribute("currentUser");
-		model.addAttribute("proName",customer.getFullname());
-		model.addAttribute("proPhone",customer.getPhone());
-		model.addAttribute("proEmail", customer.getEmail());
-		return "Profile/Profile";
-	}
-	
 	@RequestMapping(value = "updateCurrent-{staffId}.htm", method = RequestMethod.GET)
 	public String updateCurrentStaff(ModelMap model, @PathVariable("staffId") String staffId) {
 		model.addAttribute("profile", this.getCurrentProfile());

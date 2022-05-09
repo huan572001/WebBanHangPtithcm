@@ -176,6 +176,15 @@ section {
           box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.7);
 }
 
+.desc{
+	font-size:16px;
+	margin-top:36px;
+	margin-left:72px;
+	margin-right:72px;
+	line-height:1.6;
+	font-weight:600;
+	
+}
 .side-bar #close-side-bar {
   position: absolute;
   top: 1rem;
@@ -628,7 +637,12 @@ section {
 .products .box-container .box .image {
   position: relative;
 }
-
+.asd{
+	display:none;
+}
+.asd :hover{
+	display:inline-block important!;
+}
 .products .box-container .box .image img {
   height: 30rem;
   -webkit-animation: fadeIn .2s linear;

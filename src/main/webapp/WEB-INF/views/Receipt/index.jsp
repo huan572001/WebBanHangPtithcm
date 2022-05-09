@@ -5,6 +5,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style type="text/css">
+.btn-submit {
+	color: #fff;
+	background-color: #000;
+	text-decoration: none;
+	padding: 11px 16px;
+	display: inline-block;
+	margin-top: 15px;
+	border: none;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.btn-submit:hover {
+	background-color: #ccc;
+	color: #000;
+}
+</style>
 <title>Hóa Đơn</title>
 <%@ include file="/resources/Shared/head.jsp"%>
 <link rel='stylesheet prefetch'
@@ -70,25 +88,11 @@
 							</c:forEach>
 						</tbody>
 					</table>
+					<a href="Turnover.htm" style="text-decoration: none;"
+								class="btn-submit">Doanh Thu</a>
 				</div>
 				<!-- pagination -->
-				<nav>
-					<ul class="pagination justify-content-center">
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								<span>&laquo;</span>
-						</a></li>
-
-						<li class="page-item active"><a href="#"
-							class="page-link py-2 px-3"> 1 </a></li>
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								2 </a></li>
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								3 </a></li>
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								<span>&raquo;</span>
-						</a></li>
-					</ul>
-				</nav>
+			
 			</div>
 		</div>
 	</div>

@@ -51,13 +51,13 @@
 
     <div class="user">
         <img src="images/user-img.png" alt="">
-        <h3>${sessionScope.fullname}</h3>
+        <h3>${sessionScope.currentUser.fullname}</h3>
         <a href="logout.htm">log out</a>
     </div>
 
 
       <nav class="navbar">
-        <a href="profile.htm"> <i class="fas fa-angle-right"></i> Profile </a>
+        <a href="profileCustomer.htm"> <i class="fas fa-angle-right"></i> Profile </a>
         <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
         <a href="shopProducts.htm">
           <i class="fas fa-angle-right"></i> Your Receipt

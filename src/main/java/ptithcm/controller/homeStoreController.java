@@ -33,7 +33,7 @@ public class homeStoreController {
 		 Customer customer =(Customer)httpsession.getAttribute("currentUser");   
 		if(customer==null)
 		return"redirect:login.htm";
-		//model.addAttribute("lastProduct", getLastProduct()) ;
+//		model.addAttribute("lastProduct", getLastProduct()) ;
 		return "shop/home";
 	}
 
@@ -48,6 +48,38 @@ public class homeStoreController {
 		modelMap.addAttribute("listProducts", listProducts);
 		return"shop/products";
 		
+	}
+
+	@RequestMapping(value = "profileCustomer", method = RequestMethod.GET)
+	public  String viewProfile(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
+		Customer customer = (Customer) httpsession.getAttribute("currentUser");
+		modelMap.addAttribute("proName",customer.getFullname());
+		modelMap.addAttribute("proPhone",customer.getPhone());
+		modelMap.addAttribute("proEmail", customer.getEmail());
+		return"shop/profile";
+		
+	}
+	@RequestMapping(value = "changeProfile", method = RequestMethod.POST)
+	public String changeProfile(ModelMap model,HttpServletRequest request,HttpSession httpsession) {
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		Customer customer = (Customer) httpsession.getAttribute("currentUser");
+		customer.setFullname(request.getParameter("profileName"));
+		customer.setPhone(request.getParameter("profilePhone"));
+		customer.setEmail(request.getParameter("profileEmail"));
+		try {
+			httpsession.setAttribute("currentUser", customer);
+			session.update(customer);
+			t.commit();
+			
+			model.addAttribute("message", "Cap nhat thanh cong");
+		} catch (Exception e) {
+			t.rollback();
+			model.addAttribute("message", "Cập nhật thất bại!");
+		} finally {
+			session.close();
+		}
+		return"redirect:homeStore.htm";
 	}
 
 	public Product getLastProduct()

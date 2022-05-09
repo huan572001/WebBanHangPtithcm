@@ -110,6 +110,9 @@ public class staffController {
 		}
 		return "Staff/insert";
 	}
+
+		
+
 	@RequestMapping(value="update-{staffId}.htm", method=RequestMethod.GET)
 	public String updateNV(ModelMap modelNV,@PathVariable("staffId") String staffId) {
 		
@@ -207,7 +210,9 @@ public class staffController {
 		return list.get(0);
 	}
 	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
+
 		if(staff.getFullname().isEmpty()||staff.getPhone().isEmpty()||staff.getEmail().isEmpty()||staff.getAddress().isEmpty()||staff.getGender()==null) {
+
 			model.addAttribute("messageError","KhÃ´ng duoc de trong!");
 			return true;
 		}
