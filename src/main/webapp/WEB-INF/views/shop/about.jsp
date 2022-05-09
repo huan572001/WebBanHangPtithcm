@@ -28,10 +28,9 @@
 <header class="header">
 
     <a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i>shopie </a>
-
     <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
-        <label for="search-box" class="fas fa-search"></label>
+        <input type="search" id="search-box" name="search" placeholder="search here...">
+        <a  class="fas fa-search" href="shopProducts.htm"></a>
     </form>
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>

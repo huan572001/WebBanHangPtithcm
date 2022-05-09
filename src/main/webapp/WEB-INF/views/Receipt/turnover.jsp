@@ -29,7 +29,7 @@
 						</form>
 					</div>
 					<div class="col-xl-1">
-						<a href="Receipt.htm" class="btn btn-danger">ALL</a>
+						<a href="Turnover.htm" class="btn btn-danger">ALL</a>
 					</div>
 				</div>
 				<div class="table-responsive">

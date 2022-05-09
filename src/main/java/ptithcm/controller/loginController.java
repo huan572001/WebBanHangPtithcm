@@ -45,10 +45,12 @@ public class loginController {
 		
 		for (Account Account : list) {
 			if (Account.getUsername().equals(account.getUsername())) {
-				if (Account.getPassword().equals(account.getPassword()) == false) {
+				if (Account.getPassword().equals(account.getPassword()) == false) {		
 					model.addAttribute("message", "sai mat khau");
 					return "login";
-				} else {
+				}
+				else {
+					
 					if (Account.getPosition().equals("AD")) {
 						account = Account;
 						String hqlaccount="from Staff A where A.username="+"'"+account.getUsername()+"'";
@@ -128,4 +130,5 @@ public class loginController {
 		return result;
 		
     }
+
 }

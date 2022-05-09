@@ -85,9 +85,13 @@
 	<c:forEach var="p" items="${listProducts}">
 	 <div class="box">
             <div class="image">
+
                 <img src="files/${p.image}" class="main-img" alt="">
                 
                 <div class="hover-img desc">${p.description }</div>
+
+            
+
                 <div class="icons">
                     <a href="add/${p.productId}.htm" class="fas fa-shopping-cart"></a>
                

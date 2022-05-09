@@ -67,13 +67,13 @@ public class staffController {
 	}
 
 	@RequestMapping(value="insertStaff", method = RequestMethod.POST)
-	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff,HttpServletRequest requests) {
+	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff,HttpServletRequest request) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setStaffId(this.createStaffId());
 		staff.setStatus(true);
 		staff.setUsername(staff.getEmail());
-		String birthday=requests.getParameter("birthday1");
+		String birthday=request.getParameter("birthday1");
 		Account account = new Account();
 		account.setUsername(staff.getEmail());
 		account.setPassword(staff.getStaffId());
@@ -92,7 +92,7 @@ public class staffController {
 			}
 			
 		}	
-		if (this.checkConstraintForm(staff, model)==true) return "Staff/insert";
+		if (this.checkConstraintForm(staff, model)) return "Staff/insert";
 		try {		
 			staff.setBirthday(this.dateFormat(birthday));	
 			this.insertAccount(account);
@@ -126,7 +126,7 @@ public class staffController {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
-//		if (this.checkConstraintForm(staff, modelNV)==true) return "Staff/update";
+		if (this.checkConstraintForm(staff, modelNV)) return "Staff/update";
 		try {
 			session.update(staff);
 			t.commit();
@@ -210,7 +210,9 @@ public class staffController {
 		return list.get(0);
 	}
 	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
-		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getEmail()==null) {
+
+		if(staff.getFullname().isEmpty()||staff.getPhone().isEmpty()||staff.getEmail().isEmpty()||staff.getAddress().isEmpty()||staff.getGender()==null) {
+
 			model.addAttribute("messageError","KhÃ´ng duoc de trong!");
 			return true;
 		}

@@ -38,6 +38,7 @@ public class ShopProductController{
 		List<Product> listProducts = query.list();
 		if(search!=null) {
 			Session sessionSearch = factory.openSession();
+			
 			 hql = "from Product p where p.name like '%"+search.toString()+"%'";
 			 query = sessionSearch.createQuery(hql);
 			 listProducts = query.list();

@@ -65,8 +65,8 @@
 
     <div class="user">
         <img src="images/user-img.png" alt="">
-        <h3>shaikh anas</h3>
-        <a href="#">log out</a>
+    <h3>${sessionScope.fullname}</h3>
+        <a href="logout.htm">log out</a>
     </div>
 
     <nav class="navbar">
@@ -85,25 +85,17 @@
 
 <!-- login form section starts  -->
 
-<section class="login">
+<section class="register">
 
-    <form action="login.htm" method="post">
-        <h3>login now</h3>
-        <input type="email" name="username" value="<%=uname %>" placeholder="enter your email" id="" class="box">
-        <input type="password" name="password" value="<%=pass%>" placeholder="enter your password" id="" class="box">
-        
-        ${message}
-        <div class="remember">
-            <input type="checkbox" name="remember" id="remember" <%="on".equals(reme)?"checked='/checked'":"" %>/>
-            <label for="remember-me"> remember me </label>
-        </div>
-        <input type="submit" value="login now" class="btn">
-        <p><a href="checkAccount.htm">Forgot password?</a></p>
-        <a href="insertCustomer.htm" class="btn link">register now</a>
+    <form action="changeProfile.htm">
+        <h3>Your Profile</h3>
+        <input type="text" name="profileName" placeholder="enter your name" id="" class="box">
+        <input type="email" name="proEmail" placeholder="enter your email" id="" class="box">
+        <input type="password" name="proPassword" placeholder="enter your password" id="" class="box">
+        <input type="submit" value="Save" class="btn">
     </form>
 
 </section>
-
 <!-- login form section ends  -->
 
 
