@@ -112,7 +112,7 @@ public class staffController {
 	}
 		
 	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
-		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getBirthday()==null||staff.getEmail()==null) {
+		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getEmail()==null) {
 			model.addAttribute("messageError","Không duoc de trong!");
 			return true;
 		}

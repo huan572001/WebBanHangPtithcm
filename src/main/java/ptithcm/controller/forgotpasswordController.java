@@ -28,7 +28,6 @@ public class forgotpasswordController {
 
 	@Autowired
 	JavaMailSender mailer;
-
 	@Autowired
 	SessionFactory factory;
 
