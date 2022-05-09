@@ -24,12 +24,11 @@
 <!-- header section starts  -->
 
 <header class="header">
+   <a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
 
-    <a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-    <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
-        <label for="search-box" class="fas fa-search"></label>
+    <form action="shopProducts.htm" class="search-form">
+        <input type="search" id="search-box" name="search" placeholder="search here...">
+        <a  class="fas fa-search" href="shopProducts.htm"></a>
     </form>
 
     <div class="icons">
@@ -84,7 +83,7 @@
     <div class="box-container">
      <c:forEach var="map" items="${sessionScope.myCartItems}">
         <div class="box">
-            <i class="fas fa-times" action=""></i>
+            <a class="fas fa-times" href="remove/${map.value.product.productId}.htm"></a>
             <img src="" alt="">
             <div class="content">
                 <h3>${map.value.product.name}</h3>

@@ -53,9 +53,14 @@ public class CartController {
         if (product != null) {
             if (cartItems.containsKey(productId)) {
                 Cart item = cartItems.get(productId);
+                
+                if(product.getQuantity()-item.getQuantity()>=0) {
                 item.setProduct(product);
                 item.setQuantity(item.getQuantity() + 1);
-                cartItems.put(productId, item);
+                cartItems.put(productId, item);}
+                else
+                	// error khong du so luong hang
+                	return  "redirect:/shopProducts.htm";
             } else {
                 Cart item = new Cart();
                 item.setProduct(product);
@@ -69,7 +74,7 @@ public class CartController {
         return "redirect:/shopProducts.htm";
     }
 
-    @RequestMapping(value = "sub/{productId}", method = RequestMethod.GET)
+    @RequestMapping(value = "sub/{productId}")
     public String viewUpdate(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
         HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
         if (cartItems == null) {
@@ -91,11 +96,11 @@ public class CartController {
         session.setAttribute("myCartItems", cartItems);
         session.setAttribute("myCartTotal", totalPrice(cartItems));
         session.setAttribute("myCartNum", cartItems.size());
-        return "shop/cart";
+        return "redirect:/cart.htm";
     }
 
     
-
+    
     public double totalPrice(HashMap<String, Cart> cartItems) {
         int count = 0;
         for (Map.Entry<String, Cart> list : cartItems.entrySet()) {

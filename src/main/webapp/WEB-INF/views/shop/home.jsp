@@ -27,11 +27,10 @@
 
     <a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
 
-    <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
-        <label for="search-box" class="fas fa-search"></label>
+    <form action="shopProducts.htm" class="search-form">
+        <input type="search" id="search-box" name="search" placeholder="search here...">
+        <a  class="fas fa-search" href="shopProducts.htm"></a>
     </form>
-
     <div class="icons">
         <div id="menu-btn" class="fas fa-bars"></div>
         <div id="search-btn" class="fas fa-search"></div>
@@ -58,17 +57,12 @@
 
 
       <nav class="navbar">
-        <a href="homeStore.htm"> <i class="fas fa-angle-right"></i> home </a>
-        <a href="about.htm"> <i class="fas fa-angle-right"></i> about </a>
+        <a href="profile.htm"> <i class="fas fa-angle-right"></i> Profile </a>
+        <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
         <a href="shopProducts.htm">
-          <i class="fas fa-angle-right"></i> products
+          <i class="fas fa-angle-right"></i> Your Receipt
         </a>
-        <a href="contact.htm"> <i class="fas fa-angle-right"></i> contact </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
-        <a href="register.htm">
-          <i class="fas fa-angle-right"></i> register
-        </a>
-        <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart </a>
+        <a href="cart.htm"> <i class="fas fa-angle-right"></i> Cart </a>
       </nav>
     </div>
 
@@ -84,9 +78,9 @@
               <img src="images/home-img-1.jpg" alt="" />
             </div>
             <div class="content">
-              <span>upto 50% off</span>
-              <h3>smartphones</h3>
-              <a href="#" class="btn">shop now</a>
+              <span>new arrival</span>
+              <h3>${lastProduct.name}</h3>
+              <a href="shopping.htm" class="btn">shop now</a>
             </div>
           </div>
 
@@ -124,7 +118,7 @@
 
     <section class="banner">
       <div class="box-container">
-        <a href="#" class="box">
+        <a href="shopProducts.htm" class="box">
           <img src="images/banner-1.jpg" alt="" />
           <div class="content">
             <span>special offer</span>
@@ -132,7 +126,7 @@
           </div>
         </a>
 
-        <a href="#" class="box">
+        <a href="shopProducts.htm" class="box">
           <img src="images/banner-2.jpg" alt="" />
           <div class="content">
             <span>special offer</span>
@@ -140,7 +134,7 @@
           </div>
         </a>
 
-        <a href="#" class="box">
+        <a href="shopProducts.htm" class="box">
           <img src="images/banner-3.jpg" alt="" />
           <div class="content">
             <span>special offer</span>

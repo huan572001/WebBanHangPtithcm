@@ -86,7 +86,7 @@
 	 <div class="box">
             <div class="image">
                 <img src="images/product-1.jpg" class="main-img" alt="">
-                <img src="images/product-1-hover.jpg" class="hover-img" alt="">
+                <div  class="hover-img">dsadkjashd</div>
                 <div class="icons">
                     <a href="add/${p.productId}.htm" class="fas fa-shopping-cart"></a>
                     <a id="detail" class="fas fa-search-plus"></a>
