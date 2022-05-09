@@ -84,57 +84,6 @@
 				<div class="card rounded">
 					<div class="card-body">
 						${message} ${message1 } ${messageError}
-						<%-- 						<form:form action="insertStaff.htm" modelAttribute="staff"> --%>
-						<!-- 							<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Họ Tên Nhân Viên</label> -->
-						<%-- 								<form:input placeholder="Nhập họ ten nhân viên" --%>
-						<%-- 									class="input-item " type="text" pattern="[A-Za-z]{2-50}" title="chỉ nhận các ký tự a-z" --%>
-						<%-- 									path="fullname" /> --%>
-						<!-- 							</div> -->
-						<!-- 							<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Số Điện Thoại</label> -->
-						<%-- 								<form:input placeholder="Nhập số điện thoại" class="input-item " --%>
-						<%-- 									type="text" pattern="[0]{1}[0-9]{9}" title="0xxx xxx xxx" --%>
-						<%-- 									path="phone" /> --%>
-						<!-- 							</div> -->
-						<!-- 								<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Giới Tính</label> -->
-						<%-- 								<form:input placeholder="Nhập giới tính" class="input-item " --%>
-						<%-- 									path="gender" /> --%>
-						<!-- 							</div> -->
-						<!-- 							<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Trạng Thái</label> -->
-						<%-- 								<form:input placeholder="Nhập trạng thái" class="input-item " --%>
-						<%-- 									path="status" /> --%>
-						<!-- 							</div> -->
-						<!-- 							<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Tên Tài Khoản</label> -->
-						<%-- 								<form:input placeholder="Nhập tên tài khoản" class="input-item " --%>
-						<%-- 									path="username" /> --%>
-						<!-- 							</div> -->
-						<!-- 							<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Địa Chỉ</label> -->
-						<%-- 								<form:input placeholder="Nhập địa chỉ" class="input-item " --%>
-						<%-- 									path="address" /> --%>
-						<!-- 							</div> -->
-						<!-- 							<div> -->
-						<!-- 								<label >Ngày Sinh</label> -->
-						<%-- <%-- 								<form:input class="input-item "  placeholder="EX: 05/30/2001" --%>
-						<%-- <%-- 									path="birthday" /> --%>
-						<!-- 									<input name="birthday"/> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="input-group board-create__item"> -->
-						<!-- 								<label class="desc-input">Email</label> -->
-						<%-- 								<form:input type="email" placeholder="EX: xxx@gamil.com" --%>
-						<%-- 									class="input-item " path="email" /> --%>
-						<!-- 							</div> -->
-						<!-- 							<div> -->
-						<!-- 								<button name="btnCreate" type="submit" class="btn-submit">Lưu -->
-						<!-- 									Nhân Viên</button> -->
-						<!-- 								<a style="text-decoration: none;" class="btn-submit" -->
-						<!-- 									href="User.htm">Danh Sách Nhân Viên</a> -->
-						<!-- 							</div> -->
-						<%-- 						</form:form> --%>
 						<form:form action="insertStaff.htm" modelAttribute="staff">
 							<div class="input-group board-create__item">
 								<label class="desc-input">Họ Tên Nhân Viên</label>

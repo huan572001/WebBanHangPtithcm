@@ -58,7 +58,7 @@ public class staffController {
 		if(loginController.account.getPosition().equals("KH"))
 			return "khachhang";
 		if(loginController.account.getPosition().equals("NV")) {
-			model.addAttribute("messageAD","Bạn Không Phải Quản Lí Không Sử Dụng Được Chức Năng Này");
+			model.addAttribute("messageAD","Báº¡n KhÃ´ng Pháº£i Quáº£n LÃ­ KhÃ´ng Sá»­ Dá»¥ng Ä�Æ°á»£c Chá»©c NÄƒng NÃ y");
 			return"redirect:profile.htm";
 		}
 			
@@ -87,7 +87,7 @@ public class staffController {
 			
 			if(t1.getUsername().trim().equals(account.getUsername().trim()))
 			{
-				model.addAttribute("message1", "Email đã tồn tại");
+				model.addAttribute("message1", "Email Ä‘Ã£ tá»“n táº¡i");
 				return "Staff/insert";
 			}
 			
@@ -110,17 +110,13 @@ public class staffController {
 		}
 		return "Staff/insert";
 	}
+
 		
-	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
-		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getEmail()==null) {
-			model.addAttribute("messageError","Không duoc de trong!");
-			return true;
-		}
-		return false;
-	}
+
 	@RequestMapping(value="update-{staffId}.htm", method=RequestMethod.GET)
 	public String updateNV(ModelMap modelNV,@PathVariable("staffId") String staffId) {
-		modelNV.addAttribute("staff", new Staff());
+		
+		modelNV.addAttribute("staff", this.getCurrentStaff(staffId));
 		return "Staff/update";
 		
 	}
@@ -130,15 +126,15 @@ public class staffController {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
+//		if (this.checkConstraintForm(staff, modelNV)==true) return "Staff/update";
 		try {
-			
 			session.update(staff);
 			t.commit();
-			modelNV.addAttribute("message", "Cập nhật thành công!");
+			modelNV.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng!");
 		}
 		catch (Exception e) {
 			t.rollback();
-			modelNV.addAttribute("message", "Cập nhật thất bại!");
+			modelNV.addAttribute("message", "Cáº­p nháº­t tháº¥t báº¡i!");
 		}
 		finally {
 			session.close();
@@ -168,6 +164,7 @@ public class staffController {
 		List<Account> list = query.list();
 		return list;
 	}
+	
 	public Integer getLastStaffId()
 	{
 		Session session = factory.openSession();
@@ -201,5 +198,22 @@ public class staffController {
 	public Date dateFormat(String day)throws Exception {
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(day);
 		return date;
+	}
+	public Staff getCurrentStaff(String staffId) {
+		Session session = factory.openSession();
+		String hql = "from Staff A where A.staffId= '"+staffId+"'";
+		Query query = session.createQuery(hql);
+		List<Staff> list = query.list();
+		if(list.isEmpty()) {
+			return null;
+		}
+		return list.get(0);
+	}
+	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
+		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getEmail()==null) {
+			model.addAttribute("messageError","KhÃ´ng duoc de trong!");
+			return true;
+		}
+		return false;
 	}
 }

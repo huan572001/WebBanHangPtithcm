@@ -114,6 +114,12 @@
 									<form:input placeholder="Nhập số lượng" class="input-item "
 										type="number" value="" path="quantity" />
 								</div>
+								<div class="input-group board-create__item">
+
+									<label class="desc-input">Mô Tả:</label>
+									<form:input placeholder="Nhập Mô Tả" class="input-item "
+										type="text" value="" path="description" />
+								</div>
 
 								<div class="input-group board-create__item">
 

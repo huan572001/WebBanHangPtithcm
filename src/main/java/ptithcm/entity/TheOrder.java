@@ -15,6 +15,7 @@ public class TheOrder {
 	@JoinColumn(name="customerId")
 	private Customer customer;
 	private Boolean status;
+	private String address;
 	public String getOrderId() {
 		return orderId;
 	}
@@ -33,6 +34,13 @@ public class TheOrder {
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 	
 	
 }

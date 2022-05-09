@@ -86,12 +86,13 @@
 					<div class="card-body">
 
 						<div>
-							${message}
+							${message} ${messageError}
 							<form:form action="update-{staffId}.htm" modelAttribute="staff">
-								<div style="display: none" class="input-group board-create__item">
+								<div style="display: none"
+									class="input-group board-create__item">
 									<label class="desc-input">Mã Nhân Viên:</label>
 									<form:input placeholder="Nhập mã nhan viên" class="input-item"
-										type="text" path="staffId" value="${staffId }"/>
+										type="text" path="staffId" value="${staffId }" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Họ Tên Nhân Viên</label>
@@ -105,24 +106,25 @@
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Giới Tính</label>
-									<form:input placeholder="Nhập giới tính" class="input-item "
-										path="gender" />
+									<form:radiobutton path="gender" value="true" label="Nam" />
+									<form:radiobutton path="gender" value="false" label="nu" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Trạng Thái</label>
-									<form:input placeholder="Nhập trạng thái" class="input-item "
-										path="status" />
+									<form:radiobutton path="status" value="true" label="Kích hoạt" />
+									<form:radiobutton path="status" value="false"
+										label="Huy kích hoạt" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Địa Chỉ</label>
 									<form:input placeholder="Nhập địa chỉ" class="input-item "
 										path="address" />
 								</div>
-								<div class="input-group board-create__item">
+								<div style="display: none;" class="input-group board-create__item">
 									<label class="desc-input">Ngày Sinh</label>
-									<form:input placeholder="Nhập ngày sinh" class="input-item "
-										path="birthday" />
+									<form:input class="input-item " path="birthday" />
 								</div>
+
 								<div>
 									<button name="btnCreate" type="submit" class="btn-submit">Lưu
 										Thay Đổi</button>
