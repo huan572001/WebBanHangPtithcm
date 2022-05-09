@@ -21,24 +21,36 @@
 
 </head>
 <body>
-    
+    <%
+	String uname="",pass="",reme="";
+	Cookie[] cookies= request.getCookies();
+	if(cookies != null){
+		for (Cookie cook : cookies){
+			if(cook.getName().equals("cookUname")){
+				uname=cook.getValue();
+			}else if(cook.getName().equals("cookPass")){
+			
+				pass=cook.getValue();
+			}else if(cook.getName().equals("cookReme")){
+				reme = cook.getValue();
+			}
+			}
+	}
+
+%>
 <!-- header section starts  -->
 
 <header class="header">
 
-    <a href="home.html" class="logo"> <i class="fas fa-store"></i> shopie </a>
+    <a href="home.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
 
-    <form action="" class="search-form">
-        <input type="search" id="search-box" placeholder="search here...">
-        <label for="search-box" class="fas fa-search"></label>
-    </form>
 
     <div class="icons">
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
-        <a href="login.html" class="fas fa-user"></a>
-        <a href="#" class="fas fa-heart"></a>
-        <a href="cart.html" class="fas fa-shopping-cart"></a>
+        <div id="login.htm" class="fas fa-bars"></div>
+        <div id="login.htm" class="fas fa-search"></div>
+        <a href="login.htm" class="fas fa-user"></a>
+        <a href="login.htm" class="fas fa-heart"></a>
+        <a href="login.htm" class="fas fa-shopping-cart"></a>
     </div>
 
 </header>
@@ -77,12 +89,12 @@
 
     <form action="login.htm" method="post">
         <h3>login now</h3>
-        <input type="email" name="username" placeholder="enter your email" id="" class="box">
-        <input type="password" name="password" placeholder="enter your password" id="" class="box">
+        <input type="email" name="username" value="<%=uname %>" placeholder="enter your email" id="" class="box">
+        <input type="password" name="password" value="<%=pass%>" placeholder="enter your password" id="" class="box">
         
         ${message}
         <div class="remember">
-            <input type="checkbox" name="" id="remember-me">
+            <input type="checkbox" name="remember" id="remember" <%="on".equals(reme)?"checked='/checked'":"" %>/>
             <label for="remember-me"> remember me </label>
         </div>
         <input type="submit" value="login now" class="btn">
@@ -113,16 +125,6 @@
 
     <a href="home.html" class="logo"> <i class="fas fa-store"></i> shopie </a>
 
-    <div class="links">
-        <a href="home.html"> home </a>
-        <a href="about.html"> about </a>
-        <a href="products.html"> products </a>
-        <a href="contact.html"> contact </a>
-        <a href="login.html"> login </a>
-        <a href="register.html"> register </a>
-        <a href="cart.html"> cart </a>
-    </div>
-
     <div class="share">
         <a href="#" class="fab fa-facebook-f"></a>
         <a href="#" class="fab fa-twitter"></a>
@@ -132,24 +134,10 @@
 
 </section>
 
-<section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
-
-    <img src="images/card_img.png" alt="">
-
-</section>
 
 <!-- footer section ends -->
 
-
-
-
-<!-- swiper js link      -->
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
 
 </body>
 </html>

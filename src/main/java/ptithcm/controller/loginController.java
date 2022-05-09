@@ -1,8 +1,11 @@
 package ptithcm.controller;
 
+import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
@@ -30,7 +33,7 @@ public class loginController {
 
 	@Transactional
 	@RequestMapping(value = "login", method = RequestMethod.POST)
-	public String saveData(HttpServletRequest request, ModelMap model) {
+	public String saveData(HttpServletRequest request,HttpServletResponse response, ModelMap model, HttpSession httpsession) throws IOException  {
 		account.setPassword(request.getParameter("password"));
 		account.setUsername(request.getParameter("username"));
 		Session session = factory.getCurrentSession();
@@ -41,7 +44,6 @@ public class loginController {
 		
 		
 		for (Account Account : list) {
-			System.out.print(Account.getUsername());
 			if (Account.getUsername().equals(account.getUsername())) {
 				if (Account.getPassword().equals(account.getPassword()) == false) {
 					model.addAttribute("message", "sai mat khau");
@@ -66,12 +68,8 @@ public class loginController {
 					}
 					else if(Account.getPosition().equals("KH")) {
 						
-						return "tuan";
-					}
-					else {
-						model.put("message", "account hoac mk sai");
-						account= new Account();
-						return "login";
+						saveLogin(request,response,model,httpsession);
+						return "redirect:homeStore.htm";
 					}
 				}
 
@@ -100,4 +98,34 @@ public class loginController {
 		return "style='display: none'";
 		return "";
 	}
+	public void  saveLogin(HttpServletRequest request,HttpServletResponse response, ModelMap model, HttpSession httpsession) throws IOException {
+		Customer customer = findByUsername( request.getParameter("username").toString());
+		httpsession.setAttribute("currentUser", customer);
+		httpsession.setAttribute("fullname", customer.getFullname());
+		if(request.getParameter("remember")!=null) {
+			 //4. save cookies
+			Cookie cookieUname = new Cookie("cookUname", request.getParameter("username"));
+			Cookie cookiePass = new Cookie("cookPass", request.getParameter("password"));
+			Cookie cookieReme = new Cookie("cookReme",request.getParameter("remember"));
+			cookieUname.setMaxAge(100);
+			response.addCookie(cookieUname);
+			
+			cookiePass.setMaxAge(100);
+			response.addCookie(cookiePass);
+			cookieReme.setMaxAge(100);
+			response.addCookie(cookieReme);
+		}
+		 
+		
+		
+	}
+	public Customer findByUsername(String username) {
+		Session session = factory.getCurrentSession();
+		String hql = "from Customer A where A.account.username="+"'"+username+"'";
+		Query query = session.createQuery(hql);
+		Customer result = new Customer();
+		result= (Customer) query.list().get(0);
+		return result;
+		
+    }
 }
