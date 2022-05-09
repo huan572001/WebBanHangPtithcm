@@ -22,24 +22,7 @@
     
 <!-- header section starts  -->
 
-<header class="header">
-
-   <a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-    <form action="shopProducts.htm" class="search-form">
-        <input type="search" id="search-box" name="search" placeholder="search here...">
-        <a  class="fas fa-search" href="shopProducts.htm"></a>
-    </form>
-    <div class="icons">
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
-        <a href="login.htm" class="fas fa-user"></a>
-        <a href="shopProducts.htm" class="fas fa-store"></a>
-        <a href="cart.htm" class="fas fa-shopping-cart"></a>
-        <a href="logout.htm" class="fas fa-sign-out-alt"></a>
-    </div>
-
-</header>
+<%@ include file="/resources/Shared/headerTHP.jsp"%>
 
 <!-- header section ends -->
 
@@ -52,7 +35,7 @@
     <div class="user">
         <img src="images/user-img.png" alt="">
         <h3>${sessionScope.fullname}</h3>
-        <a href="#">log out</a>
+        <a  >log out</a>
     </div>
 
     <nav class="navbar">
@@ -160,28 +143,7 @@
 
 <!-- footer section starts  -->
 
-<section class="quick-links">
-
-    <a href="home.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-    <div class="links">
-        <a href="home.htm"> home </a>
-        <a href="about.htm"> about </a>
-        <a href="products.htm"> products </a>
-        <a href="contact.htm"> contact </a>
-        <a href="login.htm"> login </a>
-        <a href="register.htm"> register </a>
-        <a href="cart.htm"> cart </a>
-    </div>
-
-    <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-    </div>
-
-</section>
+<%@ include file="/resources/Shared/footerTHP.jsp"%>
 
 <section class="credit">
 

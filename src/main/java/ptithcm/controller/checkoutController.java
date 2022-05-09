@@ -77,14 +77,17 @@ public class checkoutController {
 			this.insertItem(item);
 //		  			hibenateSession.save(item);
 		}
+		this.cleanUpAfterCheckout(session);
 		return "shop/purchase";
 
 	}
 
-	public void cleanUpAfterCheckout() {
-
+	public void cleanUpAfterCheckout(HttpSession session) {
+		 session.setAttribute("myCartItems", null);
+	        session.setAttribute("myCartTotal", null);
+	        session.setAttribute("myCartNum", null);
+		
 	}
-
 	public void insertItem(OrderDetails orderDetails) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();

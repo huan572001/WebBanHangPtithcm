@@ -40,20 +40,7 @@
 %>
 <!-- header section starts  -->
 
-<header class="header">
-
-    <a href="login.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-
-    <div class="icons">
-        <div id="login.htm" class="fas fa-bars"></div>
-        <div id="login.htm" class="fas fa-search"></div>
-        <a href="login.htm" class="fas fa-user"></a>
-        <a href="login.htm" class="fas fa-heart"></a>
-        <a href="login.htm" class="fas fa-shopping-cart"></a>
-    </div>
-
-</header>
+<%@ include file="/resources/Shared/headerTHP.jsp"%>
 
 <!-- header section ends -->
 
@@ -65,7 +52,7 @@
 
     <div class="user">
         <img src="images/user-img.png" alt="">
-    <h3>${sessionScope.fullname}</h3>
+    <h3>${sessionScope.currentUser.fullname}</h3>
         <a href="logout.htm">log out</a>
     </div>
 
@@ -113,18 +100,7 @@
 
 <!-- footer section starts  -->
 
-<section class="quick-links">
-
-    <a href="login.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-    <div class="share">
-        <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-    </div>
-
-</section>
+<%@ include file="/resources/Shared/footerTHP.jsp"%>
 
 
 

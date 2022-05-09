@@ -38,18 +38,7 @@ public class homeStoreController {
 		return "shop/home";
 	}
 
-	@RequestMapping(value = "shopping", method = RequestMethod.GET)
-	public  String shoppingNow(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
-		
-		Session session = factory.openSession();
-		String search =getLastProduct().getName();
-		String hql = "from Product p where p.name like '%"+search.toString()+"%'";
-		Query query = session.createQuery(hql);
-		List<Product> listProducts = query.list();
-		modelMap.addAttribute("listProducts", listProducts);
-		return"shop/products";
-		
-	}
+	
 	@RequestMapping(value = "profileCustomer", method = RequestMethod.GET)
 	public  String viewProfile(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
 		

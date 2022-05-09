@@ -30,7 +30,7 @@
 	<header class="header">
 
 		<a href="home.jsp" class="logo"> <i class="fas fa-store"></i>
-			shopie
+			THP-STORE
 		</a>
 
 		<form action="" class="search-form">
@@ -41,7 +41,7 @@
 		<div class="icons">
 			<div id="menu-btn" class="fas fa-bars"></div>
 			<div id="search-btn" class="fas fa-search"></div>
-			<a href="login.htm" class="fas fa-user"></a> <a href="#"
+			<a href="login.htm" class="fas fa-user"></a> <a 
 				class="fas fa-heart"></a> <a href="cart.htm"
 				class="fas fa-shopping-cart"></a>
 		</div>
@@ -59,7 +59,7 @@
 		<div class="user">
 			<img src="images/user-img.png" alt="">
 			<h3>shaikh anas</h3>
-			<a href="#">log out</a>
+			<a >log out</a>
 		</div>
 
 		<nav class="navbar">
@@ -141,7 +141,7 @@
 	<section class="quick-links">
 
 		<a href="home.htm" class="logo"> <i class="fas fa-store"></i>
-			shopie
+			THP-STORE
 		</a>
 
 		<div class="links">
@@ -152,9 +152,9 @@
 		</div>
 
 		<div class="share">
-			<a href="#" class="fab fa-facebook-f"></a> <a href="#"
-				class="fab fa-twitter"></a> <a href="#" class="fab fa-instagram"></a>
-			<a href="#" class="fab fa-linkedin"></a>
+			<a  class="fab fa-facebook-f"></a> <a 
+				class="fab fa-twitter"></a> <a  class="fab fa-instagram"></a>
+			<a  class="fab fa-linkedin"></a>
 		</div>
 
 	</section>

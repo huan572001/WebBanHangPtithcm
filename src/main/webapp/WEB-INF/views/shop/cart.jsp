@@ -1,3 +1,4 @@
+Giang Mạnh Tuấn
 <%@ page pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -23,24 +24,7 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="CaqHF5Bb"></script>
 <!-- header section starts  -->
 
-<header class="header">
-   <a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-    <form action="shopProducts.htm" class="search-form">
-        <input type="search" id="search-box" name="search" placeholder="search here...">
-        <a  class="fas fa-search" href="shopProducts.htm"></a>
-    </form>
-
-    <div class="icons">
-        <div id="menu-btn" class="fas fa-bars"></div>
-        <div id="search-btn" class="fas fa-search"></div>
-        <a href="login.htm" class="fas fa-user"></a>
-        <a href="shopProducts.htm" class="fas fa-store"></a>
-        <a href="cart.htm" class="fas fa-shopping-cart"></a>
-        <a href="logout.htm" class="fas fa-sign-out-alt"></a>
-    </div>
-
-</header>
+<%@ include file="/resources/Shared/headerTHP.jsp"%>
 
 <!-- header section ends -->
 
@@ -125,29 +109,7 @@
 
 <!-- footer section starts  -->
 
-<section class="quick-links">
-
-    <a href="home.jsp" class="logo"> <i class="fas fa-store"></i> shopie </a>
-
-    <div class="links">
-        <a href="home.jsp"> home </a>
-        <a href="about.jsp"> about </a>
-        <a href="products.jsp"> products </a>
-        <a href="contact.jsp"> contact </a>
-        <a href="login.jsp"> login </a>
-        <a href="register.jsp"> register </a>
-        <a href="cart.jsp"> cart </a>
-    </div>
-
-    <div class="share">
-        <a href="https://www.facebook.com/Ph%E1%BB%A5-ki%E1%BB%87n-247-103958515647665" class="fab fa-facebook-f"></a>
-         <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2FPh%25E1%25BB%25A5-ki%25E1%25BB%2587n-247-103958515647665&amp;src=sdkpreparse" class="fas fa-share"></a>
-        <a href="#" class="fab fa-instagram"></a>
-        <a href="#" class="fab fa-linkedin"></a>
-    </div>
-    
-
-</section>
+<%@ include file="/resources/Shared/footerTHP.jsp"%>
 
 <section class="credit">
 
