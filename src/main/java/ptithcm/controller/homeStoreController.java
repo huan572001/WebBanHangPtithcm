@@ -28,7 +28,6 @@ public class homeStoreController {
 	@Autowired
 	SessionFactory factory;
 	@RequestMapping(value = "homeStore", method = RequestMethod.GET)
-	@Transactional
 	public String showForm(HttpSession httpsession,ModelMap model) {
 		
 		 Customer customer =(Customer)httpsession.getAttribute("currentUser");   
@@ -38,13 +37,55 @@ public class homeStoreController {
 		return "shop/home";
 	}
 
+<<<<<<< HEAD
 	
+=======
+	@RequestMapping(value = "shopping", method = RequestMethod.GET)
+	public  String shoppingNow(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
+		
+		Session session = factory.openSession();
+		String search =getLastProduct().getName();
+		String hql = "from Product p where p.name like '%"+search.toString()+"%'";
+		Query query = session.createQuery(hql);
+		List<Product> listProducts = query.list();
+		modelMap.addAttribute("listProducts", listProducts);
+		return"shop/products";
+		
+	}
+
+>>>>>>> 98ee1001f13affa30b43350231ef2a4bfe989d92
 	@RequestMapping(value = "profileCustomer", method = RequestMethod.GET)
 	public  String viewProfile(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
-		
+		Customer customer = (Customer) httpsession.getAttribute("currentUser");
+		modelMap.addAttribute("proName",customer.getFullname());
+		modelMap.addAttribute("proPhone",customer.getPhone());
+		modelMap.addAttribute("proEmail", customer.getEmail());
 		return"shop/profile";
 		
 	}
+	@RequestMapping(value = "changeProfile", method = RequestMethod.POST)
+	public String changeProfile(ModelMap model,HttpServletRequest request,HttpSession httpsession) {
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		Customer customer = (Customer) httpsession.getAttribute("currentUser");
+		customer.setFullname(request.getParameter("profileName"));
+		customer.setPhone(request.getParameter("profilePhone"));
+		customer.setEmail(request.getParameter("profileEmail"));
+		try {
+			httpsession.setAttribute("currentUser", customer);
+			session.update(customer);
+			t.commit();
+			
+			model.addAttribute("message", "Cap nhat thanh cong");
+		} catch (Exception e) {
+			t.rollback();
+			model.addAttribute("message", "Cập nhật thất bại!");
+		} finally {
+			session.close();
+		}
+		return"redirect:homeStore.htm";
+	}
+
 	public Product getLastProduct()
 	{
 		Session session = factory.openSession();

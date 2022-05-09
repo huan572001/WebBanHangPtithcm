@@ -21,23 +21,6 @@
 
 </head>
 <body>
-    <%
-	String uname="",pass="",reme="";
-	Cookie[] cookies= request.getCookies();
-	if(cookies != null){
-		for (Cookie cook : cookies){
-			if(cook.getName().equals("cookUname")){
-				uname=cook.getValue();
-			}else if(cook.getName().equals("cookPass")){
-			
-				pass=cook.getValue();
-			}else if(cook.getName().equals("cookReme")){
-				reme = cook.getValue();
-			}
-			}
-	}
-
-%>
 <!-- header section starts  -->
 
 <%@ include file="/resources/Shared/headerTHP.jsp"%>
@@ -57,13 +40,13 @@
     </div>
 
     <nav class="navbar">
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> home </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> about </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> products </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> contact </a>
+        <a href="homeStore.htm"> <i class="fas fa-angle-right"></i> home </a>
+        <a href="about.htm"> <i class="fas fa-angle-right"></i> about </a>
+        <a href="shopProducts.htm"> <i class="fas fa-angle-right"></i> products </a>
+        <a href="contact.htm"> <i class="fas fa-angle-right"></i> contact </a>
         <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> register </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> cart </a>
+        <a href="register.htm"> <i class="fas fa-angle-right"></i> register </a>
+        <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart </a>
     </nav>
 
 </div>
@@ -74,11 +57,11 @@
 
 <section class="register">
 
-    <form action="changeProfile.htm">
+    <form action="changeProfile.htm" method="post">
         <h3>Your Profile</h3>
-        <input type="text" name="profileName" placeholder="enter your name" id="" class="box">
-        <input type="email" name="proEmail" placeholder="enter your email" id="" class="box">
-        <input type="password" name="proPassword" placeholder="enter your password" id="" class="box">
+        <input type="text" name="profileName" placeholder="enter your name" id="" class="box" value="${proName}">
+        <input type="email" name="profileEmail" placeholder="enter your email" id="" value="${proEmail}" class="box">
+        <input type="text" name="profilePhone" placeholder="enter your password" id="" value="${proPhone}" class="box">
         <input type="submit" value="Save" class="btn">
     </form>
 

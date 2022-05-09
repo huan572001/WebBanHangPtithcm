@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -21,8 +22,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.SessionScope;
 
 import java.text.SimpleDateFormat;
+
+import ptithcm.entity.Customer;
 import ptithcm.entity.Staff;
 
 @Controller
@@ -38,7 +42,6 @@ public class profileController {
 		model.addAttribute("ADMIN", loginController.checkMenu());
 		return "Profile/Profile";
 	}
-
 	@RequestMapping(value = "updateCurrent-{staffId}.htm", method = RequestMethod.GET)
 	public String updateCurrentStaff(ModelMap model, @PathVariable("staffId") String staffId) {
 		model.addAttribute("profile", this.getCurrentProfile());
