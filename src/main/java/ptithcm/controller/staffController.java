@@ -58,7 +58,7 @@ public class staffController {
 		if(loginController.account.getPosition().equals("KH"))
 			return "khachhang";
 		if(loginController.account.getPosition().equals("NV")) {
-			model.addAttribute("messageAD","Bạn Không Phải Quản Lí Không Sử Dụng Được Chức Năng Này");
+			model.addAttribute("messageAD","Báº¡n KhÃ´ng Pháº£i Quáº£n LÃ­ KhÃ´ng Sá»­ Dá»¥ng Ä�Æ°á»£c Chá»©c NÄƒng NÃ y");
 			return"redirect:profile.htm";
 		}
 			
@@ -67,13 +67,13 @@ public class staffController {
 	}
 
 	@RequestMapping(value="insertStaff", method = RequestMethod.POST)
-	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff,HttpServletRequest requests) {
+	public String insertStaff(ModelMap model, @ModelAttribute("staff") Staff staff,HttpServletRequest request) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setStaffId(this.createStaffId());
 		staff.setStatus(true);
 		staff.setUsername(staff.getEmail());
-		String birthday=requests.getParameter("birthday1");
+		String birthday=request.getParameter("birthday1");
 		Account account = new Account();
 		account.setUsername(staff.getEmail());
 		account.setPassword(staff.getStaffId());
@@ -87,12 +87,12 @@ public class staffController {
 			
 			if(t1.getUsername().trim().equals(account.getUsername().trim()))
 			{
-				model.addAttribute("message1", "Email đã tồn tại");
+				model.addAttribute("message1", "Email Ä‘Ã£ tá»“n táº¡i");
 				return "Staff/insert";
 			}
 			
 		}	
-		if (this.checkConstraintForm(staff, model)==true) return "Staff/insert";
+		if (this.checkConstraintForm(staff, model)) return "Staff/insert";
 		try {		
 			staff.setBirthday(this.dateFormat(birthday));	
 			this.insertAccount(account);
@@ -123,15 +123,15 @@ public class staffController {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
-//		if (this.checkConstraintForm(staff, modelNV)==true) return "Staff/update";
+		if (this.checkConstraintForm(staff, modelNV)) return "Staff/update";
 		try {
 			session.update(staff);
 			t.commit();
-			modelNV.addAttribute("message", "Cập nhật thành công!");
+			modelNV.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng!");
 		}
 		catch (Exception e) {
 			t.rollback();
-			modelNV.addAttribute("message", "Cập nhật thất bại!");
+			modelNV.addAttribute("message", "Cáº­p nháº­t tháº¥t báº¡i!");
 		}
 		finally {
 			session.close();
@@ -207,8 +207,8 @@ public class staffController {
 		return list.get(0);
 	}
 	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
-		if(staff.getFullname()==null||staff.getPhone()==null||staff.getGender()==null||staff.getEmail()==null) {
-			model.addAttribute("messageError","Không duoc de trong!");
+		if(staff.getFullname().isEmpty()||staff.getPhone().isEmpty()||staff.getEmail().isEmpty()||staff.getAddress().isEmpty()||staff.getGender()==null) {
+			model.addAttribute("messageError","KhÃ´ng duoc de trong!");
 			return true;
 		}
 		return false;

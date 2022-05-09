@@ -45,10 +45,15 @@ public class loginController {
 		
 		for (Account Account : list) {
 			if (Account.getUsername().equals(account.getUsername())) {
-				if (Account.getPassword().equals(account.getPassword()) == false) {
+				if (Account.getPassword().equals(account.getPassword()) == false) {		
 					model.addAttribute("message", "sai mat khau");
 					return "login";
-				} else {
+				} else if(!this.findByUsernameStaff(account.getUsername()).getStatus()) {
+					model.addAttribute("message", "Tai khoan da bi huy!");
+					return "login";
+				}
+				else {
+					
 					if (Account.getPosition().equals("AD")) {
 						account = Account;
 						String hqlaccount="from Staff A where A.username="+"'"+account.getUsername()+"'";
@@ -125,6 +130,15 @@ public class loginController {
 		Query query = session.createQuery(hql);
 		Customer result = new Customer();
 		result= (Customer) query.list().get(0);
+		return result;
+		
+    }
+	public Staff findByUsernameStaff(String username) {
+		Session session = factory.getCurrentSession();
+		String hql = "from Staff A where A.username="+"'"+username+"'";
+		Query query = session.createQuery(hql);
+		Staff result = new Staff();
+		result= (Staff) query.list().get(0);
 		return result;
 		
     }

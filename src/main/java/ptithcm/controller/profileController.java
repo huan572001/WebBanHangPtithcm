@@ -32,31 +32,33 @@ public class profileController {
 	SessionFactory factory;
 
 	@Transactional
-	@RequestMapping("profile")
+	@RequestMapping("profile")	
 	public String profile(ModelMap model) {
-		Session session = factory.getCurrentSession();
-		String hqlaccount = "from Staff A where A.username=" + "'" + loginController.account.getUsername() + "'";
-		Query queryaccount = session.createQuery(hqlaccount);
-		List<Staff> liststaff = queryaccount.list();
-		model.addAttribute("Staff", liststaff);
+		model.addAttribute("Staff", this.getCurrentProfile());
 		model.addAttribute("ADMIN", loginController.checkMenu());
 		return "Profile/Profile";
 	}
 
 	@RequestMapping(value = "updateCurrent-{staffId}.htm", method = RequestMethod.GET)
 	public String updateCurrentStaff(ModelMap model, @PathVariable("staffId") String staffId) {
-		model.addAttribute("profile", new Staff());
+		model.addAttribute("profile", this.getCurrentProfile());
 		return "Profile/update";
 	}
 
 	@RequestMapping(value = "updateCurrent-{staffId}.htm", method = RequestMethod.POST)
-	public String updateCurrentStaff(ModelMap model, @ModelAttribute("profile") Staff profile) {
+	public String updateCurrentStaff(ModelMap model, @ModelAttribute("profile") Staff profile,HttpServletRequest request) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		profile.setUsername(this.getCurrentUsername(profile.getStaffId()));
 		profile.setStatus(this.getCurrentStatus(profile.getStaffId()));
-
+		String birthday=request.getParameter("birthday1");
+		if (this.checkConstraintForm(profile, model)) return "Profile/update";
 		try {
+			if(birthday.isEmpty()||birthday==null) {
+				profile.setBirthday(this.getCurrentProfile().getBirthday());
+			}else {
+				profile.setBirthday(this.dateFormat(birthday));
+			}
 			session.update(profile);
 			t.commit();
 			model.addAttribute("message", "Cập nhật thành công!");
@@ -87,12 +89,25 @@ public class profileController {
 		return Status;
 	}
 
-	public Date dateFormat(String stringDate) throws Exception {
-		String[] words = stringDate.split("/");
-		String joinString1 = String.join("/", words[1], words[0], words[2]);
-
-		Date date1 = new SimpleDateFormat("MM/dd/yyyy").parse(joinString1);
-		return date1;
+	public Date dateFormat(String day)throws Exception {
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(day);
+		return date;
 	}
-
+	public Staff getCurrentProfile() {
+		Session session = factory.openSession();
+		String hqlaccount = "from Staff A where A.username=" + "'" + loginController.account.getUsername() + "'";
+		Query queryaccount = session.createQuery(hqlaccount);
+		List<Staff> liststaff = queryaccount.list();
+		if(liststaff.isEmpty()) {
+			return null;
+		}
+		return liststaff.get(0);
+	}
+	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
+		if(staff.getFullname().isEmpty()||staff.getPhone().isEmpty()||staff.getEmail().isEmpty()||staff.getAddress().isEmpty()||staff.getGender()==null) {
+			model.addAttribute("messageError","Không duoc de trong!");
+			return true;
+		}
+		return false;
+	}
 }
