@@ -95,6 +95,8 @@ public class orderController {
 		ReceiptDetails receiptDetails=new ReceiptDetails();
 		for(OrderDetails B : listOrder){
 			receiptDetails =this.createReceiptDetails(B, receipt);
+			receiptDetails.getProduct().setQuantity(receiptDetails.getProduct().getQuantity()-receiptDetails.getQuantity());
+			this.updateProduct(receiptDetails.getProduct());
 			this.insertReceiptDetails(receiptDetails);
 		}
 	
@@ -119,7 +121,21 @@ public class orderController {
 		return "Order/index";
 	}
 	
-	
+	public void updateProduct(Product product)
+	{
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		
+		try {
+			session.update(product);
+			t.commit();
+		}catch(Exception e){
+			t.rollback();
+		}
+		finally {
+			session.close();
+		}
+	}
 	
 	
 	
