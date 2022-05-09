@@ -44,13 +44,13 @@
 					<div class="card rounded">
 						<div class="card-body">
 							<div class="table-responsive">
-								<c:forEach var="u" items="${Staff}">
+<%-- 								<c:forEach var="u" items="${Staff}"> --%>
 									<table class="table table-striped bg-light text-center">
 
 										<tbody>
 											<tr>
 												<td>name</td>
-												<td>${u.fullname}</td>
+												<td>${Staff.fullname}</td>
 
 
 											</tr>
@@ -59,26 +59,26 @@
 										<tbody>
 											<tr>
 												<td>Phone</td>
-												<td>${u.phone}</td>
+												<td>${Staff.phone}</td>
 
 											</tr>
 										</tbody>
 										<tbody>
 											<tr>
 												<td>Email</td>
-												<td>@gamil.com</td>
+												<td>${Staff.email}</td>
 
 											</tr>
 										</tbody>
 										<tr>
 											<td>AddRess</td>
-											<td>${u.address}</td>
+											<td>${Staff.address}</td>
 
 										</tr>
 										<tbody>
 											<tr>
 												<td>Date of birth</td>
-												<td>${u.birthday}</td>
+												<td>${Staff.birthday}</td>
 
 											</tr>
 										</tbody>
@@ -100,7 +100,7 @@
 										href="updateCurrent-${u.staffId}.htm">Sửa Thông Tin</a>
 									<a style="text-decoration: none;" class="btn-submit"
 										href="changePassword.htm">doi mat khau</a>
-								</c:forEach>
+<%-- 								</c:forEach> --%>
 							</div>
 							<!-- pagination -->
 						</div>

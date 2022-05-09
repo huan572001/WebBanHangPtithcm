@@ -84,7 +84,7 @@
 					<div class="card-body">
 
 						<div>
-							${message}
+							${message}${messageError }
 							<form:form action="updateCurrent-{staffId}.htm"
 								modelAttribute="profile">
 								<div style="display: none"
@@ -105,8 +105,8 @@
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Giới Tính</label>
-									<form:input placeholder="Nhập giới tính" class="input-item "
-										path="gender" />
+									<form:radiobutton path="gender" value="true" label="Nam" />
+									<form:radiobutton path="gender" value="false" label="nu" />
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Địa Chỉ</label>
@@ -115,9 +115,14 @@
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Ngày Sinh</label> <input type="date"
-										name="birthday"/>
+										name="birthday1" />
 									<%-- 									<form:input type="date" data-date="" data-date-format="MM/DD/YY" placeholder="Nhập ngày sinh" class="input-item " --%>
 									<%-- 										path="birthday" /> --%>
+								</div>
+								<div class="input-group board-create__item">
+									<label class="desc-input">Email</label>
+									<form:input type="email" placeholder="EX: xxx@gamil.com"
+										class="input-item " path="email" />
 								</div>
 								<div>
 									<button name="btnCreate" type="submit" class="btn-submit">Lưu

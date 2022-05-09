@@ -120,11 +120,16 @@
 									<form:input placeholder="Nhập địa chỉ" class="input-item "
 										path="address" />
 								</div>
-								<div style="display: none;" class="input-group board-create__item">
+								<div style="display: none;"
+									class="input-group board-create__item">
 									<label class="desc-input">Ngày Sinh</label>
 									<form:input class="input-item " path="birthday" />
 								</div>
-
+								<div class="input-group board-create__item">
+									<label class="desc-input">Email</label>
+									<form:input type="email" placeholder="EX: xxx@gamil.com"
+										class="input-item " path="email" />
+								</div>
 								<div>
 									<button name="btnCreate" type="submit" class="btn-submit">Lưu
 										Thay Đổi</button>
