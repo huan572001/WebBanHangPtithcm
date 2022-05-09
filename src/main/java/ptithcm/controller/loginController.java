@@ -48,10 +48,7 @@ public class loginController {
 				if (Account.getPassword().equals(account.getPassword()) == false) {		
 					model.addAttribute("message", "sai mat khau");
 					return "login";
-				} else if(!this.findByUsernameStaff(account.getUsername()).getStatus()) {
-					model.addAttribute("message", "Tai khoan da bi huy!");
-					return "login";
-				}
+				} 
 				else {
 					
 					if (Account.getPosition().equals("AD")) {

@@ -28,7 +28,6 @@ public class homeStoreController {
 	@Autowired
 	SessionFactory factory;
 	@RequestMapping(value = "homeStore", method = RequestMethod.GET)
-	@Transactional
 	public String showForm(HttpSession httpsession,ModelMap model) {
 		
 		 Customer customer =(Customer)httpsession.getAttribute("currentUser");   
@@ -50,12 +49,7 @@ public class homeStoreController {
 		return"shop/products";
 		
 	}
-	@RequestMapping(value = "profile", method = RequestMethod.GET)
-	public  String viewProfile(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
-		
-		return"shop/profile";
-		
-	}
+
 	public Product getLastProduct()
 	{
 		Session session = factory.openSession();

@@ -21,23 +21,6 @@
 
 </head>
 <body>
-    <%
-	String uname="",pass="",reme="";
-	Cookie[] cookies= request.getCookies();
-	if(cookies != null){
-		for (Cookie cook : cookies){
-			if(cook.getName().equals("cookUname")){
-				uname=cook.getValue();
-			}else if(cook.getName().equals("cookPass")){
-			
-				pass=cook.getValue();
-			}else if(cook.getName().equals("cookReme")){
-				reme = cook.getValue();
-			}
-			}
-	}
-
-%>
 <!-- header section starts  -->
 
 <header class="header">
@@ -89,7 +72,7 @@
 
     <form action="changeProfile.htm">
         <h3>Your Profile</h3>
-        <input type="text" name="profileName" placeholder="enter your name" id="" class="box">
+        <input type="text" name="profileName" placeholder="enter your name" id="" class="box" value="${sessionScope. }">
         <input type="email" name="proEmail" placeholder="enter your email" id="" class="box">
         <input type="password" name="proPassword" placeholder="enter your password" id="" class="box">
         <input type="submit" value="Save" class="btn">
