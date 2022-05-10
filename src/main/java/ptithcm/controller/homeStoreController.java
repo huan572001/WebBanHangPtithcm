@@ -37,9 +37,6 @@ public class homeStoreController {
 		return "shop/home";
 	}
 
-<<<<<<< HEAD
-	
-=======
 	@RequestMapping(value = "shopping", method = RequestMethod.GET)
 	public  String shoppingNow(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
 		
@@ -53,7 +50,6 @@ public class homeStoreController {
 		
 	}
 
->>>>>>> 98ee1001f13affa30b43350231ef2a4bfe989d92
 	@RequestMapping(value = "profileCustomer", method = RequestMethod.GET)
 	public  String viewProfile(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
 		Customer customer = (Customer) httpsession.getAttribute("currentUser");

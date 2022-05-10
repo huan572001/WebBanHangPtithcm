@@ -91,7 +91,7 @@ th {
 									<th>SLTon</th>
 									<th>TrangThai</th>
 									<th>HinhAnh</th>
-									<th>Sửa Xóa</th>
+									<th>Sửa/Thêm SL</th>
 								</tr>
 								<c:forEach items="${products}" var="u">
 									<tr>
@@ -104,11 +104,15 @@ th {
 										<td><img style="width: 48px; height: 48px;" alt="hinh ne"
 											src="files/${u.image}">
 										<td><a href="${u.productId}.htm"><i
-												class="fas fa-edit fa-lg text-success mr-2"></i></a> <a
-											href="delete-${u.productId}.htm"
-											onclick="return confirm('Are you sure you want to delete this item?');">
-												<i class="fas fa-trash-alt fa-lg text-danger"></i>
-										</a></td>
+												class="fas fa-edit fa-lg text-success mr-2"></i></a> 
+<!-- 												<a -->
+<%-- 											href="delete-${u.productId}.htm" --%>
+<!-- 											onclick="return confirm('Are you sure you want to delete this item?');"> -->
+<!-- 												<i class="fas fa-trash-alt fa-lg text-danger"></i> -->
+<!-- 										</a> -->
+										<a href="plus-${u.productId}.htm"><i
+												class="fas fa-solid fa-plus fa-lg text-success mr-2"></i></a>
+										</td>
 
 									</tr>
 								</c:forEach>
