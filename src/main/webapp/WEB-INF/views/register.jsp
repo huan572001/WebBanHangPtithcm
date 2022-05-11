@@ -97,20 +97,20 @@
 			<h3>register now</h3>
 				<h3>${message1}</h3>
 				<div>
-					<form:input type="text" name="" placeholder="enter your Username" id="" class="box" path="account.username" />
+					<form:input type="text" pattern="[a-zA-Z0-9]{3,16}" title="chỉ nhận các ký tự so va a-z, A-Z" placeholder="enter your Username" id="" class="box" path="account.username" />
 				</div>
 				<div>
 					<form:input type="password" placeholder="enter your password" class="box" path="account.password" />
 				</div>
 				<div>
-					<form:input type="text" placeholder="enter your fullname" id="" class="box" path="fullname" />
+					<form:input type="text" pattern="[a-zA-Z0-9 ]{5,50}" title="chỉ nhận các ký tự a-z, A-Z" placeholder="enter your fullname" id="" class="box" path="fullname" />
 				</div>
 				<div>
-					<form:input type="text" placeholder="enter your Phone" id="" class="box" path="phone" />
+					<form:input type="text" pattern="[0]{1}[0-9]{9}" title="0xxx xxx xxx" placeholder="enter your Phone" id="" class="box" path="phone" />
 				</div>
 				<div>
 					<h3>${Email}</h3>
-					<form:input type="text" placeholder="enter your email" id="" class="box" path="email" />
+					<form:input type="email" placeholder="EX: xxx@gamil.com" class="box" path="email" />
 				</div>
 					<button  class="btn">register now</button>
 								<p>already have an account?</p>

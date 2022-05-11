@@ -55,6 +55,10 @@ public class profileController {
 		profile.setUsername(this.getCurrentUsername(profile.getStaffId()));
 		profile.setStatus(this.getCurrentStatus(profile.getStaffId()));
 		String birthday=request.getParameter("birthday1");
+		if(this.CheckEmail(profile.getEmail())) {
+			model.addAttribute("message", "Email da bi trung!");
+			return "Profile/update";
+		}
 		if (this.checkConstraintForm(profile, model)) return "Profile/update";
 		try {
 			if(birthday.isEmpty()||birthday==null) {
@@ -111,6 +115,15 @@ public class profileController {
 			model.addAttribute("messageError","Không duoc de trong!");
 			return true;
 		}
+		return false;
+	}
+	public Boolean CheckEmail(String email) {
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		String hql = "FROM Staff a where a.email='"+email+"'";
+		Query query = session.createQuery(hql);
+		List<Staff> list = query.list();
+		if(list.isEmpty()) return true;
 		return false;
 	}
 }
