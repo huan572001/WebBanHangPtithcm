@@ -100,9 +100,9 @@ public class productController {
 		return "Product/index";
 	}
 
-	@RequestMapping(value = "{productId}.htm", method = RequestMethod.GET)
-	public String update(ModelMap model, @PathVariable("productId") String productId) {
-		model.addAttribute("product", this.getProductById(productId));
+	@RequestMapping(value="{productId}.htm", method=RequestMethod.GET)
+	public String update(ModelMap model,@PathVariable("productId") String productId) {
+		model.addAttribute("product", this.getCurrentProduct(productId));
 		return "Product/update";
 	}
 
@@ -134,10 +134,34 @@ public class productController {
 		}
 		return "Product/update";
 	}
+	
+	@RequestMapping(value="plus-{productId}.htm", method=RequestMethod.GET)
+	public String  plusQuantity(ModelMap model,@PathVariable("productId") String productId) {
+		model.addAttribute("product", this.getCurrentProduct(productId));
+		return "Product/plusQuantity";
+	}
 
-	@RequestMapping(value = "SearchNameProduct", method = RequestMethod.POST)
-	public String SearchNameProduct(ModelMap mm, HttpServletRequest request) {
-		String name = request.getParameter("name");
+	@RequestMapping(value="plus-{productId}.htm", method=RequestMethod.POST)
+	public String plusQuantity(ModelMap model, @ModelAttribute("product") Product product,@PathVariable("productId") String productId) {
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		try {
+			session.update(product);
+			t.commit();
+			model.addAttribute("message", "Cập nhật thành công!");
+		}
+		catch (Exception e) {
+			t.rollback();
+			model.addAttribute("message", "Cập nhật thất bại!");
+		}
+		finally {
+			session.close();
+		}
+		return "Product/plusQuantity";
+	}
+	@RequestMapping(value="SearchNameProduct", method=RequestMethod.POST)
+	public String SearchNameProduct(ModelMap mm,HttpServletRequest request) {
+		String name = request.getParameter("name"); 
 		System.out.print(name);
 		Session session = factory.openSession();
 		String hql = "from Product a where a.name='" + name + "'";
@@ -175,5 +199,15 @@ public class productController {
 			id += 1;
 		}
 		return id.toString();
+	}
+	public Product getCurrentProduct(String productId)
+	{
+		Session session = factory.openSession();
+		String hql = "From Product A where A.productId= '"+productId+"'";
+		Query query = session.createQuery(hql);
+		List<Product> list =query.list();
+		Product product =list.get(0);
+		return product;
+		
 	}
 }

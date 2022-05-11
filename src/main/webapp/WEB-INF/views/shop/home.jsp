@@ -57,7 +57,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide slide">
             <div class="image">
-              <img src="images/home-img-1.jpg" alt="" />
+              <img src="files/background.jpg" alt="" />
             </div>
             <div class="content">
               <span>new arrival</span>
@@ -101,7 +101,7 @@
     <section class="banner">
       <div class="box-container">
         <a href="shopProducts.htm" class="box">
-          <img src="images/banner-1.jpg" alt="" />
+          <img src="files/SP1.jpg" alt="" />
           <div class="content">
             <span>special offer</span>
             <h3>upto 50% off</h3>
@@ -109,7 +109,7 @@
         </a>
 
         <a href="shopProducts.htm" class="box">
-          <img src="images/banner-2.jpg" alt="" />
+          <img src="files/SP2.jpg" alt="" />
           <div class="content">
             <span>special offer</span>
             <h3>upto 50% off</h3>
@@ -117,7 +117,7 @@
         </a>
 
         <a href="shopProducts.htm" class="box">
-          <img src="images/banner-3.jpg" alt="" />
+          <img src="files/SP3.jpg" alt="" />
           <div class="content">
             <span>special offer</span>
             <h3>upto 50% off</h3>
@@ -129,123 +129,7 @@
     <!-- banner section ends -->
 <!-- arrivals section starts  -->
 
-<section class="arrivals">
 
-    <h1 class="heading"> new <span>arrivals</span> </h1>
-
-    <div class="box-container">
-
-        <div class="box">
-            <div class="image">
-                <img src="images/arrival-1.jpg" class="main-img" alt="">
-                <img src="images/arrival-1-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>HD television</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/arrival-2.jpg" class="main-img" alt="">
-                <img src="images/arrival-2-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>lenovo laptop</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/arrival-3.jpg" class="main-img" alt="">
-                <img src="images/arrival-3-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new smartphone</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/arrival-4.jpg" class="main-img" alt="">
-                <img src="images/arrival-4-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new printer</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/arrival-5.jpg" class="main-img" alt="">
-                <img src="images/arrival-5-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new headphones</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="images/arrival-6.jpg" class="main-img" alt="">
-                <img src="images/arrival-6-hover.jpg" class="hover-img" alt="">
-            </div>
-            <div class="content">
-                <h3>new speakers</h3>
-                <div class="price"> $249.99 <span>$399.99</span> </div>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-</section>
 
 <!-- arrivals section ends -->
 

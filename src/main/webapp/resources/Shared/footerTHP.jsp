@@ -13,9 +13,9 @@
     </div>
 
     <div class="share">
-        <a   class="fab fa-facebook-f"></a>
+        <a href="https://www.facebook.com/tmp.1306/"  class="fab fa-facebook-f"></a>
         <a   class="fab fa-twitter"></a>
-        <a   class="fab fa-instagram"></a>
+        <a href="https://www.instagram.com/minh.phuoc.1306/"  class="fab fa-instagram"></a>
         <a   class="fab fa-linkedin"></a>
     </div>
 
