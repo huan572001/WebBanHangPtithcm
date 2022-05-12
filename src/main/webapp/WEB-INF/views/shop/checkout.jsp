@@ -59,7 +59,7 @@
         <td>Free shipping</td>
       </tr>
     </table><br>
-     <button >Place Order</button>
+     <button  >Place Order</button>
   </div><!-- Yorder -->
  </div>
 </div>
