@@ -30,6 +30,10 @@ public class changePasswordController {
 	@RequestMapping(value="changePassword",method = RequestMethod.POST)
 	public String doimk(ModelMap model,@RequestParam("oldpassword") String oldpass,
 			@RequestParam("NewPassword") String newpass,@RequestParam("Reppassword") String reppass) {
+		if(oldpass.isEmpty()||reppass.isEmpty()) {
+			model.addAttribute("message", "Khong duoc de trong!");
+			return "admin/changePassword";
+		}
 		if(oldpass.equals(loginController.account.getPassword())) {
 			if(!newpass.equals(reppass)) {
 				model.addAttribute("account", loginController.account);

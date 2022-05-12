@@ -77,7 +77,6 @@ public class checkoutController {
 			this.insertItem(item);
 //		  			hibenateSession.save(item);
 		}
-
 		this.cleanUpAfterCheckout(session);
 
 		return "shop/purchase";

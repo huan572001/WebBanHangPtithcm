@@ -103,6 +103,7 @@ public class loginController {
 	public void  saveLogin(HttpServletRequest request,HttpServletResponse response, ModelMap model, HttpSession httpsession) throws IOException {
 		Customer customer = findByUsername( request.getParameter("username").toString());
 		httpsession.setAttribute("currentUser", customer);
+		httpsession.setAttribute("fullname", customer.getFullname());
 		if(request.getParameter("remember")!=null) {
 			 //4. save cookies
 			Cookie cookieUname = new Cookie("cookUname", request.getParameter("username"));
