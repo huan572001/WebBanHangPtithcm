@@ -95,7 +95,7 @@
     </div>
 
        
-<div  class="btn" id="load-more"> load more </div>
+<!-- <div  class="btn" id="load-more"> load more </div> -->
 </section>
 
 <!-- products section ends -->
@@ -164,20 +164,20 @@
 
 
  <script type="text/javascript">
- let loadMoreBtn = document.querySelector('#load-more');
- let currentItem = 3;
+//  let loadMoreBtn = document.querySelector('#load-more');
+//  let currentItem = 3;
 
- loadMoreBtn.onclick = () =>{
-    let boxes = [...document.querySelectorAll('.products .box-container .box')];
-    for (var i = currentItem; i < currentItem + 3; i++){
-       boxes[i].style.display = 'inline-block';
-    }
-    currentItem += 3;
+//  loadMoreBtn.onclick = () =>{
+//     let boxes = [...document.querySelectorAll('.products .box-container .box')];
+//     for (var i = currentItem; i < currentItem + 3; i++){
+//        boxes[i].style.display = 'inline-block';
+//     }
+//     currentItem += 3;
 
-    if(currentItem >= boxes.length){
-       loadMoreBtn.style.display = 'none';
-    }
- }		
+//     if(currentItem >= boxes.length){
+//        loadMoreBtn.style.display = 'none';
+//     }
+//  }		
       let sideBar = document.querySelector(".side-bar");
 
       document.querySelector("#menu-btn").onclick = () => {
