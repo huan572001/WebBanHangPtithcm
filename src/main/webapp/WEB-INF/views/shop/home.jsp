@@ -32,7 +32,7 @@
       <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
-        <img src="images/user-img.png" alt="">
+        <img src="files/IMG_8200.JPG" alt="">
         <h3>${sessionScope.currentUser.fullname}</h3>
         <a href="logout.htm">log out</a>
     </div>
@@ -57,7 +57,7 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide slide">
             <div class="image">
-              <img src="files/background.jpg" alt="" />
+              <img src="files/BG.jpg" alt="" />
             </div>
             <div class="content">
               <span>new arrival</span>
@@ -66,9 +66,27 @@
             </div>
           </div>
 
-          
+          <div class="swiper-slide slide">
+            <div class="image">
+              <img src="files/SP10.jpg" alt="" />
+            </div>
+            <div class="content">
+              <span>upto 50% off</span>
+              <h3>smartwatch</h3>
+              <a   class="btn">shop now</a>
+            </div>
+          </div>
 
-          
+          <div class="swiper-slide slide">
+            <div class="image">
+              <img src="images/home-img-3.jpg" alt="" />
+            </div>
+            <div class="content">
+              <span>upto 50% off</span>
+              <h3>headphones</h3>
+              <a   class="btn">shop now</a>
+            </div>
+          </div>
         </div>
 
         <div class="swiper-button-next"></div>
@@ -136,7 +154,7 @@
 
 <section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
+    <p> created by <span>THP</span> | all rights reserved! </p>
 
     <img src="images/card_img.png" alt="">
 
@@ -174,10 +192,31 @@
           };
         });
 
-      
+      var swiper = new Swiper(".home-slider", {
+        loop: true,
+        grabCursor: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
 
-  
-     
+      var swiper = new Swiper(".review-slider", {
+        loop: true,
+        grabCursor: true,
+        spaceBetween: 20,
+        breakpoints: {
+          450: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 3,
+          },
+        },
+      });
     </script>
 
 

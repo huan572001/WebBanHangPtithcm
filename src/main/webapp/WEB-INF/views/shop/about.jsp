@@ -31,27 +31,29 @@
 
 <!-- side-bar section starts -->
 
-    <div class="side-bar">
-      <div id="close-side-bar" class="fas fa-times"></div>
+<div class="side-bar">
+
+    <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
         <img src="images/user-img.png" alt="">
         <h3>${sessionScope.currentUser.fullname}</h3>
-        <a href="logout.htm">log out</a>
+        <a  >log out</a>
     </div>
 
+    <nav class="navbar">
+        <a href="homeStore.htm"> <i class="fas fa-angle-right"></i> home </a>
+        <a href="about.htm"> <i class="fas fa-angle-right"></i> about </a>
+        <a href="shopProducts.htm"> <i class="fas fa-angle-right"></i> products </a>
+        <a href="contact.htm"> <i class="fas fa-angle-right"></i> contact </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
+        <a href="register.htm"> <i class="fas fa-angle-right"></i> register </a>
+        <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart </a>
+    </nav>
 
-      <nav class="navbar">
-        <a href="profileCustomer.htm"> <i class="fas fa-angle-right"></i> Profile </a>
-        <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
-        <a href="shopProducts.htm">
-          <i class="fas fa-angle-right"></i> Your Receipt
-        </a>
-        <a href="cart.htm"> <i class="fas fa-angle-right"></i> Cart </a>
-      </nav>
-    </div>
+</div>
 
-    <!-- side-bar section ends -->
+<!-- side-bar section ends -->
 
 <!-- about section starts  -->
 
@@ -214,7 +216,7 @@
 
 <section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
+    <p> created by <span>THP</span> | all rights reserved! </p>
 
     <img src="images/card_img.png" alt="">
 

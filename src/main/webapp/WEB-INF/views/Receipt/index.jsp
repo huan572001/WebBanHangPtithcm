@@ -21,6 +21,7 @@
 .btn-submit:hover {
 	background-color: #ccc;
 	color: #000;
+.dollars:before { content:'$'; }
 }
 </style>
 <title>Hóa Đơn</title>
@@ -81,7 +82,7 @@
 									<td>${u.customerId}</td>
 									<td>${u.staffId}</td>
 									<td>${u.date}</td>
-									<td>${u.total}</td>
+									<td class="dollars">${u.total}</td>
 									<td><a href="details-${u.receiptId}.htm">Xem Chi Tiết</a></td>
 
 								</tr>

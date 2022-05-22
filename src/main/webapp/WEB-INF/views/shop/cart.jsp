@@ -1,4 +1,4 @@
-
+Giang Mạnh Tuấn
 <%@ page pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
@@ -30,27 +30,27 @@
 
 <!-- side-bar section starts -->
 
-    <div class="side-bar">
-      <div id="close-side-bar" class="fas fa-times"></div>
+<div class="side-bar">
+
+    <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
         <img src="images/user-img.png" alt="">
-        <h3>${sessionScope.currentUser.fullname}</h3>
+        <h3>${sessionScope.fullname}</h3>
         <a href="logout.htm">log out</a>
     </div>
 
+    <nav class="navbar">
+        <a href="homeStore.htm"> <i class="fas fa-angle-right"></i> home </a>
+        <a href="about.htm"> <i class="fas fa-angle-right"></i> about </a>
+        <a href="shopProducts.htm"> <i class="fas fa-angle-right"></i> products </a>
+        <a href="contact.htm"> <i class="fas fa-angle-right"></i> contact </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
+        <a href="register.htm"> <i class="fas fa-angle-right"></i> register </a>
+        <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart </a>
+    </nav>
 
-      <nav class="navbar">
-        <a href="profileCustomer.htm"> <i class="fas fa-angle-right"></i> Profile </a>
-        <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
-        <a href="shopProducts.htm">
-          <i class="fas fa-angle-right"></i> Your Receipt
-        </a>
-        <a href="cart.htm"> <i class="fas fa-angle-right"></i> Cart </a>
-      </nav>
-    </div>
-
-    <!-- side-bar section ends -->
+</div>
 
 <!-- side-bar section ends -->
 
@@ -113,7 +113,7 @@
 
 <section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
+    <p> created by <span>THP</span> | all rights reserved! </p>
 
     <img src="images/card_img.png" alt="">
 
@@ -128,7 +128,24 @@
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
 <!-- custom js file link  -->
-<script type="text/javascript">
+ <script type="text/javascript">
+ var counter=0;
+
+ $(document).ready(function() {
+   $('.content .product .add-to-cart').click(function() {
+     $('.helper').addClass('added');
+     counter++;
+     
+     var buttonCount = setTimeout(function(){
+     $('.cart').attr('data-count', counter);
+   }, 1000);
+     
+     var removeClass = setTimeout(function(){
+     $('.helper, .cart').removeClass('added');
+   }, 1500);
+   })
+   
+ });
       let sideBar = document.querySelector(".side-bar");
 
       document.querySelector("#menu-btn").onclick = () => {
@@ -184,5 +201,6 @@
         },
       });
     </script>
+
 </body>
 </html>

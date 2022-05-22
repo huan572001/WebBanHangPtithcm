@@ -32,27 +32,32 @@
 
 <!-- side-bar section starts -->
 
-    <div class="side-bar">
-      <div id="close-side-bar" class="fas fa-times"></div>
+<div class="side-bar">
+
+    <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
-        <img src="images/user-img.png" alt="">
+        <img src="files/IMG_8200.JPG" alt="">
         <h3>${sessionScope.currentUser.fullname}</h3>
         <a href="logout.htm">log out</a>
     </div>
 
+    <nav class="navbar">
+        <a href="homeStore.htm"> <i class="fas fa-angle-right"></i> home </a>
+        <a href="about.htm"> <i class="fas fa-angle-right"></i> about </a>
+        <a href="shopProducts.htm"> <i class="fas fa-angle-right"></i> products </a>
+        <a href="contact.htm"> <i class="fas fa-angle-right"></i> contact </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
+        <a href="register.htm"> <i class="fas fa-angle-right"></i> register </a>
+        <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart </a>
+    </nav>
 
-      <nav class="navbar">
-        <a href="profileCustomer.htm"> <i class="fas fa-angle-right"></i> Profile </a>
-        <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
-        <a href="shopProducts.htm">
-          <i class="fas fa-angle-right"></i> Your Receipt
-        </a>
-        <a href="cart.htm"> <i class="fas fa-angle-right"></i> Cart </a>
-      </nav>
-    </div>
+</div>
 
-    <!-- side-bar section ends -->
+<!-- side-bar section ends -->
+
+<!-- products section starts  -->
+
 <section class="products">
 
     <h1 class="heading"> featured <span>products</span> </h1>
@@ -90,7 +95,7 @@
     </div>
 
        
-<!-- <div  class="btn" id="load-more"> load more </div> -->
+
 </section>
 
 <!-- products section ends -->
@@ -104,7 +109,7 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="images/product-banner-1.jpg" alt="">
+            <img src="files/SP10.jpg" alt="">
             <div class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
@@ -113,7 +118,7 @@
         </div>
 
         <div class="box">
-            <img src="images/product-banner-2.jpg" alt="">
+            <img src="files/SP2.jpg" alt="">
             <div id="menu-btn" class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
@@ -147,7 +152,7 @@
 
 <section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
+    <p> created by <span>THP</span> | all rights reserved! </p>
 
     <img src="images/card_img.png" alt="">
 
@@ -159,20 +164,20 @@
 
 
  <script type="text/javascript">
-//  let loadMoreBtn = document.querySelector('#load-more');
-//  let currentItem = 3;
+ let loadMoreBtn = document.querySelector('#load-more');
+ let currentItem = 3;
 
-//  loadMoreBtn.onclick = () =>{
-//     let boxes = [...document.querySelectorAll('.products .box-container .box')];
-//     for (var i = currentItem; i < currentItem + 3; i++){
-//        boxes[i].style.display = 'inline-block';
-//     }
-//     currentItem += 3;
+ loadMoreBtn.onclick = () =>{
+    let boxes = [...document.querySelectorAll('.products .box-container .box')];
+    for (var i = currentItem; i < currentItem + 3; i++){
+       boxes[i].style.display = 'inline-block';
+    }
+    currentItem += 3;
 
-//     if(currentItem >= boxes.length){
-//        loadMoreBtn.style.display = 'none';
-//     }
-//  }		
+    if(currentItem >= boxes.length){
+       loadMoreBtn.style.display = 'none';
+    }
+ }		
       let sideBar = document.querySelector(".side-bar");
 
       document.querySelector("#menu-btn").onclick = () => {
