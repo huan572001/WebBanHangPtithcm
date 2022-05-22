@@ -88,7 +88,6 @@
 							${message}
 							<form:form action="{productId}.htm" modelAttribute="product">
 								<div style="display: none" class="input-group board-create__item">
-
 									<label class="desc-input">Mã Sản Phẩm:</label>
 									<form:input placeholder="Vui lòng nhập mã sản phẩm"
 										class="input-item " type="text" path="productId" />

@@ -164,7 +164,7 @@ public class productController {
 		String name = request.getParameter("name"); 
 		System.out.print(name);
 		Session session = factory.openSession();
-		String hql = "from Product a where a.name='" + name + "'";
+		String hql = "from Product a where a.name LIKE '" + name + "'";
 		Query query = session.createQuery(hql);
 		List<Product> list = query.list();
 		mm.addAttribute("products", list);
@@ -206,6 +206,7 @@ public class productController {
 		String hql = "From Product A where A.productId= '"+productId+"'";
 		Query query = session.createQuery(hql);
 		List<Product> list =query.list();
+		if(list.isEmpty()) return null;
 		Product product =list.get(0);
 		return product;
 		

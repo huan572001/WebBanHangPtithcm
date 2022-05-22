@@ -1,16 +1,19 @@
 package ptithcm.entity;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.ManyToAny;
+//import org.hibernate.annotations.ManyToAny;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -22,9 +25,12 @@ public class Receipt {
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date date;
 	private	String customerId;
-	private String staffId;
+	@ManyToOne
+    @JoinColumn(name = "staffId")
+	private Staff staff;
 	private Float total;
-	
+	@OneToMany(mappedBy = "receipt", cascade = CascadeType.ALL)
+	private Collection<ReceiptDetails> receiptDetails;
 	public Float getTotal() {
 		return total;
 	}
@@ -49,11 +55,17 @@ public class Receipt {
 	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
-	public String getStaffId() {
-		return staffId;
+	public Collection<ReceiptDetails> getReceiptDetails() {
+		return receiptDetails;
 	}
-	public void setStaffId(String staffId) {
-		this.staffId = staffId;
+	public void setReceiptDetails(Collection<ReceiptDetails> receiptDetails) {
+		this.receiptDetails = receiptDetails;
+	}
+	public Staff getStaff() {
+		return staff;
+	}
+	public void setStaff(Staff staff) {
+		this.staff = staff;
 	}
 	
 	

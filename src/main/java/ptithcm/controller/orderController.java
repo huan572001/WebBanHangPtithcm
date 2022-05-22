@@ -1,6 +1,9 @@
 package ptithcm.controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -41,7 +44,7 @@ public class orderController {
 	public String SearchPhoneCustomer(ModelMap mm,HttpServletRequest request) {
 		String phone = request.getParameter("phone"); 
 		Session session = factory.openSession();
-		String hql = "from TheOrder A where A.customer.phone='"+phone+"'";
+		String hql = "from TheOrder A where A.customer.phone LIKE '"+phone+"'";
 		Query query = session.createQuery(hql);
 		List<TheOrder> list = query.list();
 		mm.addAttribute("Order", list);
@@ -71,7 +74,7 @@ public class orderController {
 		List<TheOrder> list = query.list();
 		if(list.get(0).getStatus()==false)
 		{
-			model.addAttribute("message", "Đơn Hàng đã bị Hủy");
+			model.addAttribute("message", "Ã„ï¿½Ã†Â¡n HÃƒÂ ng Ã„â€˜ÃƒÂ£ bÃ¡Â»â€¹ HÃ¡Â»Â§y");
 			return "Order/index";
 		}
 		
@@ -86,27 +89,31 @@ public class orderController {
 		{
 			tong+= A.getProduct().getPrice()*A.getQuantity();	
 		}
-		receipt.setStaffId(listStaff.get(0).getStaffId());
+		receipt.setStaff(listStaff.get(0));
 		receipt.setCustomerId(list.get(0).getCustomer().getCustomerId());
 		receipt.setDate(new Date());
 		receipt.setTotal(tong);
 		receipt.setReceiptId(this.createReceiptId());
-		this.insertReceipt(receipt);
+		
+		List<ReceiptDetails> listReceipDetails=new ArrayList<>();
 		ReceiptDetails receiptDetails=new ReceiptDetails();
+		int i=0;
 		for(OrderDetails B : listOrder){
-			receiptDetails =this.createReceiptDetails(B, receipt);
+			receiptDetails =this.createReceiptDetails(i,B, receipt);
 			receiptDetails.getProduct().setQuantity(receiptDetails.getProduct().getQuantity()-receiptDetails.getQuantity());
 			this.updateProduct(receiptDetails.getProduct());
-			this.insertReceiptDetails(receiptDetails);
+			listReceipDetails.add(i,receiptDetails);
+			i++;
 		}
-	
+		receipt.setReceiptDetails(listReceipDetails);
+		this.insertReceipt(receipt);
 		
 		for(OrderDetails C : listOrder) {
 			this.deleteOrderDetails(C);
 		}
 		
 		this.deleteTheOrder(list.get(0));
-		return "Order/index";
+		return "redirect:Order.htm";//tráº£ vá»� Ä‘á»ƒ load láº¡i danh sÃ¡ch
 	}
 	
 	@RequestMapping("orderCancel-{Id}")
@@ -231,14 +238,14 @@ public class orderController {
 			session.close();
 		}
 	}
-	public ReceiptDetails createReceiptDetails(OrderDetails orderDetails,Receipt receipt) {
+	public ReceiptDetails createReceiptDetails(int i,OrderDetails orderDetails,Receipt receipt) {
 
 		ReceiptDetails receiptDetails = new ReceiptDetails();
 		
 		receiptDetails.setProduct(orderDetails.getProduct());;
 		receiptDetails.setQuantity(orderDetails.getQuantity());
-		receiptDetails.setReceiptId(receipt.getReceiptId());
-		receiptDetails.setReceiptDetailsId(this.createReceiptDetailsId());
+		receiptDetails.setReceipt(receipt);
+		receiptDetails.setReceiptDetailsId(this.createReceiptDetailsId()+i);
 		return receiptDetails;
 		
 	}

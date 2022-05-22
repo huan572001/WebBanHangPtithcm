@@ -16,7 +16,7 @@
 		<div class="card rounded">
 			<div class="card-body">
 				<div class="row">
-					<div class="col-xl-7">
+					<div class="col-xl-5.5">
 						<form method="post" action="turnoverSearchDate.htm">
 							<div class="input-group">
 								<label>Tu ngay</label> <input type="date" class="form-control"
@@ -26,6 +26,42 @@
 									<i class="fas fa-search text-danger"></i>
 								</button>
 							</div>
+						</form>
+					</div>
+					<div class="col-xl-0.5">
+						<form method="post" action="turnoverSearchMonth.htm">
+							<input style="display: none" type="text" class="form-control"
+									name="timePattern" value="1">
+							<button type="submit" class="btn btn-light search-button">
+									DAY
+								</button>
+						</form>
+					</div>
+					<div class="col-xl-1">
+						<form method="post" action="turnoverSearchMonth.htm">
+							<input style="display: none" type="text" class="form-control"
+									name="timePattern" value="7">
+							<button type="submit" class="btn btn-light search-button">
+									WEEK
+								</button>
+						</form>
+					</div>
+					<div class="col-xl-0.5">
+						<form method="post" action="turnoverSearchMonth.htm">
+							<input style="display: none" type="text" class="form-control"
+									name="timePattern" value="30">
+							<button type="submit" class="btn btn-light search-button">
+									MONTH
+								</button>
+						</form>
+					</div>
+					<div class="col-xl-1">
+						<form method="post" action="turnoverSearchMonth.htm">
+							<input style="display: none" type="text" class="form-control"
+									name="timePattern" value="365">
+							<button type="submit" class="btn btn-light search-button">
+									YEAR
+								</button>
 						</form>
 					</div>
 					<div class="col-xl-1">

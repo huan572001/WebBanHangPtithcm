@@ -1,9 +1,12 @@
 package ptithcm.entity;
 
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,6 +28,8 @@ public class Staff {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date birthday;
+	@OneToMany(mappedBy = "staff", cascade = CascadeType.ALL)
+	private Collection<Receipt> receipt;
 	public String getStaffId() {
 		return staffId;
 	}
@@ -79,6 +84,12 @@ public class Staff {
 	}
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	public Collection<Receipt> getReceipt() {
+		return receipt;
+	}
+	public void setReceipt(Collection<Receipt> receipt) {
+		this.receipt = receipt;
 	}
 	
 	
