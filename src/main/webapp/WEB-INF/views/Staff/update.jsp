@@ -127,7 +127,7 @@
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Email</label>
-									<form:input type="email" placeholder="EX: xxx@gamil.com"
+									<form:input type="text" placeholder="EX: xxx@gamil.com"
 										class="input-item " path="email" />
 								</div>
 								<div>
