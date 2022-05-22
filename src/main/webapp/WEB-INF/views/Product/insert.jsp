@@ -91,28 +91,34 @@
 
 									<label class="desc-input">Tên sản phẩm:</label>
 									<form:input placeholder="Vui lòng điền tên sản phẩm"
-										class="input-item " type="text" path="name" />
+										class="input-item " type="text" value="" path="name" />
 								</div>
 
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Giá Gốc:</label>
 									<form:input placeholder="Nhập số tiền" class="input-item "
-										type="number" min="0" path="cost" />
+										type="number" value="" path="cost" />
 								</div>
 
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Giá Bán:</label>
 									<form:input placeholder="Nhập số tiền" class="input-item "
-										type="number" min="0" path="price" />
+										type="number" value="" path="price" />
 								</div>
 
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Số Lượng Tồn:</label>
 									<form:input placeholder="Nhập số lượng" class="input-item "
-										type="number" min="0" path="quantity" />
+										type="number" value="" path="quantity" />
+								</div>
+								<div class="input-group board-create__item">
+
+									<label class="desc-input">Mô Tả:</label>
+									<form:input placeholder="Nhập Mô Tả" class="input-item "
+										type="text" value="" path="description" />
 								</div>
 
 								<div class="input-group board-create__item">

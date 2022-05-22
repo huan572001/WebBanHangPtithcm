@@ -147,7 +147,7 @@
 
 <section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
+    <p> created by <span>THP</span> | all rights reserved! </p>
 
     <img src="images/card_img.png" alt="">
 

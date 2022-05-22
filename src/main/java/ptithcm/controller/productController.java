@@ -84,7 +84,7 @@ public class productController {
 	}
 
 	@RequestMapping("delete-{productId}.htm")
-	public String delete(ModelMap model, @ModelAttribute("product") Product product) {
+	public String delete(ModelMap model,  Product product) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {

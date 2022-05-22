@@ -615,13 +615,9 @@ section {
           box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   border-radius: .5rem;
   overflow: hidden;
-  display: none;
+ 
 }
-.products .box-container .box:nth-child(1),
-.products .box-container .box:nth-child(2),
-.products .box-container .box:nth-child(3) {
-  display: inline-block;
-}
+
 .products .box-container .box:hover .image .hover-img {
   display: inline-block;
 }

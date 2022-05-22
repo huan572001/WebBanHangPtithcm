@@ -36,7 +36,7 @@
       <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
-        <img src="images/user-img.png" alt="">
+        <img src="files/IMG_8200.JPG" alt="">
         <h3>${sessionScope.currentUser.fullname}</h3>
         <a href="logout.htm">log out</a>
     </div>
@@ -90,7 +90,6 @@
     </div>
 
        
-<!-- <div  class="btn" id="load-more"> load more </div> -->
 </section>
 
 <!-- products section ends -->
@@ -104,7 +103,7 @@
     <div class="box-container">
 
         <div class="box">
-            <img src="images/product-banner-1.jpg" alt="">
+            <img src="files/SP10.jpg" alt="">
             <div class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
@@ -113,7 +112,7 @@
         </div>
 
         <div class="box">
-            <img src="images/product-banner-2.jpg" alt="">
+            <img src="files/SP2.jpg" alt="">
             <div id="menu-btn" class="content">
                 <span>special offer</span>
                 <h3>upto 50% off</h3>
@@ -147,7 +146,7 @@
 
 <section class="credit">
 
-    <p> created by <span>mr. web designer</span> | all rights reserved! </p>
+    <p> created by <span>THP</span> | all rights reserved! </p>
 
     <img src="images/card_img.png" alt="">
 

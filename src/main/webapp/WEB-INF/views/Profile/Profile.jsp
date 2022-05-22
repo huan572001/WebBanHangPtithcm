@@ -17,6 +17,7 @@
 	border: none;
 	appearance: none;
 	-webkit-appearance: none;
+	border-radius: 5px;
 }
 
 .btn-submit:hover {
