@@ -16,11 +16,9 @@
 	list-style: none;
 	left: 500px;
 }
-
 .product-role {
 	list-style: none;
 }
-
 .desc-input {
 	margin-right: 10px;
 	background-color: #ccc;
@@ -34,18 +32,15 @@
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 	border-radius: 4px;
 }
-
 .board-create__item {
 	margin: 5px;
 	display: flex;
 	margin: 20px 0;
 }
-
 .input-item {
 	flex: 1;
 	font-style: italic;
 }
-
 .btn-submit {
 	color: #fff;
 	background-color: #000;
@@ -57,7 +52,6 @@
 	appearance: none;
 	-webkit-appearance: none;
 }
-
 .btn-submit:hover {
 	background-color: #ccc;
 	color: #000;
@@ -91,49 +85,55 @@
 
 									<label class="desc-input">Mã Sản Phẩm:</label>
 									<form:input placeholder="Vui lòng nhập mã sản phẩm"
-										class="input-item " type="text" value="${productId}" path="productId" />
+										class="input-item " type="text" path="productId" />
 								</div>
 
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Tên sản phẩm:</label>
 									<form:input placeholder="Vui lòng điền tên sản phẩm"
-										class="input-item " type="text" value="${name}" path="name" />
+										class="input-item " type="text" path="name" />
 								</div>
 
-								<div class="input-group board-create__item">
+								<div  style="display: none" class="input-group board-create__item">
 
 									<label class="desc-input">Giá Gốc:</label>
 									<form:input placeholder="Nhập số tiền" class="input-item "
-										type="number" value="${cost}" path="cost" />
+										type="number" min="0" path="cost" />
 								</div>
 
-								<div class="input-group board-create__item">
+								<div  style="display: none" class="input-group board-create__item">
 
 									<label class="desc-input">Giá Bán:</label>
 									<form:input placeholder="Nhập số tiền" class="input-item "
-										type="number" value="${price}" path="price" />
+										type="number" min="0" path="price" />
 								</div>
 
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Số Lượng Tồn:</label>
 									<form:input placeholder="Nhập số lượng" class="input-item "
-										type="number" value="${quantity}" path="quantity" />
+										type="number" min="0" path="quantity" />
 								</div>
 
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Trạng Thái:</label>
-									<form:input placeholder="Nhập trạng thái" class="input-item "
-										 value="${status}" path="status" />
+										<form:radiobutton path="status" value="true" label="Kích hoạt" />
+									<form:radiobutton path="status" value="false"
+										label="Huy kích hoạt" />
 								</div>
-							
 								<div class="input-group board-create__item">
 
 									<label class="desc-input">Hình Ảnh:</label>
-									<form:input placeholder="Điền Ảnh" class="input-item "
-										type="text" value="${image}" path="image" />
+									<input class="input-item "
+										type="file" name="photo" />
+								</div>
+								<div class="input-group board-create__item">
+
+									<label class="desc-input">Mo ta</label>
+									<form:input placeholder="Vui lòng điền mo ta san pham"
+										class="input-item " type="text" path="description" />
 								</div>
 								<button name="btnCreate" type="submit" class="btn-submit">Lưu Thay Đổi</button>
 								<a style="text-decoration: none;" class="btn-submit"
