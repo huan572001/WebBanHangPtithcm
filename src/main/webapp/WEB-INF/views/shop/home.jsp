@@ -77,16 +77,7 @@
             </div>
           </div>
 
-          <div class="swiper-slide slide">
-            <div class="image">
-              <img src="images/home-img-3.jpg" alt="" />
-            </div>
-            <div class="content">
-              <span>upto 50% off</span>
-              <h3>headphones</h3>
-              <a   class="btn">shop now</a>
-            </div>
-          </div>
+          
         </div>
 
         <div class="swiper-button-next"></div>
@@ -192,31 +183,10 @@
           };
         });
 
-      var swiper = new Swiper(".home-slider", {
-        loop: true,
-        grabCursor: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
+      
 
-      var swiper = new Swiper(".review-slider", {
-        loop: true,
-        grabCursor: true,
-        spaceBetween: 20,
-        breakpoints: {
-          450: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        },
-      });
+  
+     
     </script>
 
 

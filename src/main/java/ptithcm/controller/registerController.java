@@ -53,8 +53,9 @@ public class registerController {
 		account.setUsername(customer.getAccount().getUsername());
 		account.setPassword(customer.getAccount().getPassword());
 		customer.setCustomerId(this.createCustomerId());
+		customer.setAccount(account);
 		try {
-			session.save(account);
+//			session.save(account);
 			session.save(customer);
 			
 			t.commit();

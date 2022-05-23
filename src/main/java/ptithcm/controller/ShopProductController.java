@@ -31,7 +31,7 @@ public class ShopProductController{
 	public String showView(ModelMap modelMap,HttpServletRequest request ) {
 		
 		Session session = factory.getCurrentSession();
-		String hql = "from Product";
+		String hql = "from Product p where p.status='true'";
 		Query query = session.createQuery(hql);
 		String search =request.getParameter("search");
 		

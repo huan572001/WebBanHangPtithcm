@@ -80,7 +80,7 @@
 								<tr>
 									<td>${u.receiptId}</td>
 									<td>${u.customerId}</td>
-									<td>${u.staffId}</td>
+									<td>${u.getStaff().staffId}</td>
 									<td>${u.date}</td>
 									<td class="dollars">${u.total}</td>
 									<td><a href="details-${u.receiptId}.htm">Xem Chi Tiết</a></td>

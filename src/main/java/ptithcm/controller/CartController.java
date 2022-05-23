@@ -1,6 +1,5 @@
 package ptithcm.controller;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,85 +28,82 @@ import model.Cart;
 public class CartController {
 	@Autowired
 	SessionFactory factory;
-    
-    private Product products;
-  
-    
-    
+
+	private Product products;
 
 	@RequestMapping(value = "cart", method = RequestMethod.GET)
 	public String showView() {
 		return "shop/cart";
 	}
+
 	@Transactional
-    @RequestMapping(value = "add/{productId}")
-    public String viewAdd(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
-        HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
-        if (cartItems == null) {
-            cartItems = new HashMap<>();
-        }
-        Session sessionhibernate = factory.getCurrentSession();
-        String hql = "from Product A where A.productId="+"'"+productId+"'";
+	@RequestMapping(value = "add/{productId}")
+	public String viewAdd(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
+		HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
+		if (cartItems == null) {
+			cartItems = new HashMap<>();
+		}
+		Session sessionhibernate = factory.getCurrentSession();
+		String hql = "from Product A where A.productId=" + "'" + productId + "'";
 		Query query = sessionhibernate.createQuery(hql);
-        Product product = (Product) query.list().get(0);
-        if (product != null) {
-            if (cartItems.containsKey(productId)) {
-                Cart item = cartItems.get(productId);
-                
-                if(product.getQuantity()-item.getQuantity()>=0) {
-                item.setProduct(product);
-                item.setQuantity(item.getQuantity() + 1);
-                cartItems.put(productId, item);}
-                else
-                	// error khong du so luong hang
-                	return  "redirect:/shopProducts.htm";
-            } else {
-                Cart item = new Cart();
-                item.setProduct(product);
-                item.setQuantity(1);
-                cartItems.put(productId, item);
-            }
-        }
-        session.setAttribute("myCartItems", cartItems);
-        session.setAttribute("myCartTotal", totalPrice(cartItems));
-        session.setAttribute("myCartNum", cartItems.size());
-        return "redirect:/shopProducts.htm";
-    }
+		Product product = (Product) query.list().get(0);
+		if (product != null) {
+			if (cartItems.containsKey(productId)) {
+				Cart item = cartItems.get(productId);
 
-    @RequestMapping(value = "sub/{productId}")
-    public String viewUpdate(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
-        HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
-        if (cartItems == null) {
-            cartItems = new HashMap<>();
-        }
-        session.setAttribute("myCartItems", cartItems);
-        return "shop/cart";
-    }
+				if (product.getQuantity() - item.getQuantity() > 0) {
+					item.setProduct(product);
+					item.setQuantity(item.getQuantity() + 1);
+					cartItems.put(productId, item);
+				} else
+					// error khong du so luong hang
+					return "redirect:/shopProducts.htm";
+			} else {
+				if (product.getQuantity() > 0) {
+					Cart item = new Cart();
+					item.setProduct(product);
+					item.setQuantity(1);
+					cartItems.put(productId, item);
+				}
+			}
+		}
+		session.setAttribute("myCartItems", cartItems);
+		session.setAttribute("myCartTotal", totalPrice(cartItems));
+		session.setAttribute("myCartNum", cartItems.size());
+		return "redirect:/shopProducts.htm";
+	}
 
-    @RequestMapping(value = "remove/{productId}", method = RequestMethod.GET)
-    public String viewRemove(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
-        HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
-        if (cartItems == null) {
-            cartItems = new HashMap<>();
-        }
-        if (cartItems.containsKey(productId)) {
-            cartItems.remove(productId);
-        }
-        session.setAttribute("myCartItems", cartItems);
-        session.setAttribute("myCartTotal", totalPrice(cartItems));
-        session.setAttribute("myCartNum", cartItems.size());
-        return "redirect:/cart.htm";
-    }
+	@RequestMapping(value = "sub/{productId}")
+	public String viewUpdate(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
+		HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
+		if (cartItems == null) {
+			cartItems = new HashMap<>();
+		}
+		session.setAttribute("myCartItems", cartItems);
+		return "shop/cart";
+	}
 
-    
-    
-    public double totalPrice(HashMap<String, Cart> cartItems) {
-        int count = 0;
-        for (Map.Entry<String, Cart> list : cartItems.entrySet()) {
-            count += list.getValue().getProduct().getPrice() * list.getValue().getQuantity();
-        }
-        return count;
-    }
-    
+	@RequestMapping(value = "remove/{productId}", method = RequestMethod.GET)
+	public String viewRemove(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
+		HashMap<String, Cart> cartItems = (HashMap<String, Cart>) session.getAttribute("myCartItems");
+		if (cartItems == null) {
+			cartItems = new HashMap<>();
+		}
+		if (cartItems.containsKey(productId)) {
+			cartItems.remove(productId);
+		}
+		session.setAttribute("myCartItems", cartItems);
+		session.setAttribute("myCartTotal", totalPrice(cartItems));
+		session.setAttribute("myCartNum", cartItems.size());
+		return "redirect:/cart.htm";
+	}
+
+	public double totalPrice(HashMap<String, Cart> cartItems) {
+		int count = 0;
+		for (Map.Entry<String, Cart> list : cartItems.entrySet()) {
+			count += list.getValue().getProduct().getPrice() * list.getValue().getQuantity();
+		}
+		return count;
+	}
 
 }

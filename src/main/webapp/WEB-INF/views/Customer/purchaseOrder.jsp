@@ -58,7 +58,7 @@
 								<tr>
 									<td>${u.receiptId}</td>
 									<td>${u.customerId}</td>
-									<td>${u.staffId}</td>
+									<td>${u.staff.staffId}</td>
 									<td>${u.date}</td>
 									<td>${u.total}</td>
 									<td><a href="detailsPurchaseOrder-${u.receiptId}.htm">Xem Chi Tiết</a></td>

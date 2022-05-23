@@ -46,7 +46,7 @@ public class staffController {
 	public String SearchPhoneStaff(ModelMap mm, HttpServletRequest request) {
 		String phone = request.getParameter("phone");
 		Session session = factory.openSession();
-		String hql = "from Staff a where a.phone='" + phone + "'";
+		String hql = "from Staff a where a.phone LIKE '" + phone + "'";
 		Query query = session.createQuery(hql);
 		List<Receipt> list = query.list();
 		mm.addAttribute("Staff", list);
@@ -122,7 +122,7 @@ public class staffController {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
-		if(this.CheckEmail(staff.getEmail())) {
+		if(this.CheckEmail(staff.getEmail(),staff.getStaffId())) {
 			modelNV.addAttribute("message", "Email da bi trung!");
 			return "Staff/update";
 		}
@@ -218,13 +218,13 @@ public class staffController {
 		return false;
 	}
 
-	public Boolean CheckEmail(String email) {
+	public Boolean CheckEmail(String email,String ID) {
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		String hql = "FROM Staff a where a.email='"+email+"'";
 		Query query = session.createQuery(hql);
 		List<Staff> list = query.list();
-		if(list.isEmpty()) return true;
+		if(!list.isEmpty()&&!ID.equals(list.get(0).getStaffId())) return true;
 		return false;
 	}
 }

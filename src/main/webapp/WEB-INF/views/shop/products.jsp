@@ -32,9 +32,8 @@
 
 <!-- side-bar section starts -->
 
-<div class="side-bar">
-
-    <div id="close-side-bar" class="fas fa-times"></div>
+    <div class="side-bar">
+      <div id="close-side-bar" class="fas fa-times"></div>
 
     <div class="user">
         <img src="files/IMG_8200.JPG" alt="">
@@ -42,22 +41,18 @@
         <a href="logout.htm">log out</a>
     </div>
 
-    <nav class="navbar">
-        <a href="homeStore.htm"> <i class="fas fa-angle-right"></i> home </a>
-        <a href="about.htm"> <i class="fas fa-angle-right"></i> about </a>
-        <a href="shopProducts.htm"> <i class="fas fa-angle-right"></i> products </a>
-        <a href="contact.htm"> <i class="fas fa-angle-right"></i> contact </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
-        <a href="register.htm"> <i class="fas fa-angle-right"></i> register </a>
-        <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart </a>
-    </nav>
 
-</div>
+      <nav class="navbar">
+        <a href="profileCustomer.htm"> <i class="fas fa-angle-right"></i> Profile </a>
+        <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
+        <a href="shopProducts.htm">
+          <i class="fas fa-angle-right"></i> Your Receipt
+        </a>
+        <a href="cart.htm"> <i class="fas fa-angle-right"></i> Cart </a>
+      </nav>
+    </div>
 
-<!-- side-bar section ends -->
-
-<!-- products section starts  -->
-
+    <!-- side-bar section ends -->
 <section class="products">
 
     <h1 class="heading"> featured <span>products</span> </h1>
@@ -95,7 +90,6 @@
     </div>
 
        
-
 </section>
 
 <!-- products section ends -->
@@ -164,20 +158,20 @@
 
 
  <script type="text/javascript">
- let loadMoreBtn = document.querySelector('#load-more');
- let currentItem = 3;
+//  let loadMoreBtn = document.querySelector('#load-more');
+//  let currentItem = 3;
 
- loadMoreBtn.onclick = () =>{
-    let boxes = [...document.querySelectorAll('.products .box-container .box')];
-    for (var i = currentItem; i < currentItem + 3; i++){
-       boxes[i].style.display = 'inline-block';
-    }
-    currentItem += 3;
+//  loadMoreBtn.onclick = () =>{
+//     let boxes = [...document.querySelectorAll('.products .box-container .box')];
+//     for (var i = currentItem; i < currentItem + 3; i++){
+//        boxes[i].style.display = 'inline-block';
+//     }
+//     currentItem += 3;
 
-    if(currentItem >= boxes.length){
-       loadMoreBtn.style.display = 'none';
-    }
- }		
+//     if(currentItem >= boxes.length){
+//        loadMoreBtn.style.display = 'none';
+//     }
+//  }		
       let sideBar = document.querySelector(".side-bar");
 
       document.querySelector("#menu-btn").onclick = () => {

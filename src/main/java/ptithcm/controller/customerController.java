@@ -37,7 +37,7 @@ public class customerController {
 	public String SearchPhoneCustomer(ModelMap mm,HttpServletRequest request) {
 		String phone = request.getParameter("phone"); 
 		Session session = factory.openSession();
-		String hql = "from Customer a where a.phone='"+phone+"'";
+		String hql = "from Customer a where a.phone LIKE '"+phone+"'";
 		Query query = session.createQuery(hql);
 		List<Receipt> list = query.list();
 		mm.addAttribute("Customer", list);
@@ -58,7 +58,7 @@ public class customerController {
 	@RequestMapping("detailsPurchaseOrder-{Id1}")
 	public String receiptDetails(ModelMap model, @PathVariable("Id1") String Id1) {
 		Session session = factory.getCurrentSession();
-		String hql="from ReceiptDetails A where A.receiptId="+"'"+Id1+"'" ;
+		String hql="from ReceiptDetails A where A.receipt.receiptId="+"'"+Id1+"'" ;
 		Query query = session.createQuery(hql);
 		List<ReceiptDetails> list = query.list();
 		model.addAttribute("detailsPurchaseOrder", list);
