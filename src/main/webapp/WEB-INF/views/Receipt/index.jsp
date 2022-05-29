@@ -36,7 +36,7 @@
 			<div class="card-body">
 				<div class="row">
 					<div class="col-xl-4 search ">
-						<form method="post" action="ReceiptSearchCustomer.htm">
+						<form method="post" action="staff/ReceiptSearchCustomer.htm">
 							<div class="input-group">
 								<input type="text" class="form-control search-input"
 									placeholder="nhap ma nhan khach hang" name="customer">
@@ -47,7 +47,7 @@
 						</form>
 					</div>
 					<div class="col-xl-7">
-						<form method="post" action="ReceiptSearchDate.htm">
+						<form method="post" action="staff/ReceiptSearchDate.htm">
 							<div class="input-group">
 								<label>Tu ngay</label>
 								<input type="date" class="form-control" name="sinceDay">
@@ -60,7 +60,7 @@
 						</form>
 					</div>
 					<div class="col-xl-1">
-						<a href="Receipt.htm" class="btn btn-danger">ALL</a>
+						<a href="staff/Receipt.htm" class="btn btn-danger">ALL</a>
 					</div>
 				</div>
 				<div class="table-responsive">
@@ -83,13 +83,13 @@
 									<td>${u.getStaff().staffId}</td>
 									<td>${u.date}</td>
 									<td class="dollars">${u.total}</td>
-									<td><a href="details-${u.receiptId}.htm">Xem Chi Tiết</a></td>
+									<td><a href="staff/details-${u.receiptId}.htm">Xem Chi Tiết</a></td>
 
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<a href="Turnover.htm" style="text-decoration: none;"
+					<a href="staff/Turnover.htm" style="text-decoration: none;"
 								class="btn-submit">Doanh Thu</a>
 				</div>
 				<!-- pagination -->

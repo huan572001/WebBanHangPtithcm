@@ -19,6 +19,7 @@ import ptithcm.entity.Customer;
 import ptithcm.entity.Receipt;
 import ptithcm.entity.ReceiptDetails;
 @Controller
+@RequestMapping("/admin/")
 public class customerController {
 	@Autowired
 	SessionFactory factory;

@@ -30,7 +30,7 @@ import ptithcm.entity.Customer;
 import ptithcm.entity.Staff;
 
 @Controller
-
+@RequestMapping("/staff/")
 public class profileController {
 	@Autowired
 	SessionFactory factory;

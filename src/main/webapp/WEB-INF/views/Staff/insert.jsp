@@ -84,7 +84,7 @@
 				<div class="card rounded">
 					<div class="card-body">
 						${message} ${message1 } ${messageError}
-						<form:form action="insertStaff.htm" modelAttribute="staff">
+						<form:form action="admin/insertStaff.htm" modelAttribute="staff">
 							<div class="input-group board-create__item">
 								<label class="desc-input">Họ Tên Nhân Viên</label>
 								<form:input placeholder="Nhập họ ten nhân viên"
@@ -120,7 +120,7 @@
 								<button name="btnCreate" type="submit" class="btn-submit">Lưu
 									Nhân Viên</button>
 								<a style="text-decoration: none;" class="btn-submit"
-									href="User.htm">Danh Sách Nhân Viên</a>
+									href="admin/User.htm">Danh Sách Nhân Viên</a>
 							</div>
 						</form:form>
 					</div>

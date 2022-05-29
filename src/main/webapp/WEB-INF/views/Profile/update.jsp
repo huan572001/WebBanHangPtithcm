@@ -85,7 +85,7 @@
 
 						<div>
 							${message}${messageError }
-							<form:form action="updateCurrent-{staffId}.htm"
+							<form:form action="staff/updateCurrent-{staffId}.htm"
 								modelAttribute="profile">
 								<div style="display: none"
 									class="input-group board-create__item">
@@ -128,7 +128,7 @@
 									<button name="btnCreate" type="submit" class="btn-submit">Lưu
 										Thay Đổi</button>
 									<a style="text-decoration: none;" class="btn-submit"
-										href="profile.htm">Quay Lại</a>
+										href="staff/profile.htm">Quay Lại</a>
 								</div>
 							</form:form>
 						</div>

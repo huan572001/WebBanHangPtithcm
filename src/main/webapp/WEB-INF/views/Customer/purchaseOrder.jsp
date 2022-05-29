@@ -61,13 +61,13 @@
 									<td>${u.staff.staffId}</td>
 									<td>${u.date}</td>
 									<td>${u.total}</td>
-									<td><a href="detailsPurchaseOrder-${u.receiptId}.htm">Xem Chi Tiết</a></td>
+									<td><a href="admin/detailsPurchaseOrder-${u.receiptId}.htm">Xem Chi Tiết</a></td>
 							
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-						<a href="Customer.htm" style="text-decoration: none;"
+						<a href="admin/Customer.htm" style="text-decoration: none;"
 						class="btn-submit">Quay Lại</a>
 				</div>
 				<!-- pagination -->

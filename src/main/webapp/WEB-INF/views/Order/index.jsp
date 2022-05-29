@@ -13,14 +13,14 @@
 		<div class="card rounded">
 			<div class="card-body">
 					<div class="col-xl-4 search ">
-					<form method="post" action="SearchPhoneCustomerOrder.htm">
+					<form method="post" action="staff/SearchPhoneCustomerOrder.htm">
 						<div class="input-group">
 							<input type="text" class="form-control search-input"
 								placeholder="Search " name="phone">
 							<button type="submit" class="btn btn-light search-button">
 								<i class="fas fa-search text-danger"></i>
 							</button>
-							<a href="Order.htm" class="btn btn-danger">ALL</a>
+							<a href="staff/Order.htm" class="btn btn-danger">ALL</a>
 						</div>
 					</form>
 				</div>
@@ -48,13 +48,13 @@
 									<td>${u.getCustomer().getPhone()}</td>
 									<td>${u.getCustomer().getEmail()}</td>
 									<td>${u.status}</td>
-									<td><a href="detailsOrder-${u.orderId}.htm">Xem Chi
+									<td><a href="staff/detailsOrder-${u.orderId}.htm">Xem Chi
 											Tiết</a></td>
 									<td>
-										<a href="closeOrder-${u.orderId}.htm"> <i
+										<a href="staff/closeOrder-${u.orderId}.htm"> <i
 											class="fas fa-solid fa-check fa-lg text-success mr-2"></i>
 										</a> 
-										<a href="orderCancel-${u.orderId}.htm">
+										<a href="staff/orderCancel-${u.orderId}.htm">
 										<i class="fas fa-trash-alt fa-lg text-danger"></i> 
 										</a>
 									</td>
