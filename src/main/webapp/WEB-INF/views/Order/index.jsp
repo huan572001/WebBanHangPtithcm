@@ -35,6 +35,7 @@
 								<th>SDT</th>
 								<th>Email</th>
 								<th>Trạng Thái</th>
+								<th>Địa Chỉ</th>
 								<th>Chi Tiết</th>
 								<th>Xác Nhận/Hủy</th>
 							</tr>
@@ -48,6 +49,7 @@
 									<td>${u.getCustomer().getPhone()}</td>
 									<td>${u.getCustomer().getEmail()}</td>
 									<td>${u.status}</td>
+									<td>${u.address }</td>
 									<td><a href="detailsOrder-${u.orderId}.htm">Xem Chi
 											Tiết</a></td>
 									<td>

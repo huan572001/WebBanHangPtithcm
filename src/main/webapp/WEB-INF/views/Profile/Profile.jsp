@@ -100,7 +100,7 @@
 									<a style="text-decoration: none;" class="btn btn-danger"
 										href="updateCurrent-${u.staffId}.htm">Sửa Thông Tin</a>
 									<a style="text-decoration: none;" class="btn btn-danger"
-										href="changePassword.htm">doi mat khau</a>
+										href="changePassword.htm">Đổi Mật Khẩu</a>
 <%-- 								</c:forEach> --%>
 							</div>
 							<!-- pagination -->

@@ -44,7 +44,7 @@ public class orderController {
 	public String SearchPhoneCustomer(ModelMap mm,HttpServletRequest request) {
 		String phone = request.getParameter("phone"); 
 		Session session = factory.openSession();
-		String hql = "from TheOrder A where A.customer.phone LIKE '"+phone+"'";
+		String hql = "from TheOrder A where A.customer.phone LIKE '%"+phone+"%'";
 		Query query = session.createQuery(hql);
 		List<TheOrder> list = query.list();
 		mm.addAttribute("Order", list);
@@ -92,6 +92,7 @@ public class orderController {
 		receipt.setStaff(listStaff.get(0));
 		receipt.setCustomerId(list.get(0).getCustomer().getCustomerId());
 		receipt.setDate(new Date());
+		receipt.setAddress(list.get(0).getAddress());
 		receipt.setTotal(tong);
 		receipt.setReceiptId(this.createReceiptId());
 		

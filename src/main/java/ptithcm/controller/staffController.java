@@ -46,7 +46,7 @@ public class staffController {
 	public String SearchPhoneStaff(ModelMap mm, HttpServletRequest request) {
 		String phone = request.getParameter("phone");
 		Session session = factory.openSession();
-		String hql = "from Staff a where a.phone LIKE '" + phone + "'";
+		String hql = "from Staff a where a.phone LIKE '%" + phone + "%'";
 		Query query = session.createQuery(hql);
 		List<Receipt> list = query.list();
 		mm.addAttribute("Staff", list);

@@ -71,6 +71,7 @@
 								<th>Mã Khách Hàng</th>
 								<th>Mã Nhân Viên</th>
 								<th>Ngày Lập</th>
+								<th>Địa Chỉ</th>
 								<th>Tổng Tiền</th>
 								<th>Chi Tiết</th>
 							</tr>
@@ -82,6 +83,7 @@
 									<td>${u.customerId}</td>
 									<td>${u.getStaff().staffId}</td>
 									<td>${u.date}</td>
+									<td>${u.address}</td>
 									<td class="dollars">${u.total}</td>
 									<td><a href="details-${u.receiptId}.htm">Xem Chi Tiết</a></td>
 
