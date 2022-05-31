@@ -29,10 +29,7 @@ public class homeStoreController {
 	SessionFactory factory;
 	@RequestMapping(value = "homeStore", method = RequestMethod.GET)
 	public String showForm(HttpSession httpsession,ModelMap model) {
-		
-		 Customer customer =(Customer)httpsession.getAttribute("currentUser");   
-		if(customer==null)
-		return"redirect:login.htm";
+
 //		model.addAttribute("lastProduct", getLastProduct()) ;
 		return "shop/home";
 	}

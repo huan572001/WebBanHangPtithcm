@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +21,23 @@
 
 </head>
 <body>
-    
+    <%
+	String uname="",pass="",reme="";
+	Cookie[] cookies= request.getCookies();
+	if(cookies != null){
+		for (Cookie cook : cookies){
+			if(cook.getName().equals("cookUname")){
+				uname=cook.getValue();
+			}else if(cook.getName().equals("cookPass")){
+			
+				pass=cook.getValue();
+			}else if(cook.getName().equals("cookReme")){
+				reme = cook.getValue();
+			}
+			}
+	}
+
+%>
 <!-- header section starts  -->
 
 <%@ include file="/resources/Shared/headerTHP.jsp"%>
@@ -42,13 +57,13 @@
     </div>
 
     <nav class="navbar">
-        <a href="home.html"> <i class="fas fa-angle-right"></i> home </a>
-        <a href="about.html"> <i class="fas fa-angle-right"></i> about </a>
-        <a href="products.html"> <i class="fas fa-angle-right"></i> products </a>
-        <a href="contact.html"> <i class="fas fa-angle-right"></i> contact </a>
-        <a href="login.html"> <i class="fas fa-angle-right"></i> login </a>
-        <a href="register.html"> <i class="fas fa-angle-right"></i> register </a>
-        <a href="cart.html"> <i class="fas fa-angle-right"></i> cart </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> home </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> about </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> products </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> contact </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> register </a>
+        <a href="login.htm"> <i class="fas fa-angle-right"></i> cart </a>
     </nav>
 
 </div>
@@ -61,16 +76,16 @@
 
     <form action="login.htm" method="post">
         <h3>login now</h3>
-        <input type="email" name="username" placeholder="enter your email" id="" class="box">
-        <input type="password" name="password" placeholder="enter your password" id="" class="box">
+        <input type="email" name="username" value="<%=uname %>" placeholder="enter your email" id="" class="box">
+        <input type="password" name="password" value="<%=pass%>" placeholder="enter your password" id="" class="box">
         
         ${message}
         <div class="remember">
-            <input type="checkbox" name="" id="remember-me">
+            <input type="checkbox" name="remember" id="remember" <%="on".equals(reme)?"checked='/checked'":"" %>/>
             <label for="remember-me"> remember me </label>
         </div>
         <input type="submit" value="login now" class="btn">
-        <p>don't have an account?</p>
+        <p><a href="checkAccount.htm">Forgot password?</a></p>
         <a href="insertCustomer.htm" class="btn link">register now</a>
     </form>
 
@@ -95,24 +110,10 @@
 
 <%@ include file="/resources/Shared/footerTHP.jsp"%>
 
-<section class="credit">
 
-    <p> created by <span>THP</span> | all rights reserved! </p>
-
-    <img src="images/card_img.png" alt="">
-
-</section>
 
 <!-- footer section ends -->
 
-
-
-
-<!-- swiper js link      -->
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
 
 </body>
 </html>
