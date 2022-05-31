@@ -12,14 +12,14 @@
 		<div class="card rounded">
 			<div class="card-body">
 					<div class="col-xl-4 search ">
-					<form method="post" action="SearchPhoneCustomer.htm">
+					<form method="post" action="admin/SearchPhoneCustomer.htm">
 						<div class="input-group">
 							<input type="text" class="form-control search-input"
 								placeholder="Search " name="phone">
 							<button type="submit" class="btn btn-light search-button">
 								<i class="fas fa-search text-danger"></i>
 							</button>
-							<a href="Customer.htm" class="btn btn-danger">ALL</a>
+							<a href="admin/Customer.htm" class="btn btn-danger">ALL</a>
 						</div>
 					</form>
 				</div>
@@ -44,7 +44,7 @@
 									<td>${u.account.username}</td>
 									<td>${u.email}</td>
 									<td>
-										<a href="purchaseOrder-${u.customerId}.htm">Chi Tiết</a>
+										<a href="admin/purchaseOrder-${u.customerId}.htm">Chi Tiết</a>
 									</td>
 								</tr>
 							</c:forEach>

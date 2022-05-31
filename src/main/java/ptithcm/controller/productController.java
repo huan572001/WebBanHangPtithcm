@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ptithcm.entity.Product;
 
 @Controller
+@RequestMapping("/staff/")
 public class productController {
 	@Autowired
 	SessionFactory factory;

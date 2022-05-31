@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ptithcm.entity.*;
 
 @Controller
+@RequestMapping("/staff/")
 public class orderController {
 	@Autowired
 	SessionFactory factory;

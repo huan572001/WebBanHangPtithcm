@@ -53,7 +53,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<a href="Order.htm" style="text-decoration: none;"
+					<a href="staff/Order.htm" style="text-decoration: none;"
 						class="btn-submit">Quay Lại</a>
 				</div>
 				<!-- pagination -->

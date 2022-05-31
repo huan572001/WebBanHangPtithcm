@@ -53,7 +53,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<a href="Customer.htm" style="text-decoration: none;"
+					<a href="admin/Customer.htm" style="text-decoration: none;"
 						class="btn-submit">Quay Lại</a>
 				</div>
 				<!-- pagination -->

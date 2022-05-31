@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ptithcm.entity.*;
 @Controller
 @Transactional
+@RequestMapping("/staff/")
 public class changePasswordController {
 	@Autowired
 	SessionFactory factory;

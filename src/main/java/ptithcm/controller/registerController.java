@@ -25,7 +25,6 @@ public class registerController {
 	@RequestMapping(value = "insertCustomer", method = RequestMethod.GET)
 	public String insertStaff(ModelMap model) {
 		model.addAttribute("customer", new Customer());
-		model.addAttribute("account", new Account());
 		return "register";
 	}
 
@@ -55,7 +54,7 @@ public class registerController {
 		customer.setCustomerId(this.createCustomerId());
 		customer.setAccount(account);
 		try {
-//			session.save(account);
+			session.save(account);
 			session.save(customer);
 			
 			t.commit();

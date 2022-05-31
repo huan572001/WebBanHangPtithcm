@@ -26,6 +26,29 @@
 	<context:component-scan
 		base-package="ptithcm.controller" />
 
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/user/**" />
+			<bean class="ptithcm.interceptor.LoggerInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/staff/**" />
+			<bean class="ptithcm.interceptor.LoggerInterceptorNV" />
+
+		</mvc:interceptor>
+
+	</mvc:interceptors>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**" />
+<!-- 			<mvc:mapping path="/staff/**" /> -->
+			<bean class="ptithcm.interceptor.LoggerInterceptorAD" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 </beans>

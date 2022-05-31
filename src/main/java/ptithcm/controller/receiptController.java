@@ -27,10 +27,11 @@ import ptithcm.entity.Product;
 import ptithcm.entity.Receipt;
 
 @Controller
+@RequestMapping("/staff/")
 public class receiptController {
 	@Autowired
 	SessionFactory factory;
-
+	
 	@Transactional
 	@RequestMapping("Receipt")
 	public String receipt(ModelMap model) {
@@ -45,6 +46,7 @@ public class receiptController {
 
 	@RequestMapping(value = "ReceiptSearchDate", method = RequestMethod.POST)
 	public String receiptSearchDate(ModelMap mm, HttpServletRequest request) {
+		mm.addAttribute("ADMIN", loginController.checkMenu());
 		String sinceDay = request.getParameter("sinceDay");
 		String toTheDay = request.getParameter("toTheDay");
 		Session session = factory.openSession();
@@ -57,6 +59,7 @@ public class receiptController {
 
 	@RequestMapping(value = "ReceiptSearchCustomer", method = RequestMethod.POST)
 	public String receiptSearchCustomer(ModelMap mm, HttpServletRequest request) {
+		mm.addAttribute("ADMIN", loginController.checkMenu());
 		String customer = request.getParameter("customer");
 		Session session = factory.openSession();
 		String hql = "from Receipt a where a.customerId LIKE '%" + customer + "%'";
@@ -79,6 +82,7 @@ public class receiptController {
 
 	@RequestMapping("Turnover")
 	public String turnover(ModelMap model) {
+		model.addAttribute("ADMIN", loginController.checkMenu());
 		Session session = factory.openSession();
 		String hql = "from Staff";
 		Query query = session.createQuery(hql);
@@ -127,6 +131,7 @@ public class receiptController {
 
 	@RequestMapping(value = "turnoverSearchDate", method = RequestMethod.POST)
 	public String turnoverSearchDate(ModelMap model, HttpServletRequest request) {
+		model.addAttribute("ADMIN", loginController.checkMenu());
 		String sinceDay = request.getParameter("sinceDay");
 		String toTheDay = request.getParameter("toTheDay");
 		Session session = factory.openSession();
@@ -184,6 +189,7 @@ public class receiptController {
 	public String turnoverSearchMonth(ModelMap model, HttpServletRequest request) {
 		String timePattern= request.getParameter("timePattern");
 		this.turnoverSearch(model, timePattern);
+		model.addAttribute("ADMIN", loginController.checkMenu());
 		return "Receipt/turnover";
 	}
 	
