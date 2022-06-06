@@ -76,7 +76,7 @@
 			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 				<div class="card">
 					<div class="card-body">
-						<h3>Thêm Nhân Viên</h3>
+						<h3>Add Staff</h3>
 					</div>
 				</div>
 			</div>
@@ -86,29 +86,29 @@
 						${message} ${message1 } ${messageError}
 						<form:form action="admin/insertStaff.htm" modelAttribute="staff">
 							<div class="input-group board-create__item">
-								<label class="desc-input">Họ Tên Nhân Viên</label>
-								<form:input placeholder="Nhập họ ten nhân viên"
+								<label class="desc-input">Fullname</label>
+								<form:input 
 									class="input-item " type="text" pattern="[A-Za-z]{2-50}"
 									title="chỉ nhận các ký tự a-z" path="fullname" />
 							</div>
 							<div class="input-group board-create__item">
-								<label class="desc-input">Số Điện Thoại</label>
-								<form:input placeholder="Nhập số điện thoại" class="input-item "
+								<label class="desc-input">Phone Number</label>
+								<form:input  class="input-item "
 									type="text" pattern="[0]{1}[0-9]{9}" title="0xxx xxx xxx"
 									path="phone" />
 							</div>
 							<div class="input-group board-create__item">
-								<label class="desc-input">Giới Tính</label>
+								<label class="desc-input">Gender</label>
 								<form:radiobutton path="gender" value="true" label="Nam"/>
 								<form:radiobutton path="gender" value="false" label="nu"/>
 							</div>
 							<div class="input-group board-create__item">
-								<label class="desc-input">Địa Chỉ</label>
-								<form:input placeholder="Nhập địa chỉ" class="input-item "
+								<label class="desc-input">Address</label>
+								<form:input  class="input-item "
 									path="address" />
 							</div>
 							<div class="input-group board-create__item">
-								<label class="desc-input">Ngày Sinh</label> <input type="date"
+								<label class="desc-input">Date of Birth</label> <input type="date"
 									name="birthday1" />
 							</div>
 							<div class="input-group board-create__item">
@@ -117,10 +117,9 @@
 									class="input-item " path="email" />
 							</div>
 							<div>
-								<button name="btnCreate" type="submit" class="btn-submit">Lưu
-									Nhân Viên</button>
+								<button name="btnCreate" type="submit" class="btn-submit">Save</button>
 								<a style="text-decoration: none;" class="btn-submit"
-									href="admin/User.htm">Danh Sách Nhân Viên</a>
+									href="admin/User.htm">List Staff</a>
 							</div>
 						</form:form>
 					</div>

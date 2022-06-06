@@ -74,7 +74,7 @@
 			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 				<div class="card">
 					<div class="card-body">
-						<h3>Chỉnh Sửa Thông Tin</h3>
+						<h3>Edit Personal Information</h3>
 
 					</div>
 				</div>
@@ -89,46 +89,46 @@
 								modelAttribute="profile">
 								<div style="display: none"
 									class="input-group board-create__item">
-									<label class="desc-input">Mã Nhân Viên:</label>
+									<label class="desc-input">Staff Code:</label>
 									<form:input placeholder="Nhập mã nhan viên" class="input-item"
 										type="text" path="staffId" value="${staffId}" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Họ Tên Nhân Viên</label>
+									<label class="desc-input">Full Name</label>
 									<form:input placeholder="Nhập mã nhân viên" class="input-item "
 										type="" path="fullname" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Số Điện Thoại</label>
-									<form:input placeholder="Nhập số điện thoại"
+									<label class="desc-input">Phone Number</label>
+									<form:input placeholder="Enter your phone number"
 										class="input-item " path="phone" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Giới Tính</label>
-									<form:radiobutton path="gender" value="true" label="Nam" />
-									<form:radiobutton path="gender" value="false" label="nu" />
+									<label class="desc-input">Gender</label>
+									<form:radiobutton path="gender" value="true" label="Male" />
+									<form:radiobutton path="gender" value="false" label="Female" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Địa Chỉ</label>
-									<form:input placeholder="Nhập địa chỉ" class="input-item "
+									<label class="desc-input">Address</label>
+									<form:input placeholder="Enter address" class="input-item "
 										path="address" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Ngày Sinh</label> <input type="date"
+									<label class="desc-input">Birthday</label> <input type="date"
 										name="birthday1" />
 									<%-- 									<form:input type="date" data-date="" data-date-format="MM/DD/YY" placeholder="Nhập ngày sinh" class="input-item " --%>
 									<%-- 										path="birthday" /> --%>
 								</div>
 								<div class="input-group board-create__item">
 									<label class="desc-input">Email</label>
-									<form:input type="email" placeholder="EX: xxx@gamil.com"
+									<form:input type="email" placeholder="EX: xxx@xxx.com"
 										class="input-item " path="email" />
 								</div>
 								<div>
-									<button name="btnCreate" type="submit" class="btn-submit">Lưu
-										Thay Đổi</button>
-									<a style="text-decoration: none;" class="btn-submit"
-										href="staff/profile.htm">Quay Lại</a>
+									<button name="btnCreate" type="submit" class="btn btn-dark">
+										Save Changes</button>
+									<a style="text-decoration: none;" class="btn btn-dark"
+										href="staff/profile.htm">Come Back</a>
 								</div>
 							</form:form>
 						</div>

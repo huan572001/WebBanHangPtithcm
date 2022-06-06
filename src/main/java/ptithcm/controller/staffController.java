@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.*;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 
 @Controller
@@ -78,7 +81,8 @@ public class staffController {
 		String birthday = request.getParameter("birthday1");
 		Account account = new Account();
 		account.setUsername(staff.getEmail());
-		account.setPassword(staff.getStaffId());
+		
+		account.setPassword(this.digest(staff.getStaffId()));
 		account.setPosition("NV");
 		String hql = "FROM Account";
 		Query query = session.createQuery(hql);
@@ -87,7 +91,7 @@ public class staffController {
 		for (Account t1 : listAccount) {
 
 			if (t1.getUsername().trim().equals(account.getUsername().trim())) {
-				model.addAttribute("message1", "Email Ä‘Ã£ tá»“n táº¡i");
+				model.addAttribute("message1", "Email is duplicated!");
 				return "Staff/insert";
 			}
 
@@ -124,7 +128,7 @@ public class staffController {
 		Transaction t = session.beginTransaction();
 		staff.setUsername(this.getCurrentUsername(staff.getStaffId()));
 		if(this.CheckEmail(staff.getEmail(),staff.getStaffId())) {
-			modelNV.addAttribute("message", "Email da bi trung!");
+			modelNV.addAttribute("message", "Email is duplicated!");
 			return "Staff/update";
 		}
 		if (this.checkConstraintForm(staff, modelNV))
@@ -132,10 +136,10 @@ public class staffController {
 		try {
 			session.update(staff);
 			t.commit();
-			modelNV.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng!");
+			modelNV.addAttribute("message", "Update successful!");
 		} catch (Exception e) {
 			t.rollback();
-			modelNV.addAttribute("message", "Cáº­p nháº­t tháº¥t báº¡i!");
+			modelNV.addAttribute("message", "Update failed!");
 		} finally {
 			session.close();
 		}
@@ -213,7 +217,7 @@ public class staffController {
 		if (staff.getFullname().isEmpty() || staff.getPhone().isEmpty() || staff.getEmail().isEmpty()
 				|| staff.getAddress().isEmpty() || staff.getGender() == null) {
 
-			model.addAttribute("messageError", "KhÃ´ng duoc de trong!");
+			model.addAttribute("messageError", "Not be empty!");
 			return true;
 		}
 		return false;
@@ -228,4 +232,19 @@ public class staffController {
 		if(!list.isEmpty()&&!ID.equals(list.get(0).getStaffId())) return true;
 		return false;
 	}
+	public static String digest(String pass) {
+    	byte[] input=pass.getBytes(StandardCharsets.UTF_8);
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA3-256");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalArgumentException(e);
+        }
+        byte[] result = md.digest(input);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : result) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 }

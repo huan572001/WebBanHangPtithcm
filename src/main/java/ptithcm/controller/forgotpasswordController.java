@@ -44,7 +44,7 @@ public class forgotpasswordController {
 		Query query = session.createQuery(hql);
 		List<Account> list = query.list();
 		if (list.isEmpty()) {
-			model.addAttribute("message", "Tai khoan khong ton tai");
+			model.addAttribute("message", "Account does not exist!");
 			return "mailer/form";
 		} else {
 			try {
@@ -53,21 +53,18 @@ public class forgotpasswordController {
 					Query queryCustomer = session.createQuery(hqlCustomer);
 					List<Customer> listCustomer = queryCustomer.list();
 					email = listCustomer.get(0).getEmail();
-					System.out.print(email);
 				} else {
 					String hqlStaff = "from Staff a where a.username='" + account + "'";
 					Query queryStaff = session.createQuery(hqlStaff);
 					List<Staff> listStaff = queryStaff.list();
 					email = listStaff.get(0).getEmail();
-					System.out.print(email);
 				}
 				password = list.get(0).getPassword();
 				String from = "huan572001@gmail.com";
 				String subject = "Web ban linh kien thong bao Mat khau cho ban";
-				String body = "Mat khau cau ban la: '" + password+"' hay dang nhap va doi lại mat khau cau ban";
+				String body = "Mat khau cau ban la: '" + password+"' hay dang nhap va doi lai mat khau cau ban";
 				String to = email;
 				try {
-					System.out.print(email);
 					MimeMessage mail = mailer.createMimeMessage();
 					MimeMessageHelper helper = new MimeMessageHelper(mail);
 					helper.setFrom(from, from);

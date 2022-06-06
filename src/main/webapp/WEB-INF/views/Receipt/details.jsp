@@ -35,10 +35,10 @@
 						<thead>
 							<tr class="text-muted">
 
-								<th>Mã Sản Phẩm</th>
-								<th>Tên Sản Phẩm</th>
-								<th>Số Lượng</th>
-								<th>Đơn Giá</th>
+								<th>Product Id</th>
+								<th>Product's Name</th>
+								<th>Quantity</th>
+								<th>Price</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -54,7 +54,7 @@
 						</tbody>
 					</table>
 					<a href="staff/Receipt.htm" style="text-decoration: none;"
-						class="btn-submit">Quay Lại</a>
+						class="btn-submit">Back To Receipt</a>
 				</div>
 				<!-- pagination -->
 				

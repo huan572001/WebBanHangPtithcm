@@ -90,39 +90,39 @@
 							<form:form action="admin/update-{staffId}.htm" modelAttribute="staff">
 								<div style="display: none"
 									class="input-group board-create__item">
-									<label class="desc-input">Mã Nhân Viên:</label>
-									<form:input placeholder="Nhập mã nhan viên" class="input-item"
+									<label class="desc-input">StaffId:</label>
+									<form:input  class="input-item"
 										type="text" path="staffId" value="${staffId }" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Họ Tên Nhân Viên</label>
-									<form:input placeholder="Nhập mã nhân viên" class="input-item "
+									<label class="desc-input">Fullname</label>
+									<form:input class="input-item "
 										type="" path="fullname" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Số Điện Thoại</label>
-									<form:input placeholder="Nhập số điện thoại"
+									<label class="desc-input">Phone Number</label>
+									<form:input
 										class="input-item " path="phone" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Giới Tính</label>
+									<label class="desc-input">Gender</label>
 									<form:radiobutton path="gender" value="true" label="Nam" />
 									<form:radiobutton path="gender" value="false" label="nu" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Trạng Thái</label>
-									<form:radiobutton path="status" value="true" label="Kích hoạt" />
+									<label class="desc-input">Status</label>
+									<form:radiobutton path="status" value="true" label="Enable" />
 									<form:radiobutton path="status" value="false"
-										label="Huy kích hoạt" />
+										label="Disable" />
 								</div>
 								<div class="input-group board-create__item">
-									<label class="desc-input">Địa Chỉ</label>
-									<form:input placeholder="Nhập địa chỉ" class="input-item "
+									<label class="desc-input">Address</label>
+									<form:input class="input-item "
 										path="address" />
 								</div>
 								<div style="display: none;"
 									class="input-group board-create__item">
-									<label class="desc-input">Ngày Sinh</label>
+									<label class="desc-input">Date of Birth</label>
 									<form:input class="input-item " path="birthday" />
 								</div>
 								<div class="input-group board-create__item">
@@ -131,10 +131,9 @@
 										class="input-item " path="email" />
 								</div>
 								<div>
-									<button name="btnCreate" type="submit" class="btn-submit">Lưu
-										Thay Đổi</button>
+									<button name="btnCreate" type="submit" class="btn-submit">Save</button>
 									<a style="text-decoration: none;" class="btn-submit"
-										href="admin/User.htm">Danh Sách Nhân Viên</a>
+										href="admin/User.htm">List Staff</a>
 								</div>
 							</form:form>
 						</div>

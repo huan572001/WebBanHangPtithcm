@@ -68,7 +68,7 @@
 			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 				<div class="card">
 					<div class="card-body">
-						<h3>Thêm Sản Phẩm</h3>
+						<h3>Add Product</h3>
 					</div>
 				</div>
 			</div>
@@ -82,41 +82,47 @@
 								
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Tên sản phẩm:</label>
-									<form:input placeholder="Vui lòng điền tên sản phẩm"
+									<label class="desc-input">Add Product</label>
+									<form:input placeholder="Please enter product name"
 										class="input-item " type="text" path="name" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Giá Gốc:</label>
-									<form:input placeholder="Nhập số tiền" class="input-item "
+									<label class="desc-input">Cost:</label>
+									<form:input placeholder="Enter money" class="input-item "
 										type="number" min="0" path="cost" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Giá Bán:</label>
-									<form:input placeholder="Nhập số tiền" class="input-item "
+									<label class="desc-input">Price:</label>
+									<form:input placeholder="Enter money" class="input-item "
 										type="number" min="0" path="price" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Số Lượng Tồn:</label>
-									<form:input placeholder="Nhập số lượng" class="input-item "
+									<label class="desc-input">Quantity:</label>
+									<form:input placeholder="Enter quantity" class="input-item "
 										type="number" min="0" path="quantity" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Hình Ảnh:</label>
+									<label class="desc-input">Image:</label>
 									<input class="input-item "
 										type="file" name="photo" />
 								</div>
-								<button name="btnCreate" type="submit" class="btn-submit">Lưu Sản Phẩm</button>
+								<div class="input-group board-create__item">
+
+									<label class="desc-input">Description</label>
+									<form:input placeholder="Please fill in the product description"
+										class="input-item " type="text" path="description" />
+								</div>
+								<button name="btnCreate" type="submit" class="btn-submit">Save Product</button>
 								<a style="text-decoration: none;" class="btn-submit"
-									href="staff/Product.htm">Danh Sách Sản Phẩm</a>
+									href="staff/Product.htm">Come Back</a>
 							</form:form>
 
 

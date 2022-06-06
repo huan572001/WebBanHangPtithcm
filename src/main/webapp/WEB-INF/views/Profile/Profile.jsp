@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Thông Tin Cá Nhân</title>
+<title>Profile</title>
 <%@ include file="/resources/Shared/head.jsp"%>
 <style>
 .btn-submit {
 	color: #fff;
 	background-color: #000;
-	text-decoration: none;
+	text-decoration: none;	
 	padding: 11px 16px;
 	display: inline-block;
 	margin-top: 15px;
@@ -35,7 +35,7 @@
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 					<div class="card">
 						<div class="card-body">
-							<h3>Thông Tin Cá Nhân</h3>
+							<h3>Personal Information</h3>
 							${messageAD}
 
 						</div>
@@ -50,7 +50,7 @@
 
 										<tbody>
 											<tr>
-												<td>name</td>
+												<td>Name</td>
 												<td>${Staff.fullname}</td>
 
 
@@ -86,21 +86,11 @@
 										<tr>
 
 										</tr>
-
-
-
-										<%-- 									<c:forEach var="u" items="${Staff}"> --%>
-										<!-- 										<tr> -->
-										<%-- 											<td>${u.fullname}</td> --%>
-										<%-- 											<td>${u.phone}</td> --%>
-										<%-- 											<td>${u.address}</td> --%>
-										<!-- 										</tr> -->
-										<%-- 									</c:forEach> --%>
 									</table>
 									<a style="text-decoration: none;" class="btn btn-danger"
-										href="staff/updateCurrent-${u.staffId}.htm">Sửa Thông Tin</a>
+										href="staff/updateCurrent-${u.staffId}.htm">Edit Information</a>
 									<a style="text-decoration: none;" class="btn btn-danger"
-										href="staff/changePassword.htm">doi mat khau</a>
+										href="staff/changePassword.htm">Change Password</a>
 <%-- 								</c:forEach> --%>
 							</div>
 							<!-- pagination -->
@@ -109,45 +99,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- modol edit" -->
-		<div class="modal fade" id="confirm">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">EDIT</h4>
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-					</div>
-					<div class="modal-body">
-						<table class="table table-striped bg-light text-center">
-							<tr>
-								<td>Name</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>New name</td>
-								<td>
-									<form action="">
-										<input type="text" id="fname" name="fname" value="">
 
-									</form>
-								</td>
-							</tr>
-						</table>
-
-					</div>
-					<div class="modal-footer">
-						<!-- <button type="button" class="btn btn-success"
-                                data-dismiss="modal">
-                                Save
-                        </button> -->
-						<input type="submit" value="Save">
-						<button type="button" class="btn btn-light" data-dismiss="modal">
-							Cancel</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--end of modol edit" -->
 	</section>
 	<%@ include file="/resources/Shared/footer.jsp"%>
 </body>

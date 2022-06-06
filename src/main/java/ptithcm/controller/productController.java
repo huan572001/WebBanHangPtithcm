@@ -66,7 +66,7 @@ public class productController {
 		product.setProductId(this.createProductId());
 		product.setImage((photo.getAbsolutePath().substring(photo.getAbsolutePath().lastIndexOf(photo.separator) + 1)));
 		if (product.getName().isEmpty() || product.getCost() == null || product.getPrice() == null||product.getQuantity()==null) {
-			model.addAttribute("message", "Khong duoc de trong!");
+			model.addAttribute("message", "Not be empty!");
 			return "Product/insert";
 		}
 		product.setStatus(true);
@@ -120,16 +120,16 @@ public class productController {
 			product.setImage((photo.getAbsolutePath().substring(photo.getAbsolutePath().lastIndexOf(photo.separator) + 1)));
 		}
 		if (product.getName().isEmpty() || product.getCost() == null || product.getPrice() == null||product.getQuantity()==null) {
-			model.addAttribute("message", "Khong duoc de trong!");
+			model.addAttribute("message", "Not be empty!");
 			return "Product/update";
 		}
 		try {
 			session.update(product);
 			t.commit();
-			model.addAttribute("message", "Cập nhật thành công!");
+			model.addAttribute("message", "Update successful");
 		} catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "Cập nhật thất bại!");
+			model.addAttribute("message", "Update failed!");
 		} finally {
 			session.close();
 		}
@@ -149,11 +149,11 @@ public class productController {
 		try {
 			session.update(product);
 			t.commit();
-			model.addAttribute("message", "Cập nhật thành công!");
+			model.addAttribute("message", "Update successful!");
 		}
 		catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "Cập nhật thất bại!");
+			model.addAttribute("message", "Update failed!");
 		}
 		finally {
 			session.close();
@@ -163,7 +163,6 @@ public class productController {
 	@RequestMapping(value="SearchNameProduct", method=RequestMethod.POST)
 	public String SearchNameProduct(ModelMap mm,HttpServletRequest request) {
 		String name = request.getParameter("name"); 
-		System.out.print(name);
 		Session session = factory.openSession();
 		String hql = "from Product a where a.name LIKE '%" + name + "%'";
 		Query query = session.createQuery(hql);

@@ -56,7 +56,7 @@ public class profileController {
 		profile.setStatus(this.getCurrentStatus(profile.getStaffId()));
 		String birthday=request.getParameter("birthday1");
 		if(this.CheckEmail(profile.getEmail())) {
-			model.addAttribute("message", "Email da bi trung!");
+			model.addAttribute("message", "Email is duplicated!");
 			return "Profile/update";
 		}
 		if (this.checkConstraintForm(profile, model)) return "Profile/update";
@@ -68,10 +68,10 @@ public class profileController {
 			}
 			session.update(profile);
 			t.commit();
-			model.addAttribute("message", "Cập nhật thành công!");
+			model.addAttribute("message", "Update successful!");
 		} catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "Cập nhật thất bại!");
+			model.addAttribute("message", "Update failed!");
 		} finally {
 			session.close();
 		}
@@ -112,7 +112,7 @@ public class profileController {
 	}
 	public Boolean checkConstraintForm(Staff staff,ModelMap model) {
 		if(staff.getFullname().isEmpty()||staff.getPhone().isEmpty()||staff.getEmail().isEmpty()||staff.getAddress().isEmpty()||staff.getGender()==null) {
-			model.addAttribute("messageError","Không duoc de trong!");
+			model.addAttribute("messageError","Not be empty!");
 			return true;
 		}
 		return false;

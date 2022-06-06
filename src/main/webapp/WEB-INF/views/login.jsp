@@ -86,7 +86,7 @@
         </div>
         <input type="submit" value="login now" class="btn">
         <p><a href="checkAccount.htm">Forgot password?</a></p>
-        <a href="register/insertCustomer.htm" class="btn link">register now</a>
+        <a href="insertCustomer.htm" class="btn link">register now</a>
     </form>
 
 </section>

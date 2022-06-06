@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Danh Sách Nhân Viên</title>
+<title>User Management</title>
 <style type="text/css">
 .btn-submit {
 	color: #fff;
@@ -30,24 +30,24 @@
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 		<div class="card">
 			<div class="card-body">
-				<h3>Danh Sách Nhân Viên</h3>
+				<h3>User Management</h3>
 				<a href="admin/insertStaff.htm" style="text-decoration: none;"
-					class="btn-submit">Thêm Nhân Viên</a>
+					class="btn-submit">Add Staff</a>
+				<div class="col-xl-4 search ">
+					<form method="post" action="admin/SearchPhoneStaff.htm">
+						<div class="input-group">
+							<input type="text" class="form-control search-input"
+								placeholder="Search " name="phone">
+							<button type="submit" class="btn btn-light search-button">
+								<i class="fas fa-search text-danger"></i>
+							</button>
+							<a href="admin/User.htm" class="btn btn-danger">ALL</a>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div class="col-xl-4"></div>
 
-			<div class="col-xl-4 search ">
-				<form method="post" action="admin/SearchPhoneStaff.htm">
-					<div class="input-group">
-						<input type="text" class="form-control search-input"
-							placeholder="Search " name="phone">
-						<button type="submit" class="btn btn-light search-button">
-							<i class="fas fa-search text-danger"></i>
-						</button>
-						<a href="admin/User.htm" class="btn btn-danger">ALL</a>
-					</div>
-				</form>
-			</div>
+
 		</div>
 	</div>
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
@@ -85,7 +85,7 @@
 					</table>
 				</div>
 				<!-- pagination -->
-				
+
 			</div>
 		</div>
 	</div>
