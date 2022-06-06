@@ -1,5 +1,6 @@
 <header class="header">
 
+
 	<a href="homeStore.htm" class="logo"> <i class="fas fa-store"></i>THP-STORE
 	</a>
 	<form action="" class="search-form">
@@ -16,5 +17,6 @@
 			${sessionScope.myCartNum}</span> <a href="logout.htm"
 			class="fas fa-sign-out-alt"></a>
 	</div>
+
 
 </header>

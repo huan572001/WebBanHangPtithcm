@@ -31,6 +31,14 @@ public class Receipt {
 	private Float total;
 	@OneToMany(mappedBy = "receipt", cascade = CascadeType.ALL)
 	private Collection<ReceiptDetails> receiptDetails;
+	private String address;
+
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public Float getTotal() {
 		return total;
 	}

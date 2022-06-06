@@ -20,7 +20,7 @@
 
 .btn-submit:hover {
 	background-color: #ccc;
-	color: #000; .
+	color: #000;
 	dollars: before{ content:'$';
 }
 }
@@ -71,7 +71,6 @@
 						</div>
 						
 					</div>
-
 				</div>
 			</div>
 			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
