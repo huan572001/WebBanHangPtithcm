@@ -19,71 +19,14 @@
 	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
 <!-- cusom css file link  -->
-<link rel="stylesheet" href="<c:url value='resources/css/style.css'/>">
+<link rel="stylesheet" href="<c:url value='resources/css/stylelogin.css'/>">
 <base href="${pageContext.servletContext.contextPath}/">
 
 </head>
+<%@ include file="/resources/Shared/headerTHP.jsp"%>
 <body>
 
 	<!-- header section starts  -->
-
-	<header class="header">
-
-		<a href="home.jsp" class="logo"> <i class="fas fa-store"></i>
-			THP-STORE
-		</a>
-
-		<form action="" class="search-form">
-			<input type="search" id="search-box" placeholder="search here...">
-			<label for="search-box" class="fas fa-search"></label>
-		</form>
-
-		<div class="icons">
-			<div id="menu-btn" class="fas fa-bars"></div>
-			<div id="search-btn" class="fas fa-search"></div>
-			<a href="login.htm" class="fas fa-user"></a> <a href="#"
-				class="fas fa-heart"></a> <a href="cart.htm"
-				class="fas fa-shopping-cart"></a>
-		</div>
-
-	</header>
-
-	<!-- header section ends -->
-
-	<!-- side-bar section starts -->
-
-	<div class="side-bar">
-
-		<div id="close-side-bar" class="fas fa-times"></div>
-
-		<div class="user">
-			<img src="images/user-img.png" alt="">
-			<h3>shaikh anas</h3>
-			<a href="#">log out</a>
-		</div>
-
-		<nav class="navbar">
-			<a href="home.htm"> <i class="fas fa-angle-right"></i> home
-			</a> <a href="about.htm"> <i class="fas fa-angle-right"></i> about
-			</a> <a href="products.htm"> <i class="fas fa-angle-right"></i>
-				products
-			</a> <a href="contact.htm"> <i class="fas fa-angle-right"></i>
-				contact
-			</a> <a href="login.htm"> <i class="fas fa-angle-right"></i> login
-			</a> <a href="register.htm"> <i class="fas fa-angle-right"></i>
-				register
-			</a> <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart
-			</a>
-		</nav>
-
-	</div>
-
-	<!-- side-bar section ends -->
-
-	<!-- side-bar section ends -->
-
-	<!-- register form section starts  -->
-
 	<section class="register">
 
 		<!--         <input type="text" name="" placeholder="enter your name" id="" class="box"> -->
@@ -120,50 +63,91 @@
 
 
 
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-	<!-- footer section starts  -->
+<script src="js/script.js"></script>
 
-	<section class="quick-links">
+<script>
 
-		<a href="home.htm" class="logo"> <i class="fas fa-store"></i>
-			THP-STORE
-		</a>
+var swiper = new Swiper(".home-slider", {
+	   loop:true,
+	   spaceBetween: 20,
+	   pagination: {
+	      el: ".swiper-pagination",
+	      clickable:true,
+	    },
+	});
 
-		<div class="links">
-			<a href="home.htm"> home </a> <a href="about.htm"> about </a> <a
-				href="products.htm"> products </a> <a href="contact.htm">
-				contact </a> <a href="login.htm"> login </a> <a href="register.htm">
-				register </a> <a href="cart.htm"> cart </a>
-		</div>
+	 var swiper = new Swiper(".category-slider", {
+	   loop:true,
+	   spaceBetween: 20,
+	   pagination: {
+	      el: ".swiper-pagination",
+	      clickable:true,
+	   },
+	   breakpoints: {
+	      0: {
+	         slidesPerView: 2,
+	       },
+	      650: {
+	        slidesPerView: 3,
+	      },
+	      768: {
+	        slidesPerView: 4,
+	      },
+	      1024: {
+	        slidesPerView: 5,
+	      },
+	   },
+	});
 
-		<div class="share">
-			<a href="#" class="fab fa-facebook-f"></a> <a href="#"
-				class="fab fa-twitter"></a> <a href="#" class="fab fa-instagram"></a>
-			<a href="#" class="fab fa-linkedin"></a>
-		</div>
+	var swiper = new Swiper(".products-slider", {
+	   loop:true,
+	   spaceBetween: 20,
+	   pagination: {
+	      el: ".swiper-pagination",
+	      clickable:true,
+	   },
+	   breakpoints: {
+	      550: {
+	        slidesPerView: 2,
+	      },
+	      768: {
+	        slidesPerView: 2,
+	      },
+	      1024: {
+	        slidesPerView: 3,
+	      },
+	   },
+	});
 
-	</section>
+	let navbar = document.querySelector('.header .flex .navbar');
+	let profile = document.querySelector('.header .flex .profile');
 
-	<section class="credit">
+	document.querySelector('#menu-btn').onclick = () =>{
+	   navbar.classList.toggle('active');
+	   profile.classList.remove('active');
+	}
 
-		<p>
-			created by <span>THP</span> | all rights reserved!
-		</p>
+	document.querySelector('#user-btn').onclick = () =>{
+	   profile.classList.toggle('active');
+	   navbar.classList.remove('active');
+	}
 
-		<img src="images/card_img.png" alt="">
+	window.onscroll = () =>{
+	   navbar.classList.remove('active');
+	   profile.classList.remove('active');
+	}
 
-	</section>
+	let mainImage = document.querySelector('.quick-view .box .row .image-container .main-image img');
+	let subImages = document.querySelectorAll('.quick-view .box .row .image-container .sub-image img');
 
-	<!-- footer section ends -->
-
-
-
-
-	<!-- swiper js link      -->
-	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-	<!-- custom js file link  -->
-	<script src="js/script.js"></script>
-
+	subImages.forEach(images =>{
+	   images.onclick = () =>{
+	      src = images.getAttribute('src');
+	      mainImage.src = src;
+	   }
+	});
+</script>
 </body>
 </html>

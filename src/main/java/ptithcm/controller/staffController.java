@@ -23,6 +23,7 @@ import ptithcm.entity.*;
 import java.text.SimpleDateFormat;
 
 @Controller
+@RequestMapping("/admin/")
 public class staffController {
 	@Autowired
 	SessionFactory factory;

@@ -36,6 +36,7 @@ public class CartController {
 		return "shop/cart";
 	}
 
+
 	@Transactional
 	@RequestMapping(value = "add/{productId}")
 	public String viewAdd(ModelMap mm, HttpSession session, @PathVariable("productId") String productId) {
@@ -54,10 +55,11 @@ public class CartController {
 				if (product.getQuantity() - item.getQuantity() > 0) {
 					item.setProduct(product);
 					item.setQuantity(item.getQuantity() + 1);
+					
 					cartItems.put(productId, item);
 				} else
 					// error khong du so luong hang
-					return "redirect:/shopProducts.htm";
+					return "redirect:/shop.htm";
 			} else {
 				if (product.getQuantity() > 0) {
 					Cart item = new Cart();
@@ -70,7 +72,8 @@ public class CartController {
 		session.setAttribute("myCartItems", cartItems);
 		session.setAttribute("myCartTotal", totalPrice(cartItems));
 		session.setAttribute("myCartNum", cartItems.size());
-		return "redirect:/shopProducts.htm";
+		session.setAttribute("myProductTotal", totalProduct(cartItems));
+		return "redirect:/shop.htm";
 	}
 
 	@RequestMapping(value = "sub/{productId}")
@@ -104,6 +107,25 @@ public class CartController {
 			count += list.getValue().getProduct().getPrice() * list.getValue().getQuantity();
 		}
 		return count;
+	}
+	public double totalProduct(HashMap<String, Cart> cartItems) {
+		int count = 0;
+		for (Map.Entry<String, Cart> list : cartItems.entrySet()) {
+			count +=list.getValue().getQuantity();
+		}
+		return count;
+	}
+	public void cleanUpAfterCheckout(HttpSession session) {
+		 session.setAttribute("myCartItems", null);
+	        session.setAttribute("myCartTotal",0.0);
+	        session.setAttribute("myCartNum", null);
+		
+	}
+
+	@RequestMapping(value = "delete-all", method = RequestMethod.GET)
+	public String deleteAll(HttpSession session) {
+		cleanUpAfterCheckout(session);
+		return "shop/cart";
 	}
 
 }

@@ -98,9 +98,9 @@
 										<%-- 									</c:forEach> --%>
 									</table>
 									<a style="text-decoration: none;" class="btn btn-danger"
-										href="updateCurrent-${u.staffId}.htm">Sửa Thông Tin</a>
+										href="staff/updateCurrent-${u.staffId}.htm">Sửa Thông Tin</a>
 									<a style="text-decoration: none;" class="btn btn-danger"
-										href="changePassword.htm">doi mat khau</a>
+										href="staff/changePassword.htm">doi mat khau</a>
 <%-- 								</c:forEach> --%>
 							</div>
 							<!-- pagination -->

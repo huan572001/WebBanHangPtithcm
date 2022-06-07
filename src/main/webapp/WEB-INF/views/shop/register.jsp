@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <!-- cusom css file link  -->
-       <link rel="stylesheet" href="<c:url value='resources/css/style.css'/>">
+       <link rel="stylesheet" href="<c:url value='resources/css/stylelogin.css'/>">
        <base href="${pageContext.servletContext.contextPath}/">
 
 </head>
+<%@ include file="/resources/Shared/headerTHP.jsp"%>
 <body>
     
 <!-- header section starts  -->
 
-<%@ include file="/resources/Shared/headerTHP.jsp"%>
 
 <!-- header section ends -->
 
@@ -90,81 +90,91 @@
 
 <!-- footer section starts  -->
 
-<%@ include file="/resources/Shared/footerTHP.jsp"%>
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 
-<section class="credit">
+<script src="js/script.js"></script>
 
-    <p> created by <span>THP</span> | all rights reserved! </p>
+<script>
 
-    <img src="images/card_img.png" alt="">
+var swiper = new Swiper(".home-slider", {
+	   loop:true,
+	   spaceBetween: 20,
+	   pagination: {
+	      el: ".swiper-pagination",
+	      clickable:true,
+	    },
+	});
 
-</section>
+	 var swiper = new Swiper(".category-slider", {
+	   loop:true,
+	   spaceBetween: 20,
+	   pagination: {
+	      el: ".swiper-pagination",
+	      clickable:true,
+	   },
+	   breakpoints: {
+	      0: {
+	         slidesPerView: 2,
+	       },
+	      650: {
+	        slidesPerView: 3,
+	      },
+	      768: {
+	        slidesPerView: 4,
+	      },
+	      1024: {
+	        slidesPerView: 5,
+	      },
+	   },
+	});
 
-<!-- footer section ends -->
+	var swiper = new Swiper(".products-slider", {
+	   loop:true,
+	   spaceBetween: 20,
+	   pagination: {
+	      el: ".swiper-pagination",
+	      clickable:true,
+	   },
+	   breakpoints: {
+	      550: {
+	        slidesPerView: 2,
+	      },
+	      768: {
+	        slidesPerView: 2,
+	      },
+	      1024: {
+	        slidesPerView: 3,
+	      },
+	   },
+	});
 
+	let navbar = document.querySelector('.header .flex .navbar');
+	let profile = document.querySelector('.header .flex .profile');
 
-a
+	document.querySelector('#menu-btn').onclick = () =>{
+	   navbar.classList.toggle('active');
+	   profile.classList.remove('active');
+	}
 
-<!-- swiper js link      -->
-<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+	document.querySelector('#user-btn').onclick = () =>{
+	   profile.classList.toggle('active');
+	   navbar.classList.remove('active');
+	}
 
-<!-- custom js file link  -->
- <script type="text/javascript">
-      let sideBar = document.querySelector(".side-bar");
+	window.onscroll = () =>{
+	   navbar.classList.remove('active');
+	   profile.classList.remove('active');
+	}
 
-      document.querySelector("#menu-btn").onclick = () => {
-        sideBar.classList.toggle("active");
-      };
+	let mainImage = document.querySelector('.quick-view .box .row .image-container .main-image img');
+	let subImages = document.querySelectorAll('.quick-view .box .row .image-container .sub-image img');
 
-      document.querySelector("#close-side-bar").onclick = () => {
-        sideBar.classList.remove("active");
-      };
-
-      let searchForm = document.querySelector(".search-form");
-
-      document.querySelector("#search-btn").onclick = () => {
-        searchForm.classList.toggle("active");
-      };
-
-      window.onscroll = () => {
-        sideBar.classList.remove("active");
-        searchForm.classList.remove("active");
-      };
-
-      document
-        .querySelectorAll(".accordion-container .accordion")
-        .forEach((accordion) => {
-          accordion.onclick = () => {
-            accordion.classList.toggle("active");
-          };
-        });
-
-      var swiper = new Swiper(".home-slider", {
-        loop: true,
-        grabCursor: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-
-      var swiper = new Swiper(".review-slider", {
-        loop: true,
-        grabCursor: true,
-        spaceBetween: 20,
-        breakpoints: {
-          450: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        },
-      });
-    </script>
-
+	subImages.forEach(images =>{
+	   images.onclick = () =>{
+	      src = images.getAttribute('src');
+	      mainImage.src = src;
+	   }
+	});
+</script>
 </body>
 </html>

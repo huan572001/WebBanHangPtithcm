@@ -19,70 +19,11 @@
 	href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
 <!-- cusom css file link  -->
-<link rel="stylesheet" href="<c:url value='resources/css/style.css'/>">
+<link rel="stylesheet" href="<c:url value='resources/css/stylelogin.css'/>">
 <base href="${pageContext.servletContext.contextPath}/">
 
 </head>
 <body>
-
-	<!-- header section starts  -->
-
-	<header class="header">
-
-		<a href="home.jsp" class="logo"> <i class="fas fa-store"></i>
-			THP-STORE
-		</a>
-
-		<form action="" class="search-form">
-			<input type="search" id="search-box" placeholder="search here...">
-			<label for="search-box" class="fas fa-search"></label>
-		</form>
-
-		<div class="icons">
-			<div id="menu-btn" class="fas fa-bars"></div>
-			<div id="search-btn" class="fas fa-search"></div>
-			<a href="login.htm" class="fas fa-user"></a> <a 
-				class="fas fa-heart"></a> <a href="cart.htm"
-				class="fas fa-shopping-cart"></a>
-		</div>
-
-	</header>
-
-	<!-- header section ends -->
-
-	<!-- side-bar section starts -->
-
-	<div class="side-bar">
-
-		<div id="close-side-bar" class="fas fa-times"></div>
-
-		<div class="user">
-			<img src="images/user-img.png" alt="">
-			<h3>shaikh anas</h3>
-			<a >log out</a>
-		</div>
-
-		<nav class="navbar">
-			<a href="home.htm"> <i class="fas fa-angle-right"></i> home
-			</a> <a href="about.htm"> <i class="fas fa-angle-right"></i> about
-			</a> <a href="products.htm"> <i class="fas fa-angle-right"></i>
-				products
-			</a> <a href="contact.htm"> <i class="fas fa-angle-right"></i>
-				contact
-			</a> <a href="login.htm"> <i class="fas fa-angle-right"></i> login
-			</a> <a href="register.htm"> <i class="fas fa-angle-right"></i>
-				register
-			</a> <a href="cart.htm"> <i class="fas fa-angle-right"></i> cart
-			</a>
-		</nav>
-
-	</div>
-
-	<!-- side-bar section ends -->
-
-	<!-- side-bar section ends -->
-
-	<!-- register form section starts  -->
 
 	<section class="register">
 	

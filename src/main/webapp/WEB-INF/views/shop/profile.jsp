@@ -18,75 +18,19 @@
     <!-- cusom css file link  -->
        <link rel="stylesheet" href="<c:url value='resources/css/style.css'/>">
        <base href="${pageContext.servletContext.contextPath}/">
-
-</head>
-<body>
-<!-- header section starts  -->
-
 <%@ include file="/resources/Shared/headerTHP.jsp"%>
+</head>
+<section class="form-container">
 
-<!-- header section ends -->
-
-<!-- side-bar section starts -->
-
-    <div class="side-bar">
-      <div id="close-side-bar" class="fas fa-times"></div>
-
-    <div class="user">
-        <img src="images/user-img.png" alt="">
-        <h3>${sessionScope.currentUser.fullname}</h3>
-        <a href="logout.htm">log out</a>
-    </div>
-
-
-      <nav class="navbar">
-        <a href="profileCustomer.htm"> <i class="fas fa-angle-right"></i> Profile </a>
-        <a href="about.htm"> <i class="fas fa-angle-right"></i> Your Order </a>
-        <a href="shopProducts.htm">
-          <i class="fas fa-angle-right"></i> Your Receipt
-        </a>
-        <a href="cart.htm"> <i class="fas fa-angle-right"></i> Cart </a>
-      </nav>
-    </div>
-
-    <!-- side-bar section ends -->
-
-<!-- login form section starts  -->
-
-<section class="register">
-
-    <form action="changeProfile.htm" method="post">
-        <h3>Your Profile</h3>
-        <input type="text" name="profileName" placeholder="enter your name" id="" class="box" value="${proName}">
-        <input type="email" name="profileEmail" placeholder="enter your email" id="" value="${proEmail}" class="box">
-        <input type="text" name="profilePhone" placeholder="enter your password" id="" value="${proPhone}" class="box">
-        <input type="submit" value="Save" class="btn">
-    </form>
+   <form action="changeProfile.htm" method="post">
+      <h3>update now</h3>
+    
+      <input type="text" name="profileName" required placeholder="enter your username" maxlength="20"  class="box" value="${proName}">
+      <input type="email" name="profileEmail" required placeholder="enter your email" maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')" value="${proEmail}">
+      <input type="text" name="profilePhone" required placeholder="enter your phone" maxlength="50"  class="box" oninput="this.value = this.value.replace(/\s/g, '')" value="${proPhone}">
+      <input type="submit" value="update now" class="btn" name="submit">
+   </form>
 
 </section>
-<!-- login form section ends  -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- footer section starts  -->
-
-<%@ include file="/resources/Shared/footerTHP.jsp"%>
-
-
-
-<!-- footer section ends -->
-
-
-</body>
 </html>

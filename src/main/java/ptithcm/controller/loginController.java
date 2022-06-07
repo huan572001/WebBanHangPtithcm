@@ -58,7 +58,7 @@ public class loginController {
 						List<Staff> liststaff = queryaccount.list();
 						staff=liststaff.get(0);
 						model.addAttribute("Staff", liststaff);
-						return "redirect:profile.htm";//không được sửa
+						return "redirect:staff/profile.htm";//không được sửa
 					}
 					else if(Account.getPosition().equals("NV")) {
 						account = Account;
@@ -66,7 +66,7 @@ public class loginController {
 						Query queryaccount = session.createQuery(hqlaccount);
 						List<Staff> liststaff = queryaccount.list();
 						staff=liststaff.get(0);
-						return "redirect:profile.htm";//không được sửa
+						return "redirect:staff/profile.htm";//không được sửa
 					}
 					else if(Account.getPosition().equals("KH")) {
 						
@@ -93,9 +93,12 @@ public class loginController {
 		loginController.account.setUsername(null);
 		loginController.account.setPassword(null);
 		loginController.account.setPosition(null);
+		session.setAttribute("currentUser", null);
+		session.setAttribute("fullname", null);
 		return "redirect:login.htm";
 	}
 	public static String checkMenu() {
+		if(loginController.account.getUsername()==null) return "redirect:login.htm";
 		if(loginController.account.getPosition().equals("NV"))
 		return "style='display: none'";
 		return "";
@@ -104,6 +107,7 @@ public class loginController {
 		Customer customer = findByUsername( request.getParameter("username").toString());
 		httpsession.setAttribute("currentUser", customer);
 		httpsession.setAttribute("fullname", customer.getFullname());
+		
 		if(request.getParameter("remember")!=null) {
 			 //4. save cookies
 			Cookie cookieUname = new Cookie("cookUname", request.getParameter("username"));

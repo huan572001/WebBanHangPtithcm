@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ptithcm.entity.Product;
 
 @Controller
+@RequestMapping("/staff/")
 public class productController {
 	@Autowired
 	SessionFactory factory;
@@ -164,7 +165,7 @@ public class productController {
 		String name = request.getParameter("name"); 
 		System.out.print(name);
 		Session session = factory.openSession();
-		String hql = "from Product a where a.name LIKE '" + name + "'";
+		String hql = "from Product a where a.name LIKE '%" + name + "%'";
 		Query query = session.createQuery(hql);
 		List<Product> list = query.list();
 		mm.addAttribute("products", list);

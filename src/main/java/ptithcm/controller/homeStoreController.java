@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import model.Cart;
 import ptithcm.entity.*;
 @Controller
 public class homeStoreController {
@@ -29,23 +30,34 @@ public class homeStoreController {
 	SessionFactory factory;
 	@RequestMapping(value = "homeStore", method = RequestMethod.GET)
 	public String showForm(HttpSession httpsession,ModelMap model) {
-
+		Session session = factory.openSession();
+		String hql = "from Product p where p.status='true'";
+		Query query = session.createQuery(hql);
+		List<Product> listProducts = query.list();
+		
+		model.addAttribute("listProducts", listProducts);
 //		model.addAttribute("lastProduct", getLastProduct()) ;
 		return "shop/home";
 	}
+	@RequestMapping(value = "search_page", method = RequestMethod.GET)
+	public String searchpage(HttpSession httpsession,ModelMap model) {
 
-	@RequestMapping(value = "shopping", method = RequestMethod.GET)
-	public  String shoppingNow(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
-		
-		Session session = factory.openSession();
-		String search =getLastProduct().getName();
-		String hql = "from Product p where p.name like '%"+search.toString()+"%'";
-		Query query = session.createQuery(hql);
-		List<Product> listProducts = query.list();
-		modelMap.addAttribute("listProducts", listProducts);
-		return"shop/products";
-		
+//		model.addAttribute("lastProduct", getLastProduct()) ;
+		return "shop/search_page";
 	}
+	@RequestMapping(value = "orders", method = RequestMethod.GET)
+	public String orders(HttpSession httpsession,ModelMap modelMap) {
+		Customer customer = (Customer) httpsession.getAttribute("currentUser");
+		if (customer == null) {
+			return "redirect:login.htm";
+		}
+	
+		List<TheOrder> yourOrders = yourOrders(customer.getCustomerId()); 
+		
+		httpsession.setAttribute("yourOrders", yourOrders);
+		return "shop/orders";
+	}
+
 
 	@RequestMapping(value = "profileCustomer", method = RequestMethod.GET)
 	public  String viewProfile(HttpServletRequest request,ModelMap modelMap, HttpSession httpsession) {
@@ -79,22 +91,44 @@ public class homeStoreController {
 		return"redirect:homeStore.htm";
 	}
 
-	public Product getLastProduct()
-	{
-		Session session = factory.openSession();
-		String hql = "select max( CAST(productId AS int)) from Product";
-		Query query = session.createQuery(hql);
-		List<Integer> list = query.list();
-		Integer id=list.get(0);
-		 session = factory.openSession();
-		 hql = "from Product p where p.productId='"+id+"'";
-		 List<Product> listP = query.list();
-		return listP.get(0);
-	}
 	@RequestMapping(value = "about", method = RequestMethod.GET)
 	public  String about() {
 		
 			return "shop/about";
 		
 	}
+
+
+	public  String listProductOrderDetails (String id) {
+		Session session = factory.openSession();
+		String hql = "from OrderDetails p where p.orderId='"+id+"'";
+		 Query query = session.createQuery(hql);
+		 List<OrderDetails> list= query.list();
+		 String product = new String();
+		 for (OrderDetails orderDetails : list) {
+			product+=orderDetails.getProduct().getName()+" ("+Integer.toString(orderDetails.getQuantity())+"X"+Float.toString(orderDetails.getProduct().getPrice())+")	";
+		}
+		
+		 return product;
+	}
+	public  List<TheOrder> yourOrders (String customerId) {
+		Session session = factory.openSession();
+		String hql = "from TheOrder p where p.customer.customerId='"+customerId+"'";
+		 Query query = session.createQuery(hql);
+			return query.list();
+		
+	}
+	public  float totalPrice (String id) {
+		Session session = factory.openSession();
+		String hql = "from OrderDetails p where p.orderId='"+id+"'";
+		 Query query = session.createQuery(hql);
+		 List<OrderDetails> list= query.list();
+		 float total = 0 ;
+		 for (OrderDetails orderDetails : list) {
+			 total+=orderDetails.getQuantity()*orderDetails.getProduct().getPrice();
+		}
+		
+		 return total;
+	}
+	
 }

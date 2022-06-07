@@ -86,7 +86,7 @@
 
 						<div>
 							${message}
-							<form:form action="{productId}.htm" modelAttribute="product">
+							<form:form action="staff/{productId}.htm" modelAttribute="product">
 								<div style="display: none" class="input-group board-create__item">
 
 									<label style="display: none"  class="desc-input">Mã Sản Phẩm:</label>
@@ -136,7 +136,7 @@
 								</div>
 								<button name="btnCreate" type="submit" class="btn-submit">Lưu Thay Đổi</button>
 								<a style="text-decoration: none;" class="btn-submit"
-									href="Product.htm">Danh Sách Sản Phẩm</a>
+									href="staff/Product.htm">Danh Sách Sản Phẩm</a>
 							</form:form>
 
 

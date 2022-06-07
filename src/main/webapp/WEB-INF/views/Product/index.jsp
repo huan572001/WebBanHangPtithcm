@@ -56,21 +56,21 @@ th {
 						<div class="card-body">
 							<h3>Danh Sách Sản Phẩm</h3>
 
-							<a href="insertProduct.htm" style="text-decoration: none;"
-								class="btn-submit">Thêm Sản Phẩm</a> <a href="Product.htm"
+							<a href="staff/insertProduct.htm" style="text-decoration: none;"
+								class="btn-submit">Thêm Sản Phẩm</a> <a href="staff/Product.htm"
 								style="text-decoration: none;" class="btn-submit">Tải Lại</a>
 						</div>
 						<div class="col-xl-4"></div>
 
 						<div class="col-xl-4 search ">
-							<form method="post" action="SearchNameProduct.htm">
+							<form method="post" action="staff/SearchNameProduct.htm">
 								<div class="input-group">
 									<input type="text" class="form-control search-input"
 										placeholder="Search name product " name="name">
 									<button type="submit" class="btn btn-light search-button">
 										<i class="fas fa-search text-danger"></i>
 									</button>
-									<a href="Product.htm" class="btn btn-danger">ALL</a>
+									<a href="staff/Product.htm" class="btn btn-danger">ALL</a>
 								</div>
 							</form>
 						</div>
@@ -103,14 +103,14 @@ th {
 										<td>${u.status}</td>
 										<td><img style="width: 48px; height: 48px;" alt="hinh ne"
 											src="files/${u.image}">
-										<td><a href="${u.productId}.htm"><i
+										<td><a href="staff/${u.productId}.htm"><i
 												class="fas fa-edit fa-lg text-success mr-2"></i></a> 
 <!-- 												<a -->
 <%-- 											href="delete-${u.productId}.htm" --%>
 <!-- 											onclick="return confirm('Are you sure you want to delete this item?');"> -->
 <!-- 												<i class="fas fa-trash-alt fa-lg text-danger"></i> -->
 <!-- 										</a> -->
-										<a href="plus-${u.productId}.htm"><i
+										<a href="staff/plus-${u.productId}.htm"><i
 												class="fas fa-solid fa-plus fa-lg text-success mr-2"></i></a>
 										</td>
 

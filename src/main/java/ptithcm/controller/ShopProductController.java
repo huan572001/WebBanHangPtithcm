@@ -3,6 +3,7 @@ package ptithcm.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -27,7 +28,7 @@ public class ShopProductController{
 	SessionFactory factory;
 	
 	@Transactional
-	@RequestMapping(value = "shopProducts", method = RequestMethod.GET)
+	@RequestMapping(value = "shop", method = RequestMethod.GET)
 	public String showView(ModelMap modelMap,HttpServletRequest request ) {
 		
 		Session session = factory.getCurrentSession();
@@ -36,20 +37,30 @@ public class ShopProductController{
 		String search =request.getParameter("search");
 		
 		List<Product> listProducts = query.list();
-		if(search!=null) {
-			Session sessionSearch = factory.openSession();
-			
-			 hql = "from Product p where p.name like '%"+search.toString()+"%'";
-			 query = sessionSearch.createQuery(hql);
-			 listProducts = query.list();
-		}
+		
 		modelMap.addAttribute("listProducts", listProducts);
 		return"shop/products";
 	}
-	@RequestMapping(value="details/{id}", method=RequestMethod.GET)
-	public String details(@PathVariable("id") String id , ModelMap modelMap) {
-		
-		return "shop/productsDetails";
+	@Transactional
+	@RequestMapping(value = "search", method = RequestMethod.GET)
+	public String showViewSearch(ModelMap modelMap,HttpServletRequest request ) {
+		String search =request.getParameter("search_box");
+		Session session = factory.getCurrentSession();
+		String hql = "from Product p where p.status='true'and p.name like '%"+search.toString()+"%'";
+		Query query = session.createQuery(hql);
+		List<Product> listProducts = query.list();
+		modelMap.addAttribute("listProducts", listProducts);
+		return"shop/search_page";
+	}
+	@Transactional
+	@RequestMapping(value="quick_view/{id}",method = RequestMethod.GET)
+	public String details(@PathVariable("id") String id , ModelMap modelMap,HttpSession session) {
+		Session sessionhibernate = factory.getCurrentSession();
+		String hql = "from Product A where A.productId=" + "'" + id + "'";
+		Query query = sessionhibernate.createQuery(hql);
+		Product product = (Product) query.list().get(0);
+		modelMap.addAttribute("product", product);
+		return "shop/quick_view";
 	}
 	
 

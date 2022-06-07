@@ -29,7 +29,11 @@ public class checkoutController {
 	SessionFactory factory;
 
 	@RequestMapping(value = "checkout", method = RequestMethod.GET)
-	public String showForm() {
+	public String showForm(HttpSession session) {
+		Customer customer = (Customer) session.getAttribute("currentUser");
+		if (customer == null) {
+			return "redirect:login.htm";
+		}
 		return "shop/checkout";
 	}
 
@@ -39,8 +43,7 @@ public class checkoutController {
 		if (customer == null) {
 			return "redirect:login.htm";
 		}
-		mm.addAttribute("nameCustomer", customer.getFullname());
-		mm.addAttribute("phoneCustomer", customer.getPhone());
+
 		return "shop/checkout";
 	}
 

@@ -25,21 +25,21 @@
 								class="fas fa-home test-light
                                 fa-lg mr-3"></i>Dashboard
 						</a></li>
-						<li  class="nav-item"><a href="profile.htm"
+						<li  class="nav-item"><a href="staff/profile.htm"
 							class="nav-link
                                     text-white p-3 mb-2 sidebar-link">
 								<i
 								class="far fa-id-card test-light
                                     fa-lg mr-3"></i>Profile
 						</a></li>
-						<li class="nav-item"><a href="Product.htm"
+						<li class="nav-item"><a href="staff/Product.htm"
 							class="nav-link
                                      text-white p-3 mb-2 sidebar-link" >
 								<i
 								class="fab fa-product-hunt test-light
                                      fa-lg mr-3"></i>Product
 						</a></li>
-						<li class="nav-item" ><a href="Order.htm"
+						<li class="nav-item" ><a href="staff/Order.htm"
 							class="nav-link
                                      text-white p-3 mb-2 sidebar-link">
 								<i
@@ -47,21 +47,21 @@
                                     fa-lg mr-3"></i>
 								Order
 						</a></li>
-						<li ${ADMIN} class="nav-item"><a href="User.htm"
+						<li ${ADMIN} class="nav-item"><a href="admin/User.htm"
 							class="nav-link
                                      text-white p-3 mb-2 sidebar-link">
 								<i
 								class="fas fa-user test-light
                                      fa-lg mr-3"></i>User
 						</a></li>
-						<li class="nav-item"><a href="Receipt.htm"
+						<li class="nav-item"><a href="staff/Receipt.htm"
 							class="nav-link
                                     text-white p-3 mb-2 sidebar-link">
 								<i
 								class="fas fa-receipt test-light
                                     fa-lg mr-3"></i>Receipt
 						</a></li>
-						<li ${ADMIN} class="nav-item"><a href="Customer.htm"
+						<li ${ADMIN} class="nav-item"><a href="admin/Customer.htm"
 							class="nav-link
                                     text-white p-3 mb-2 sidebar-link">
 								<i
