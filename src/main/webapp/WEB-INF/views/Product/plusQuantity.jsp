@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Plus Quantity</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/../resources/Shared/head.jsp"%>
@@ -75,7 +75,7 @@
 			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 				<div class="card">
 					<div class="card-body">
-						<h3>Update Product</h3>
+						<h3>PLus Quantity</h3>
 							
 					</div>
 				</div>
@@ -117,9 +117,9 @@
 
 								<div  class="input-group board-create__item">
 
-									<label class="desc-input">Số Lượng Tồn:</label>
+									<label class="desc-input">Quantity:</label>
 									<form:input placeholder="Nhập số lượng" class="input-item "
-										type="number" value="${quantity}" path="quantity" />
+										type="number" min="0" path="quantity" />
 								</div>
 
 								<div style="display: none"  class="input-group board-create__item">
@@ -134,9 +134,9 @@
 									<form:input placeholder="Điền Ảnh" class="input-item "
 										type="text" value="${image}" path="image" />
 								</div>
-								<button name="btnCreate" type="submit" class="btn-submit">Lưu Thay Đổi</button>
+								<button name="btnCreate" type="submit" class="btn-submit">SAVE</button>
 								<a style="text-decoration: none;" class="btn-submit"
-									href="staff/Product.htm">Danh Sách Sản Phẩm</a>
+									href="staff/Product.htm">Come Back</a>
 							</form:form>
 
 

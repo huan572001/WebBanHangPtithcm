@@ -28,11 +28,11 @@
 						<thead>
 							<tr class="text-muted">
 								<th>ID</th>
-								<th>Họ và Tên</th>
+								<th>Fullname</th>
 								<th>Phone</th>
-								<th>Tên Tài Khoản</th>
+								<th>Username</th>
 								<th>Email</th>
-								<th>Đơn Mua</th>
+								<th>Purchase Order</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,7 +44,7 @@
 									<td>${u.account.username}</td>
 									<td>${u.email}</td>
 									<td>
-										<a href="admin/purchaseOrder-${u.customerId}.htm">Chi Tiết</a>
+										<a href="admin/purchaseOrder-${u.customerId}.htm">Details</a>
 									</td>
 								</tr>
 							</c:forEach>
@@ -73,40 +73,7 @@
 		</div>
 	</div>
 
-	<!-- modol confirm" -->
-	<div class="modal fade" id="confirm">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title">Confirm order</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<div class="d-grid gap-2">
-						<p>Id:</p>
-						<div class="alert alert-dark cofirm" role="alert">1</div>
-						<p>Name:</p>
-						<div class="alert alert-dark cofirm" role="alert">joni</div>
-						<p>Phone:</p>
-						<div class="alert alert-dark cofirm" role="alert">035465165</div>
-						<p>Email:</p>
-						<div class="alert alert-dark cofirm" role="alert">@gmail.com</div>
-						<p>Address:</p>
-						<div class="alert alert-dark cofirm" role="alert">H7/60 Man
-							Thien Tang nhon Phu A TP.Thu Duc</div>
-					</div>
-
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal">
-						Confirm</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">
-						Detail</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--end of modol confirm" -->
+	
 	<%@ include file="/resources/Shared/footer.jsp"%>
 </body>
 </html>

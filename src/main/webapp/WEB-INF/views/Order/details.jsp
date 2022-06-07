@@ -27,6 +27,13 @@
 <body>
 	<%@ include file="/resources/Shared/menu.jsp"%>
 	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+		<div class="card">
+			<div class="card-body">
+				<h3>Order Details</h3>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 		<div class="card rounded">
 			<div class="card-body">
 
@@ -34,11 +41,11 @@
 					<table class="table table-striped bg-light text-center">
 						<thead>
 							<tr class="text-muted">
-								<th>Mã Đơn Đặt Hàng</th>
-								<th>Mã Sản Phẩm</th>
-								<th>Tên Sản Phẩm</th>
-								<th>Số Lượng</th>
-								<th>Đơn Giá</th>
+								<th>OrderId</th>
+								<th>ProductId</th>
+								<th>Name Product</th>
+								<th>Quantity</th>
+								<th>Unit Price</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -54,10 +61,10 @@
 						</tbody>
 					</table>
 					<a href="staff/Order.htm" style="text-decoration: none;"
-						class="btn-submit">Quay Lại</a>
+						class="btn-submit">Come Back</a>
 				</div>
 				<!-- pagination -->
-				
+
 			</div>
 		</div>
 	</div>

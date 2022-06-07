@@ -19,8 +19,8 @@
 					<div class="col-xl-5.5">
 						<form method="post" action="staff/turnoverSearchDate.htm">
 							<div class="input-group">
-								<label>Tu ngay</label> <input type="date" class="form-control"
-									name="sinceDay"> <label>Den ngay</label> <input
+								<label>From</label> <input type="date" class="form-control"
+									name="sinceDay"> <label>To</label> <input
 									type="date" class="form-control" name="toTheDay">
 								<button type="submit" class="btn btn-light search-button">
 									<i class="fas fa-search text-danger"></i>
@@ -72,8 +72,8 @@
 					<table class="table table-striped bg-light text-center">
 						<thead>
 							<tr class="text-muted">
-								<th>Doanh Thu</th>
-								<th>Lợi Nhuận</th>
+								<th>Turnove</th>
+								<th>Profit</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -90,10 +90,10 @@
 					<table class="table table-striped bg-light text-center">
 						<thead>
 							<tr class="text-muted">
-								<th>Mã Nhân Viên</th>
-								<th>Tên Nhân Viên</th>
-								<th>Doanh Thu</th>
-								<th>Lợi Nhuận</th>
+								<th>Staff Id</th>
+								<th>Customer Id</th>
+								<th>Turnover</th>
+								<th>Profit</th>
 
 							</tr>
 						</thead>
@@ -111,23 +111,7 @@
 					</table>
 				</div>
 				<!-- pagination -->
-				<nav>
-					<ul class="pagination justify-content-center">
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								<span>&laquo;</span>
-						</a></li>
-
-						<li class="page-item active"><a href="#"
-							class="page-link py-2 px-3"> 1 </a></li>
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								2 </a></li>
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								3 </a></li>
-						<li class="page-item"><a href="#" class="page-link py-2 px-3">
-								<span>&raquo;</span>
-						</a></li>
-					</ul>
-				</nav>
+				
 			</div>
 		</div>
 	</div>

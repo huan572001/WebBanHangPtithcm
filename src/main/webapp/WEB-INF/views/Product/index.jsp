@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh Sách Sản Phẩm</title>
+<title>Product Management</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="/resources/Shared/head.jsp"%>
 <link rel="stylesheet" href="<c:url value='resources/css/product.css'/>">
@@ -54,26 +54,25 @@ th {
 				<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
 					<div class="card">
 						<div class="card-body">
-							<h3>Danh Sách Sản Phẩm</h3>
+							<h3>Product Management</h3>
 
 							<a href="staff/insertProduct.htm" style="text-decoration: none;"
-								class="btn-submit">Thêm Sản Phẩm</a> <a href="staff/Product.htm"
-								style="text-decoration: none;" class="btn-submit">Tải Lại</a>
-						</div>
-						<div class="col-xl-4"></div>
+								class="btn-submit">Add Products</a>
 
-						<div class="col-xl-4 search ">
-							<form method="post" action="staff/SearchNameProduct.htm">
-								<div class="input-group">
-									<input type="text" class="form-control search-input"
-										placeholder="Search name product " name="name">
-									<button type="submit" class="btn btn-light search-button">
-										<i class="fas fa-search text-danger"></i>
-									</button>
-									<a href="staff/Product.htm" class="btn btn-danger">ALL</a>
-								</div>
-							</form>
+							<div class="col-xl-4 search ">
+								<form method="post" action="staff/SearchNameProduct.htm">
+									<div class="input-group">
+										<input type="text" class="form-control search-input"
+											placeholder="Search name product " name="name">
+										<button type="submit" class="btn btn-light search-button">
+											<i class="fas fa-search text-danger"></i>
+										</button>
+										<a href="staff/Product.htm" class="btn btn-danger">ALL</a>
+									</div>
+								</form>
+							</div>
 						</div>
+
 						${message }
 					</div>
 
@@ -84,14 +83,14 @@ th {
 
 							<table class="table table-hover">
 								<tr>
-									<th>MaSP</th>
-									<th>TenSP</th>
-									<th>GiaGoc</th>
-									<th>GiaBan</th>
-									<th>SLTon</th>
-									<th>TrangThai</th>
-									<th>HinhAnh</th>
-									<th>Sửa/Thêm SL</th>
+									<th>ProductId</th>
+									<th>Name</th>
+									<th>Cost</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Status</th>
+									<th>Image</th>
+									<th>Update/Add</th>
 								</tr>
 								<c:forEach items="${products}" var="u">
 									<tr>
@@ -104,15 +103,12 @@ th {
 										<td><img style="width: 48px; height: 48px;" alt="hinh ne"
 											src="files/${u.image}">
 										<td><a href="staff/${u.productId}.htm"><i
-												class="fas fa-edit fa-lg text-success mr-2"></i></a> 
-<!-- 												<a -->
-<%-- 											href="delete-${u.productId}.htm" --%>
-<!-- 											onclick="return confirm('Are you sure you want to delete this item?');"> -->
-<!-- 												<i class="fas fa-trash-alt fa-lg text-danger"></i> -->
-<!-- 										</a> -->
-										<a href="staff/plus-${u.productId}.htm"><i
-												class="fas fa-solid fa-plus fa-lg text-success mr-2"></i></a>
-										</td>
+												class="fas fa-edit fa-lg text-success mr-2"></i></a> <!-- 												<a -->
+											<%-- 											href="delete-${u.productId}.htm" --%> <!-- 											onclick="return confirm('Are you sure you want to delete this item?');"> -->
+											<!-- 												<i class="fas fa-trash-alt fa-lg text-danger"></i> -->
+											<!-- 										</a> --> <a
+											href="staff/plus-${u.productId}.htm"><i
+												class="fas fa-solid fa-plus fa-lg text-success mr-2"></i></a></td>
 
 									</tr>
 								</c:forEach>

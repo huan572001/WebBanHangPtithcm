@@ -1,5 +1,8 @@
 package ptithcm.controller;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -34,7 +37,7 @@ public class registerController {
 		Transaction t = session.beginTransaction();
 		if (customer.getAccount().getUsername().isEmpty() || customer.getAccount().getPassword().isEmpty()
 				|| customer.getFullname().isEmpty() || customer.getPhone().isEmpty()||customer.getEmail().isEmpty()) {
-			model.addAttribute("message1", "Khong duoc de trong!");
+			model.addAttribute("message1", "Not be empty!");
 			return "register";
 
 		}
@@ -44,9 +47,11 @@ public class registerController {
 			return "register";
 		}
 		if(this.CheckEmail(customer.getEmail())) {
-			model.addAttribute("Email", "Email da ton tai");
+			model.addAttribute("Email", "Email is duplicated!");
 			return "register";
 		}
+		customer.getAccount().setPassword(this.digest(customer.getAccount().getPassword()));
+		
 		Account account= new Account();
 		account.setPosition("KH");
 		account.setUsername(customer.getAccount().getUsername());
@@ -58,10 +63,12 @@ public class registerController {
 			session.save(customer);
 			
 			t.commit();
-			model.addAttribute("message", "sucessful");
+
+			model.addAttribute("message", "Successful");
 		} catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "failed");
+			model.addAttribute("message", "failed!");
+
 		} finally {
 			session.close();
 
@@ -107,4 +114,19 @@ public class registerController {
 		}
 		return false;
 	}
+	public static String digest(String pass) {
+    	byte[] input=pass.getBytes(StandardCharsets.UTF_8);
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA3-256");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalArgumentException(e);
+        }
+        byte[] result = md.digest(input);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : result) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 }

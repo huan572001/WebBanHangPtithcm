@@ -41,31 +41,12 @@
 <!-- header section starts  -->
 
 
+<%@ include file="/resources/Shared/headerTHP.jsp"%>
+
+
 <!-- header section ends -->
 
 <!-- side-bar section starts -->
-
-<div class="side-bar">
-
-    <div id="close-side-bar" class="fas fa-times"></div>
-
-    <div class="user">
-        <img src="images/user-img.png" alt="">
-        <h3>shaikh anas</h3>
-        <a >log out</a>
-    </div>
-
-    <nav class="navbar">
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> home </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> about </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> products </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> contact </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> login </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> register </a>
-        <a href="login.htm"> <i class="fas fa-angle-right"></i> cart </a>
-    </nav>
-
-</div>
 
 <!-- side-bar section ends -->
 

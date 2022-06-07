@@ -34,7 +34,6 @@ public class homeStoreController {
 		String hql = "from Product p where p.status='true'";
 		Query query = session.createQuery(hql);
 		List<Product> listProducts = query.list();
-		
 		model.addAttribute("listProducts", listProducts);
 //		model.addAttribute("lastProduct", getLastProduct()) ;
 		return "shop/home";
@@ -81,10 +80,10 @@ public class homeStoreController {
 			session.update(customer);
 			t.commit();
 			
-			model.addAttribute("message", "Cap nhat thanh cong");
+			model.addAttribute("message", "Update successful");
 		} catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "Cập nhật thất bại!");
+			model.addAttribute("message", "Update failed!");
 		} finally {
 			session.close();
 		}

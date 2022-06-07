@@ -6,19 +6,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update product</title>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="/../resources/Shared/head.jsp"%>
 
-<style >
+<style>
 .container {
 	list-style: none;
 	left: 500px;
 }
+
 .product-role {
 	list-style: none;
 }
+
 .desc-input {
 	margin-right: 10px;
 	background-color: #ccc;
@@ -32,15 +34,18 @@
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
 	border-radius: 4px;
 }
+
 .board-create__item {
 	margin: 5px;
 	display: flex;
 	margin: 20px 0;
 }
+
 .input-item {
 	flex: 1;
 	font-style: italic;
 }
+
 .btn-submit {
 	color: #fff;
 	background-color: #000;
@@ -52,6 +57,7 @@
 	appearance: none;
 	-webkit-appearance: none;
 }
+
 .btn-submit:hover {
 	background-color: #ccc;
 	color: #000;
@@ -70,7 +76,7 @@
 				<div class="card">
 					<div class="card-body">
 						<h3>Update Product</h3>
-							
+
 					</div>
 				</div>
 			</div>
@@ -80,63 +86,67 @@
 
 						<div>
 							${message}
-							<form:form action="staff/{productId}.htm" modelAttribute="product">
-								<div style="display: none" class="input-group board-create__item">
-									<label class="desc-input">Mã Sản Phẩm:</label>
-									<form:input placeholder="Vui lòng nhập mã sản phẩm"
+							<form:form action="staff/{productId}.htm"
+								modelAttribute="product">
+								<div style="display: none"
+									class="input-group board-create__item">
+									<label class="desc-input">ProductId:</label>
+									<form:input placeholder="Please enter product name"
 										class="input-item " type="text" path="productId" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Tên sản phẩm:</label>
-									<form:input placeholder="Vui lòng điền tên sản phẩm"
+									<label class="desc-input">Name:</label>
+									<form:input placeholder="Please enter product name"
 										class="input-item " type="text" path="name" />
 								</div>
 
-								<div  style="display: none" class="input-group board-create__item">
+								<div style="display: none"
+									class="input-group board-create__item">
 
-									<label class="desc-input">Giá Gốc:</label>
-									<form:input placeholder="Nhập số tiền" class="input-item "
+									<label class="desc-input">Cost:</label>
+									<form:input placeholder="Enter money" class="input-item "
 										type="number" min="0" path="cost" />
 								</div>
 
-								<div  style="display: none" class="input-group board-create__item">
+								<div style="display: none"
+									class="input-group board-create__item">
 
-									<label class="desc-input">Giá Bán:</label>
-									<form:input placeholder="Nhập số tiền" class="input-item "
+									<label class="desc-input">price:</label>
+									<form:input placeholder="Enter money" class="input-item "
 										type="number" min="0" path="price" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Số Lượng Tồn:</label>
-									<form:input placeholder="Nhập số lượng" class="input-item "
+									<label class="desc-input">Quantity:</label>
+									<form:input placeholder="Enter quantity" class="input-item "
 										type="number" min="0" path="quantity" />
 								</div>
 
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Trạng Thái:</label>
-										<form:radiobutton path="status" value="true" label="Kích hoạt" />
+									<label class="desc-input">Status:</label>
+									<form:radiobutton path="status" value="true" label="available" />
 									<form:radiobutton path="status" value="false"
-										label="Huy kích hoạt" />
+										label="Unavailable" />
 								</div>
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Hình Ảnh:</label>
-									<input class="input-item "
-										type="file" name="photo" />
+									<label class="desc-input">Image:</label> <input
+										class="input-item " type="file" name="photo" />
 								</div>
 								<div class="input-group board-create__item">
 
-									<label class="desc-input">Mo ta</label>
-									<form:input placeholder="Vui lòng điền mo ta san pham"
+									<label class="desc-input"> Description</label>
+									<form:input
+										placeholder="Please fill in the product description"
 										class="input-item " type="text" path="description" />
 								</div>
-								<button name="btnCreate" type="submit" class="btn-submit">Lưu Thay Đổi</button>
+								<button name="btnCreate" type="submit" class="btn-submit">Update</button>
 								<a style="text-decoration: none;" class="btn-submit"
-									href="staff/Product.htm">Danh Sách Sản Phẩm</a>
+									href="staff/Product.htm">Come Back</a>
 							</form:form>
 
 

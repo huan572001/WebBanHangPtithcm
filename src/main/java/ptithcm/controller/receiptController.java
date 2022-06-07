@@ -62,7 +62,7 @@ public class receiptController {
 		mm.addAttribute("ADMIN", loginController.checkMenu());
 		String customer = request.getParameter("customer");
 		Session session = factory.openSession();
-		String hql = "from Receipt a where a.customerId LIKE '" + customer + "'";
+		String hql = "from Receipt a where a.customerId LIKE '%" + customer + "%'";
 		Query query = session.createQuery(hql);
 		List<Receipt> list = query.list();
 		mm.addAttribute("Receipt", list);

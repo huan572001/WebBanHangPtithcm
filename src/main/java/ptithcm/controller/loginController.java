@@ -1,6 +1,9 @@
 package ptithcm.controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -42,7 +45,7 @@ public class loginController {
 		List<Account> list = query.list();
 		
 		
-		
+		account.setPassword(this.digest(account.getPassword()));
 		for (Account Account : list) {
 			if (Account.getUsername().equals(account.getUsername())) {
 				if (Account.getPassword().equals(account.getPassword()) == false) {		
@@ -77,7 +80,7 @@ public class loginController {
 
 			}
 		}
-		model.put("message", "account hoac mk sai");
+		model.put("message", "User account or password incorrect");
 		return "login";
 	}
 	public static String checkAccount() {
@@ -134,5 +137,19 @@ public class loginController {
 		return result;
 		
     }
-
+	public static String digest(String pass) {
+    	byte[] input=pass.getBytes(StandardCharsets.UTF_8);
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA3-256");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalArgumentException(e);
+        }
+        byte[] result = md.digest(input);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : result) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 }

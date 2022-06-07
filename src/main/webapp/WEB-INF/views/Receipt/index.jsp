@@ -21,7 +21,11 @@
 .btn-submit:hover {
 	background-color: #ccc;
 	color: #000;
-.dollars:before { content:'$'; }
+	dollars: before{ content:'$';
+}
+}
+.abc{
+	margin-left: 15px;
 }
 </style>
 <title>Hóa Đơn</title>
@@ -31,73 +35,86 @@
 </head>
 <body>
 	<%@ include file="/resources/Shared/menu.jsp"%>
-	<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
-		<div class="card rounded">
-			<div class="card-body">
-				<div class="row">
-					<div class="col-xl-4 search ">
-						<form method="post" action="staff/ReceiptSearchCustomer.htm">
-							<div class="input-group">
-								<input type="text" class="form-control search-input"
-									placeholder="nhap ma nhan khach hang" name="customer">
-								<button type="submit" class="btn btn-light search-button">
-									<i class="fas fa-search text-danger"></i>
-								</button>
+	<div class="container-fluid">
+		<div style class="row">
+			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+				<div class="card">
+					<div class="card-body">
+						<h3>Receipt Management</h3>
+						<div class="row">
+							<div class="col-xl-4 search abc">
+								<form method="post" action="staff/ReceiptSearchCustomer.htm">
+									<div class="input-group">
+										<input type="text" class="form-control search-input"
+											placeholder="Customer Id ..." name="customer">
+										<button type="submit" class="btn btn-light search-button">
+											<i class="fas fa-search text-danger"></i>
+										</button>
+									</div>
+								</form>
 							</div>
-						</form>
-					</div>
-					<div class="col-xl-7">
-						<form method="post" action="staff/ReceiptSearchDate.htm">
-							<div class="input-group">
-								<label>Tu ngay</label>
-								<input type="date" class="form-control" name="sinceDay">
-								<label>Den ngay</label>
-								<input type="date" class="form-control" name="toTheDay">
-								<button type="submit" class="btn btn-light search-button">
-									<i class="fas fa-search text-danger"></i>
-								</button>
+							<div class="col-xl-7">
+								<form method="post" action="staff/ReceiptSearchDate.htm">
+									<div class="input-group">
+										<label>From</label> <input type="date" class="form-control"
+											name="sinceDay"> <label>To</label> <input type="date"
+											class="form-control" name="toTheDay">
+										<button type="submit" class="btn btn-light search-button">
+											<i class="fas fa-search text-danger"></i>
+										</button>
+									</div>
+								</form>
 							</div>
-						</form>
-					</div>
-					<div class="col-xl-1">
-						<a href="staff/Receipt.htm" class="btn btn-danger">ALL</a>
+							<div class="col-xl-0.5">
+								<a href="staff/Receipt.htm" class="btn btn-danger">ALL</a>
+							</div>
+						</div>
+						
 					</div>
 				</div>
-				<div class="table-responsive">
-					<table class="table table-striped bg-light text-center">
-						<thead>
-							<tr class="text-muted">
-								<th>Mã Hóa Đơn</th>
-								<th>Mã Khách Hàng</th>
-								<th>Mã Nhân Viên</th>
-								<th>Ngày Lập</th>
-								<th>Tổng Tiền</th>
-								<th>Chi Tiết</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="u" items="${Receipt}">
-								<tr>
-									<td>${u.receiptId}</td>
-									<td>${u.customerId}</td>
-									<td>${u.getStaff().staffId}</td>
-									<td>${u.date}</td>
-									<td class="dollars">${u.total}</td>
-									<td><a href="staff/details-${u.receiptId}.htm">Xem Chi Tiết</a></td>
+			</div>
+			<div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+				<div class="card rounded">
+					<div class="card-body">
 
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<a href="staff/Turnover.htm" style="text-decoration: none;"
-								class="btn-submit">Doanh Thu</a>
+
+						<div class="table-responsive">
+							<table class="table table-striped bg-light text-center">
+								<thead>
+									<tr class="text-muted">
+										<th>Receipt Id</th>
+										<th>Customer Id</th>
+										<th>Staff Id</th>
+										<th>Date</th>
+										<th>Total</th>
+										<th>Details</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="u" items="${Receipt}">
+										<tr>
+											<td>${u.receiptId}</td>
+											<td>${u.customerId}</td>
+											<td>${u.getStaff().staffId}</td>
+											<td>${u.date}</td>
+											<td class="dollars">${u.total}</td>
+											<td><a href="staff/details-${u.receiptId}.htm">See
+													Details</a></td>
+
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<a href="staff/Turnover.htm" style="text-decoration: none;"
+								class="btn-submit">Turnover</a>
+						</div>
+						<!-- pagination -->
+
+					</div>
 				</div>
-				<!-- pagination -->
-			
 			</div>
 		</div>
 	</div>
-
 
 	<%@ include file="/resources/Shared/footer.jsp"%>
 </body>

@@ -45,12 +45,12 @@
 					<table class="table table-striped bg-light text-center">
 						<thead>
 							<tr class="text-muted">
-								<th>Mã Hóa Đơn</th>
-								<th>Mã Khách Hàng</th>
-								<th>Mã Nhân Viên</th>
-								<th>Ngày Lập</th>
-								<th>Tổng Tiền</th>
-								<th>Chi Tiết</th>
+								<th>Receipt Id</th>
+								<th>Customer Id</th>
+								<th>Staff Id</th>
+								<th>Date</th>
+								<th>Total</th>
+								<th>Details</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -68,7 +68,7 @@
 						</tbody>
 					</table>
 						<a href="admin/Customer.htm" style="text-decoration: none;"
-						class="btn-submit">Quay Lại</a>
+						class="btn-submit">Back To Customer</a>
 				</div>
 				<!-- pagination -->
 				<nav>

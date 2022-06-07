@@ -1,5 +1,7 @@
 package ptithcm.controller;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.transaction.Transactional;
@@ -31,34 +33,36 @@ public class changePasswordController {
 	@RequestMapping(value="changePassword",method = RequestMethod.POST)
 	public String doimk(ModelMap model,@RequestParam("oldpassword") String oldpass,
 			@RequestParam("NewPassword") String newpass,@RequestParam("Reppassword") String reppass) {
+
 		if(oldpass.isEmpty()||reppass.isEmpty()) {
-			model.addAttribute("message", "Khong duoc de trong!");
+			model.addAttribute("message", "cannot be left blank !");
 			return "admin/changePassword";
 		}
-		if(oldpass.equals(loginController.account.getPassword())) {
+		if(this.digest(oldpass).equals(loginController.account.getPassword())) {
 			if(!newpass.equals(reppass)) {
 				model.addAttribute("account", loginController.account);
-				model.addAttribute("message", "mật khẩu xác nhận chưa chính xác");
+				model.addAttribute("message", "Confirmation password is incorrect !");
 				return "admin/changePassword";
 			}		
 		}
 		else
 		{
 			model.addAttribute("tk", loginController.account);
-			model.addAttribute("message", "mat khau chua chính xác");
+			model.addAttribute("message", "Password is incorrect !");
 			return "admin/changePassword";
 		}
-		loginController.account.setPassword(newpass);
+		
+		loginController.account.setPassword(this.digest(newpass));
 		Session session = factory.openSession();
 		Transaction t = session.beginTransaction();
 		try {
 			session.update(loginController.account);
 			t.commit();
-			model.addAttribute("message", "thanh cong!");
+			model.addAttribute("message", "successful!");
 		}
 		catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "that bai!");
+			model.addAttribute("message", "failed!");
 		}
 		finally {
 			session.close();
@@ -74,15 +78,30 @@ public class changePasswordController {
 		try {
 			session.update(a);
 			t.commit();
-			model.addAttribute("message", "thanh cong!");
+			model.addAttribute("message", "successful!");
 			
 		}
 		catch (Exception e) {
 			t.rollback();
-			model.addAttribute("message", "that bai!");
+			model.addAttribute("message", "failed!");
 		}
 		finally {
 			session.close();
 		}
 	}
+	public static String digest(String pass) {
+    	byte[] input=pass.getBytes(StandardCharsets.UTF_8);
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("SHA3-256");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalArgumentException(e);
+        }
+        byte[] result = md.digest(input);
+        StringBuilder sb = new StringBuilder();
+        for (byte b : result) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 }
